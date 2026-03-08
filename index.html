@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAnet.Citizen — Сан-Фиерро</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: #0a1420;
+        }
+
+        /* ===== ЭКРАН ВХОДА ===== */
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(145deg, #004466, #006699);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: 0.3s;
+        }
+
+        .login-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .login-panel {
+            width: 420px;
+            background: #e0f0ff;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
+            padding: 35px 30px;
+            text-align: center;
+            border: 3px solid #ff3333;
+        }
+
+        .login-panel .city-icon {
+            font-size: 48px;
+            color: #006699;
+            margin-bottom: 15px;
+        }
+
+        .login-panel h2 {
+            color: #004466;
+            font-size: 24px;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .login-panel p {
+            color: #006699;
+            margin-bottom: 25px;
+            font-size: 14px;
+            border-bottom: 2px solid #ff3333;
+            padding-bottom: 15px;
+        }
+
+        .login-field {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .login-field label {
+            display: block;
+            color: #004466;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .login-field input {
+            width: 100%;
+            padding: 14px;
+            background: white;
+            border: 2px solid #006699;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            color: #004466;
+        }
+
+        .login-field input:focus {
+            border-color: #ff3333;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #006699;
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            border: 2px solid #ff3333;
+        }
+
+        .login-btn:hover {
+            background: #004466;
+        }
+
+        .login-error {
+            color: #ff3333;
+            margin-top: 15px;
+            min-height: 20px;
+            font-size: 14px;
+        }
+        /* ===== РАБОЧИЙ СТОЛ ===== */
+.desktop {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(145deg, #87CEEB, #4682B4);
+    position: relative;
+    overflow: hidden;
+}
+
+.desktop::before {
+    content: "🌉";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 300px;
+    opacity: 0.1;
+    color: #ff3333;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.top-bar {
+    background: #006699;
+    color: white;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+    border-bottom: 3px solid #ff3333;
+    flex-shrink: 0;
+}
+
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.sanet-brand {
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 0 #ff3333;
+}
+
+.user-session {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #b0e0ff;
+}
+
+.user-session span {
+    color: white;
+    font-weight: 600;
+}
+
+.top-bar-nav {
+    display: flex;
+    gap: 25px;
+}
+
+.top-bar-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.top-bar-nav a:hover {
+    color: #ff3333;
+}
+
+.top-bar-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: white;
+}
+
+.workspace {
+    flex: 1;
+    padding: 30px;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.desktop-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: fit-content;
+}
+
+.icon-row {
+    display: flex;
+    gap: 30px;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90px;
+    padding: 10px 0;
+    border-radius: 5px;
+    transition: 0.2s;
+    cursor: pointer;
+    color: white;
+    text-shadow: 1px 1px 0 #ff3333;
+}
+
+.desktop-icon:hover {
+    background: rgba(255, 51, 51, 0.3);
+    border: 2px solid #ff3333;
+}
+
+.icon-image {
+    font-size: 48px;
+    margin-bottom: 8px;
+    filter: drop-shadow(2px 2px 0 #ff3333);
+    width: 48px;
+    height: 48px;
+}
+
+.icon-label {
+    font-size: 13px;
+    text-align: center;
+    font-weight: 500;
+    background: #006699;
+    padding: 3px 8px;
+    border-radius: 4px;
+    width: 100%;
+    color: white;
+    border: 1px solid #ff3333;
+}
+
+.bottom-bar {
+    background: #006699;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    z-index: 10;
+    border-top: 3px solid #ff3333;
+    min-height: 60px;
+    flex-shrink: 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+.bottom-left {
+    display: flex;
+    gap: 20px;
+}
+
+.bottom-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.real-time {
+    background: #004466;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-family: monospace;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: white;
+    border: 2px solid #ff3333;
+    font-weight: bold;
+  }
+
+      /* ===== ОКНА ПРИЛОЖЕНИЙ ===== */
+.app-window {
+    position: absolute;
+    top: 80px;
+    left: 200px;
+    width: 800px;
+    height: 550px;
+    background: #e0f0ff;
+    border: 4px solid #ff3333;
+    border-radius: 15px 15px 10px 10px;
+    box-shadow: 0 25px 50px rgba(255, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    resize: both;
+    overflow: hidden;
+    min-width: 500px;
+    min-height: 350px;
+}
+
+.window-header {
+    background: linear-gradient(90deg, #006699, #004466);
+    padding: 12px 18px;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    cursor: move;
+    border-bottom: 3px solid #ff3333;
+}
+
+.window-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 1px 1px 0 #ff3333;
+}
+
+.window-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.window-controls span {
+    cursor: pointer;
+    padding: 5px 12px;
+    font-size: 18px;
+    color: white;
+    transition: 0.2s;
+    border-radius: 4px;
+}
+
+.window-controls span:hover {
+    background: #ff3333;
+    color: white;
+}
+
+.terminal-content {
+    flex: 1;
+    padding: 25px;
+    background: white;
+    color: #004466;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    overflow-y: auto;
+    line-height: 1.6;
+}
+
+.window-maximized {
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    border-radius: 0 !important;
+    border-width: 3px !important;
+}
+
+/* ===== ЦЕНТЕРНЕТ (ПОИСКОВИК) ===== */
+.search-container {
+    text-align: center;
+    padding: 30px;
+}
+
+.search-logo {
+    font-size: 72px;
+    color: #006699;
+    text-shadow: 3px 3px 0 #ff3333;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    width: 80%;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: 3px solid #006699;
+    border-radius: 40px;
+    outline: none;
+    margin-bottom: 20px;
+    color: #004466;
+}
+
+.search-box:focus {
+    border-color: #ff3333;
+}
+
+.search-results {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.search-item {
+    padding: 15px;
+    border-bottom: 2px solid #006699;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.search-item:hover {
+    background: #b0e0ff;
+    border-left: 5px solid #ff3333;
+}
+
+.search-item-title {
+    font-size: 18px;
+    color: #004466;
+    font-weight: bold;
+}
+
+.search-item-url {
+    font-size: 12px;
+    color: #ff3333;
+}
+
+.search-item-desc {
+    color: #006699;
+    margin-top: 5px;
+}
+
+/* ===== СТИЛИ ДЛЯ ПОГОДЫ ===== */
+.weather-box {
+    background: linear-gradient(145deg, #006699, #004466);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 3px solid #ff3333;
+}
+
+.weather-temp {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.weather-city {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* ===== СТИЛИ ДЛЯ БАНКА/РАБОТЫ ===== */
+.finance-card {
+    background: white;
+    border: 3px solid #006699;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.finance-title {
+    color: #004466;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 2px solid #ff3333;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.finance-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #b0e0ff;
+}
+
+.finance-label {
+    color: #006699;
+}
+
+.finance-value {
+    color: #004466;
+    font-weight: bold;
+}
+
+.salary {
+    color: #ff3333;
+    font-size: 18px;
+  }
+
+      </style>
+</head>
+<body>
+    <!-- ЭКРАН ВХОДА -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-panel">
+            <div class="city-icon">🌉</div>
+            <h2>SAnet.Citizen</h2>
+            <p>Сан-Фиерро • Гражданская сеть</p>
+            <div class="login-field">
+                <label>ИМЯ ПОЛЬЗОВАТЕЛЯ</label>
+                <input type="text" id="usernameInput" placeholder="Введите имя" autofocus>
+            </div>
+            <div class="login-field">
+                <label>ПАРОЛЬ</label>
+                <input type="password" id="passwordInput" placeholder="Введите пароль">
+            </div>
+            <button class="login-btn" id="loginBtn">ВОЙТИ В СЕТЬ</button>
+            <div class="login-error" id="loginError"></div>
+        </div>
+    </div>
+
+    <!-- РАБОЧИЙ СТОЛ -->
+    <div class="desktop" id="desktop" style="display: none;">
+        <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <div class="sanet-brand">SAnet.Citizen • Сан-Фиерро</div>
+                <div class="user-session" id="userSession"></div>
+            </div>
+            <div class="top-bar-nav">
+                <a href="#">Портал</a>
+                <a href="#">Помощь</a>
+            </div>
+            <div class="top-bar-right">
+                <span>🔔</span>
+                <span>🌉 SF</span>
+            </div>
+        </div>
+
+        <!-- ОСНОВНАЯ ОБЛАСТЬ -->
+        <div class="workspace">
+            <!-- ИКОНКИ -->
+            <div class="desktop-icons">
+                <!-- Первый ряд -->
+                <div class="icon-row">
+                    <div class="desktop-icon" data-app="centernet" id="centernetIcon">
+                        <span class="icon-image">🔍</span>
+                        <span class="icon-label">Centernet</span>
+                    </div>
+                    <div class="desktop-icon" data-app="sinopt" id="sinoptIcon">
+                        <span class="icon-image">☁️</span>
+                        <span class="icon-label">Sinopt.sar</span>
+                    </div>
+                    <div class="desktop-icon" data-app="fbi" id="fbiIcon">
+                        <span class="icon-image">🏛️</span>
+                        <span class="icon-label">FBI.sar</span>
+                    </div>
+                </div>
+                
+                <!-- Второй ряд -->
+                <div class="icon-row">
+                    <div class="desktop-icon" data-app="hack" id="hackIcon">
+                        <span class="icon-image">💻</span>
+                        <span class="icon-label">HACK.PAY.DAY.sar</span>
+                    </div>
+                    <div class="desktop-icon" data-app="job" id="jobIcon">
+                        <span class="icon-image">💼</span>
+                        <span class="icon-label">job.sar</span>
+                    </div>
+                    <div class="desktop-icon" data-app="bank" id="bankIcon">
+                        <span class="icon-image">💰</span>
+                        <span class="icon-label">bank.sar</span>
+                    </div>
+                </div>
+                
+                <!-- Третий ряд -->
+                <div class="icon-row">
+                    <div class="desktop-icon" data-app="map" id="mapIcon">
+                        <span class="icon-image">🗺️</span>
+                        <span class="icon-label">map.sar</span>
+                    </div>
+                    <div class="desktop-icon" data-app="mail" id="mailIcon">
+                        <span class="icon-image">📧</span>
+                        <span class="icon-label">Почта</span>
+                    </div>
+                </div>
+            </div>
+
+          <!-- ОКНО CENTERNET (ПОИСКОВИК) -->
+<div class="app-window" id="centernetWindow" style="display: none;">
+    <div class="window-header" id="centernetHeader">
+        <div class="window-title">
+            <span>🔍</span>
+            <span>Centernet — Поиск по Сан-Фиерро</span>
+        </div>
+        <div class="window-controls">
+            <span id="centernetMinimize">─</span>
+            <span id="centernetMaximize">□</span>
+            <span id="centernetClose">✕</span>
+        </div>
+    </div>
+    <div class="terminal-content" id="centernetContent">
+        <div class="search-container">
+            <div class="search-logo">Centernet</div>
+            <input type="text" class="search-box" id="searchInput" placeholder="Введите название или ссылку (.sar)">
+            <div class="search-results" id="searchResults">
+                <!-- Результаты появляются здесь -->
+                <div class="search-item" data-url="sinopt">
+                    <div class="search-item-title">☁️ Sinopt.sar — Погода</div>
+                    <div class="search-item-url">sinopt.sar</div>
+                    <div class="search-item-desc">Реальный прогноз погоды (Москва)</div>
+                </div>
+                <div class="search-item" data-url="fbi">
+                    <div class="search-item-title">🏛️ FBI.sar — Публичная информация</div>
+                    <div class="search-item-url">fbi.sar</div>
+                    <div class="search-item-desc">Официальные данные ФБР Сан-Андреас</div>
+                </div>
+                <div class="search-item" data-url="hack">
+                    <div class="search-item-title">💻 HACK.PAY.DAY.sar — Взлом</div>
+                    <div class="search-item-url">hack.pay.day.sar</div>
+                    <div class="search-item-desc">???</div>
+                </div>
+                <div class="search-item" data-url="job">
+                    <div class="search-item-title">💼 job.sar — Моя работа</div>
+                    <div class="search-item-url">job.sar</div>
+                    <div class="search-item-desc">Информация о трудоустройстве</div>
+                </div>
+                <div class="search-item" data-url="bank">
+                    <div class="search-item-title">💰 bank.sar — Доходы</div>
+                    <div class="search-item-url">bank.sar</div>
+                    <div class="search-item-desc">Финансовая информация</div>
+                </div>
+                <div class="search-item" data-url="map">
+                    <div class="search-item-title">🗺️ map.sar — Карта города</div>
+                    <div class="search-item-url">map.sar</div>
+                    <div class="search-item-desc">Схема Сан-Фиерро (скоро)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ОКНО ПОГОДЫ (SINOPT.SAR) -->
+<div class="app-window" id="sinoptWindow" style="display: none;">
+    <div class="window-header" id="sinoptHeader">
+        <div class="window-title">
+            <span>☁️</span>
+            <span>Sinopt.sar — Прогноз погоды</span>
+        </div>
+        <div class="window-controls">
+            <span id="sinoptMinimize">─</span>
+            <span id="sinoptMaximize">□</span>
+            <span id="sinoptClose">✕</span>
+        </div>
+    </div>
+    <div class="terminal-content" id="sinoptContent">
+        <div class="weather-box">
+            <div class="weather-city">🌉 Сан-Фиерро (данные Москвы)</div>
+            <div class="weather-temp" id="weatherTemp">--°C</div>
+            <div id="weatherDesc">Загрузка...</div>
+            <div style="margin-top: 20px;">💨 Влажность: <span id="weatherHumidity">--</span>%</div>
+            <div>💨 Ветер: <span id="weatherWind">--</span> м/с</div>
+        </div>
+    </div>
+</div>
+
+<!-- ОКНО FBI.SAR -->
+<div class="app-window" id="fbiWindow" style="display: none;">
+    <div class="window-header" id="fbiHeader">
+        <div class="window-title">
+            <span>🏛️</span>
+            <span>FBI.sar — Публичная информация</span>
+        </div>
+        <div class="window-controls">
+            <span id="fbiMinimize">─</span>
+            <span id="fbiMaximize">□</span>
+            <span id="fbiClose">✕</span>
+        </div>
+    </div>
+    <div class="terminal-content" id="fbiContent">
+        <h2 style="color: #004466;">ФБР ОКРУГА САН-АНДРЕАС</h2>
+        <p style="color: #006699;">Официальная публичная информация</p>
+        <div style="margin-top: 20px;">
+            <div class="finance-card">
+                <div class="finance-title">Контакты</div>
+                <div>📞 Телефон: +1 (555) 123-45-67</div>
+                <div>📧 Email: info@fbi.sanandreas.gov</div>
+                <div>🌐 Адрес: Сан-Фиерро, ул. Федерал, 1</div>
+            </div>
+            <div class="finance-card">
+                <div class="finance-title">Вакансии</div>
+                <div>• Специальный агент (требуется опыт)</div>
+                <div>• Аналитик данных</div>
+                <div>• Технический специалист</div>
+            </div>
+            <div class="finance-card">
+                <div class="finance-title">Последние новости</div>
+                <div>12.03.2026 - Предотвращено ограбление банка</div>
+                <div>10.03.2026 - Задержан подозреваемый по делу русской мафии</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ОКНО ХАКЕРСКОГО САЙТА (HACK.PAY.DAY.SAR) -->
+<div class="app-window" id="hackWindow" style="display: none;">
+    <div class="window-header" id="hackHeader">
+        <div class="window-title">
+            <span>💻</span>
+            <span>HACK.PAY.DAY.sar — Доступ к данным ФБР</span>
+        </div>
+        <div class="window-controls">
+            <span id="hackMinimize">─</span>
+            <span id="hackMaximize">□</span>
+            <span id="hackClose">✕</span>
+        </div>
+    </div>
+    <div class="terminal-content" id="hackContent" style="text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 20px;">💀</div>
+        <h2 style="color: #ff3333;">ВЗЛОМ ФБР</h2>
+        <p style="color: #006699;">Решите головоломку, чтобы получить доступ</p>
+        <div style="margin: 30px 0;" id="puzzleArea">
+            <div style="font-size: 24px; margin-bottom: 20px;" id="puzzleQuestion">5 + 3 = ?</div>
+            <input type="text" id="puzzleAnswer" placeholder="Ответ" style="padding: 10px; width: 200px; border: 3px solid #ff3333;">
+            <button id="puzzleSubmit" style="display: block; margin: 20px auto; padding: 10px 30px; background: #006699; color: white; border: none; cursor: pointer;">ПРОВЕРИТЬ</button>
+        </div>
+        <div id="hackResult" style="display: none;">
+            <div style="color: #ff3333; font-size: 20px;">⚠️ ДОСТУП ПОЛУЧЕН ⚠️</div>
+            <div style="margin-top: 20px;" id="hackData"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ОКНО JOB.SAR -->
+<div class="app-window" id="jobWindow" style="display: none;">
+    <div class="window-header" id="jobHeader">
+        <div class="window-title">
+            <span>💼</span>
+            <span>job.sar — Моя работа</span>
+        </div>
+        <div class="window-controls">
+            <span id="jobMinimize">─</span>
+            <span id="jobMaximize">□</span>
+            <span id="jobClose">✕</span>
+        </div>
+    </div>
+    <div class="terminal-content" id="jobContent">
+        <div class="finance-card">
+            <div class="finance-title">ИНФОРМАЦИЯ О СОТРУДНИКЕ</div>
+            <div class="finance-row"><span class="finance-label">Имя:</span> <span class="finance-value" id="jobName">Загрузка...</span></div>
+            <div class="finance-row"><span class="finance-label">Должность:</span> <span class="finance-value" id="jobRole">Загрузка...</span></div>
+            <div class="finance-row"><span class="finance-label">Место работы:</span> <span class="finance-value" id="jobPlace">Загрузка...</span></div>
+            <div class="finance-row"><span class="finance-label">Стаж:</span> <span class="finance-value" id="jobExp">Загрузка...</span></div>
+        </div>
+    </div>
+</div>
+
+<!-- ОКНО BANK.SAR -->
+<div class="app-window" id="bankWindow" style="display: none;">
+    <div class="window-header" id="bankHeader">
+        <div class="window-title">
+            <span>💰</span>
+            <span>bank.sar — Мои доходы</span>
+        </div>
+        <div class="window-controls">
+            <span id="bankMinimize">─</span>
+            <span id="bankMaximize">□</span>
+            <span id="bankClose">✕</span>
+        </div>
+    </div>
+    <div class="terminal-content" id="bankContent">
+        <div class="finance-card">
+            <div class="finance-title">ФИНАНСОВАЯ ИНФОРМАЦИЯ</div>
+            <div class="finance-row"><span class="finance-label">Владелец счёта:</span> <span class="finance-value" id="bankName">Загрузка...</span></div>
+            <div class="finance-row"><span class="finance-label">Ежемесячный доход:</span> <span class="finance-value salary" id="bankSalary">Загрузка...</span></div>
+            <div class="finance-row"><span class="finance-label">Номер счёта:</span> <span class="finance-value" id="bankAccount">SF-****-****</span></div>
+            <div class="finance-row"><span class="finance-label">Баланс:</span> <span class="finance-value" id="bankBalance">Загрузка...</span></div>
+        </div>
+    </div>
+</div>
+
+                  <!-- ОКНО КАРТЫ (MAP.SAR) -->
+        <div class="app-window" id="mapWindow" style="display: none;">
+            <div class="window-header" id="mapHeader">
+                <div class="window-title">
+                    <span>🗺️</span>
+                    <span>map.sar — Карта Сан-Фиерро</span>
+                </div>
+                <div class="window-controls">
+                    <span id="mapMinimize">─</span>
+                    <span id="mapMaximize">□</span>
+                    <span id="mapClose">✕</span>
+                </div>
+            </div>
+            <div class="terminal-content" style="display: flex; justify-content: center; align-items: center;">
+                <div style="text-align: center; padding: 50px;">
+                    <div style="font-size: 64px; margin-bottom: 20px;">🗺️</div>
+                    <h2 style="color: #004466;">Карта в разработке</h2>
+                    <p style="color: #006699;">Плейс в Roblox ещё не готов</p>
+                    <p style="color: #ff3333; margin-top: 20px;">Следите за обновлениями!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ОКНО ПОЧТЫ -->
+        <div class="app-window" id="mailWindow" style="display: none;">
+            <div class="window-header" id="mailHeader">
+                <div class="window-title">
+                    <span>📧</span>
+                    <span>Почта Сан-Фиерро</span>
+                </div>
+                <div class="window-controls">
+                    <span id="mailMinimize">─</span>
+                    <span id="mailMaximize">□</span>
+                    <span id="mailClose">✕</span>
+                </div>
+            </div>
+            <div class="terminal-content" id="mailContent">
+                <div class="finance-card">
+                    <div class="finance-title">Входящие</div>
+                    <div class="mail-item" style="padding: 15px; border-bottom: 2px solid #006699; cursor: pointer;">
+                        <div style="font-weight: bold; color: #004466;">🏛️ Администрация Сан-Фиерро</div>
+                        <div style="color: #006699;">Добро пожаловать в город!</div>
+                        <div style="color: #ff3333; font-size: 12px;">12.03.2026</div>
+                    </div>
+                    <div class="mail-item" style="padding: 15px; border-bottom: 2px solid #006699; cursor: pointer;">
+                        <div style="font-weight: bold; color: #004466;">🛡️ ФБР Сан-Андреас</div>
+                        <div style="color: #006699;">Публичное обращение</div>
+                        <div style="color: #ff3333; font-size: 12px;">10.03.2026</div>
+                    </div>
+                    <div class="mail-item" style="padding: 15px; cursor: pointer;">
+                        <div style="font-weight: bold; color: #004466;">☁️ Sinopt.sar</div>
+                        <div style="color: #006699;">Прогноз на неделю</div>
+                        <div style="color: #ff3333; font-size: 12px;">09.03.2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- НИЖНЯЯ ПАНЕЛЬ -->
+    <div class="bottom-bar">
+        <div class="bottom-left">
+            <span>SAnet.Citizen • Сан-Фиерро</span>
+            <span>•</span>
+            <span>Гражданская сеть</span>
+        </div>
+        <div class="bottom-right">
+            <span class="real-time" id="realTime">--:--:--</span>
+        </div>
+    </div>
+</div>
+
+  <script>
+    // ===== ДАННЫЕ ПОЛЬЗОВАТЕЛЕЙ =====
+    const users = {
+        'FBI565FULLCLEAR!': { 
+            name: 'Майк Малас', 
+            role: 'ДИРЕКТОР ФБР',
+            job: 'Директор ФБР',
+            jobPlace: 'ФБР Сан-Андреас',
+            exp: '3 года',
+            salary: '12000$',
+            account: 'SF-0001-ММ',
+            balance: '145000$'
+        },
+        'FBI999SPEC!': { 
+            name: 'Регинальд Вон Равенхорст', 
+            role: 'СПЕЦИАЛЬНЫЙ АГЕНТ',
+            job: 'Специальный агент',
+            jobPlace: 'ФБР, отдел крупных дел',
+            exp: '1 год',
+            salary: '1300$',
+            account: 'SF-0002-РВР',
+            balance: '15600$'
+        },
+        'MERIE910SF': { 
+            name: 'Иван Драго', 
+            role: 'МЭР ГОРОДА САН-ФИЕРРО',
+            job: 'Мэр',
+            jobPlace: 'Мэрия Сан-Фиерро',
+            exp: '2 года',
+            salary: '23000$',
+            account: 'SF-0003-ИД',
+            balance: '276000$'
+        },
+        'SOCIAL665ADMIN!': { 
+            name: 'Глеб Малыхин', 
+            role: 'ДЕПУТАТ ПО СОЦ. ВОПРОСАМ',
+            job: 'Депутат',
+            jobPlace: 'Социальный отдел',
+            exp: '1.5 года',
+            salary: '19000$',
+            account: 'SF-0004-ГМ',
+            balance: '28500$'
+        },
+        'guest1!': { 
+            name: 'Гость', 
+            role: 'guest',
+            job: 'Безработный',
+            jobPlace: '—',
+            exp: '—',
+            salary: '0$',
+            account: 'SF-GUEST',
+            balance: '100$'
+        }
+    };
+
+    // ===== ЭЛЕМЕНТЫ =====
+    const loginScreen = document.getElementById('loginScreen');
+    const desktop = document.getElementById('desktop');
+    const usernameInput = document.getElementById('usernameInput');
+    const passwordInput = document.getElementById('passwordInput');
+    const loginBtn = document.getElementById('loginBtn');
+    const loginError = document.getElementById('loginError');
+    const userSession = document.getElementById('userSession');
+    const realTime = document.getElementById('realTime');
+
+    // ===== ВРЕМЯ =====
+    function updateTime() {
+        const now = new Date();
+        realTime.textContent = now.toLocaleTimeString('ru-RU', { hour12: false });
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+
+    // ===== ПОГОДА (РЕАЛЬНАЯ, МОСКВА) =====
+    async function fetchWeather() {
+        try {
+            const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true');
+            const data = await response.json();
+            const weather = data.current_weather;
+            
+            document.getElementById('weatherTemp').textContent = weather.temperature + '°C';
+            document.getElementById('weatherDesc').textContent = getWeatherDesc(weather.weathercode);
+            document.getElementById('weatherHumidity').textContent = '—'; // API не даёт влажность бесплатно
+            document.getElementById('weatherWind').textContent = weather.windspeed;
+        } catch (e) {
+            document.getElementById('weatherTemp').textContent = '--°C';
+        }
+    }
+
+    function getWeatherDesc(code) {
+        const codes = {
+            0: 'Ясно', 1: 'Ясно', 2: 'Переменная облачность', 3: 'Облачно',
+            45: 'Туман', 48: 'Туман', 51: 'Морось', 53: 'Морось', 55: 'Морось',
+            61: 'Дождь', 63: 'Дождь', 65: 'Дождь', 71: 'Снег', 73: 'Снег', 75: 'Снег',
+            80: 'Ливень', 81: 'Ливень', 82: 'Ливень', 95: 'Гроза', 96: 'Гроза', 99: 'Гроза'
+        };
+        return codes[code] || 'Неизвестно';
+    }
+
+     // ===== ВХОД В СИСТЕМУ =====
+function handleLogin() {
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+    const user = users[password];
+
+    if (user && (user.name === username || username === '')) {
+        loginScreen.classList.add('hidden');
+        setTimeout(() => {
+            loginScreen.style.display = 'none';
+            desktop.style.display = 'flex';
+        }, 300);
+
+        // Отображаем имя пользователя
+        userSession.innerHTML = `<span>${user.name}</span> • ${user.role}`;
+
+        // Загружаем данные в job.sar
+        document.getElementById('jobName').textContent = user.name;
+        document.getElementById('jobRole').textContent = user.job;
+        document.getElementById('jobPlace').textContent = user.jobPlace;
+        document.getElementById('jobExp').textContent = user.exp;
+
+        // Загружаем данные в bank.sar
+        document.getElementById('bankName').textContent = user.name;
+        document.getElementById('bankSalary').textContent = user.salary;
+        document.getElementById('bankAccount').textContent = user.account;
+        document.getElementById('bankBalance').textContent = user.balance;
+
+        // Загружаем погоду
+        fetchWeather();
+
+    } else {
+        loginError.innerText = 'Неверное имя или пароль';
+        passwordInput.value = '';
+        passwordInput.focus();
+    }
+}
+
+loginBtn.addEventListener('click', handleLogin);
+passwordInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleLogin();
+});
+
+// ===== ПОИСК ПО CENTERNET =====
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+if (searchInput) {
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        const items = document.querySelectorAll('.search-item');
+        
+        items.forEach(item => {
+            const title = item.querySelector('.search-item-title').textContent.toLowerCase();
+            const url = item.dataset.url.toLowerCase();
+            
+            if (title.includes(query) || url.includes(query)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+}
+
+// Клик по результатам поиска
+document.querySelectorAll('.search-item').forEach(item => {
+    item.addEventListener('click', function() {
+        const url = this.dataset.url;
+        // Здесь можно открывать соответствующие приложения
+        const windows = {
+            'sinopt': 'sinoptWindow',
+            'fbi': 'fbiWindow',
+            'hack': 'hackWindow',
+            'job': 'jobWindow',
+            'bank': 'bankWindow',
+            'map': 'mapWindow'
+        };
+        
+        if (windows[url]) {
+            const windowEl = document.getElementById(windows[url]);
+            if (windowEl) windowEl.style.display = 'flex';
+        }
+    });
+});
+
+            // ===== ГОЛОВОЛОМКА ДЛЯ ХАКЕРСКОГО САЙТА =====
+        let puzzleSolved = false;
+
+        document.getElementById('puzzleSubmit')?.addEventListener('click', function() {
+            const answer = document.getElementById('puzzleAnswer').value;
+            if (answer === '8') {
+                document.getElementById('puzzleArea').style.display = 'none';
+                document.getElementById('hackResult').style.display = 'block';
+                
+                // Ворованные данные из ФБР
+                document.getElementById('hackData').innerHTML = `
+                    <div class="finance-card">
+                        <div class="finance-title">🔓 СЛИТЫЕ ДАННЫЕ ФБР</div>
+                        <div class="finance-row">Агенты: 127 человек</div>
+                        <div class="finance-row">Текущие операции: 34</div>
+                        <div class="finance-row">Секретные файлы: до 2030 года</div>
+                        <div class="finance-row">Русская мафия: под наблюдением</div>
+                        <div class="finance-row">Мэр Драго: проверка информации</div>
+                    </div>
+                `;
+            } else {
+                alert('Неверный ответ! Попробуйте ещё.');
+            }
+        });
+
+        // ===== ИНИЦИАЛИЗАЦИЯ ПРИЛОЖЕНИЙ =====
+        window.addEventListener('load', function() {
+            // Список всех иконок и окон
+            const apps = [
+                { icon: 'centernetIcon', window: 'centernetWindow', close: 'centernetClose', minimize: 'centernetMinimize', maximize: 'centernetMaximize' },
+                { icon: 'sinoptIcon', window: 'sinoptWindow', close: 'sinoptClose', minimize: 'sinoptMinimize', maximize: 'sinoptMaximize' },
+                { icon: 'fbiIcon', window: 'fbiWindow', close: 'fbiClose', minimize: 'fbiMinimize', maximize: 'fbiMaximize' },
+                { icon: 'hackIcon', window: 'hackWindow', close: 'hackClose', minimize: 'hackMinimize', maximize: 'hackMaximize' },
+                { icon: 'jobIcon', window: 'jobWindow', close: 'jobClose', minimize: 'jobMinimize', maximize: 'jobMaximize' },
+                { icon: 'bankIcon', window: 'bankWindow', close: 'bankClose', minimize: 'bankMinimize', maximize: 'bankMaximize' },
+                { icon: 'mapIcon', window: 'mapWindow', close: 'mapClose', minimize: 'mapMinimize', maximize: 'mapMaximize' },
+                { icon: 'mailIcon', window: 'mailWindow', close: 'mailClose', minimize: 'mailMinimize', maximize: 'mailMaximize' }
+            ];
+
+            // Открытие окон
+            apps.forEach(app => {
+                const icon = document.getElementById(app.icon);
+                const windowEl = document.getElementById(app.window);
+                const closeBtn = document.getElementById(app.close);
+                const minimizeBtn = document.getElementById(app.minimize);
+
+                if (icon && windowEl) {
+                    icon.addEventListener('click', () => {
+                        windowEl.style.display = 'flex';
+                    });
+                }
+
+                if (closeBtn && windowEl) {
+                    closeBtn.addEventListener('click', () => {
+                        windowEl.style.display = 'none';
+                    });
+                }
+
+                if (minimizeBtn && windowEl) {
+                    minimizeBtn.addEventListener('click', () => {
+                        windowEl.style.display = 'none';
+                    });
+                }
+            });
+
+            // Функция разворачивания окон
+            function setupMaximize(btnId, windowEl) {
+                const btn = document.getElementById(btnId);
+                if (!btn || !windowEl) return;
+                
+                let isMaximized = false;
+                let prevSize = {};
+                
+                btn.addEventListener('click', () => {
+                    if (!isMaximized) {
+                        prevSize = {
+                            width: windowEl.style.width,
+                            height: windowEl.style.height,
+                            top: windowEl.style.top,
+                            left: windowEl.style.left
+                        };
+                        windowEl.style.width = '100%';
+                        windowEl.style.height = 'calc(100% - 120px)';
+                        windowEl.style.top = '60px';
+                        windowEl.style.left = '0';
+                        windowEl.classList.add('window-maximized');
+                        btn.textContent = '❐';
+                    } else {
+                        windowEl.style.width = prevSize.width || '800px';
+                        windowEl.style.height = prevSize.height || '550px';
+                        windowEl.style.top = prevSize.top || '80px';
+                        windowEl.style.left = prevSize.left || '200px';
+                        windowEl.classList.remove('window-maximized');
+                        btn.textContent = '□';
+                    }
+                    isMaximized = !isMaximized;
+                });
+            }
+
+            // Настраиваем разворачивание для всех окон
+            apps.forEach(app => {
+                if (app.maximize) {
+                    const windowEl = document.getElementById(app.window);
+                    setupMaximize(app.maximize, windowEl);
+                }
+            });
+
+            // Перетаскивание окон (базовое)
+            apps.forEach(app => {
+                const windowEl = document.getElementById(app.window);
+                const header = windowEl?.querySelector('.window-header');
+                
+                if (header && windowEl) {
+                    let isDragging = false;
+                    let offsetX, offsetY;
+
+                    header.addEventListener('mousedown', (e) => {
+                        if (e.target.closest('.window-controls')) return;
+                        isDragging = true;
+                        const rect = windowEl.getBoundingClientRect();
+                        offsetX = e.clientX - rect.left;
+                        offsetY = e.clientY - rect.top;
+                    });
+
+                    document.addEventListener('mousemove', (e) => {
+                        if (!isDragging) return;
+                        e.preventDefault();
+                        
+                        let newX = e.clientX - offsetX;
+                        let newY = e.clientY - offsetY;
+                        
+                        const maxX = window.innerWidth - windowEl.offsetWidth;
+                        const maxY = window.innerHeight - windowEl.offsetHeight - 120;
+                        
+                        newX = Math.min(Math.max(0, newX), maxX);
+                        newY = Math.min(Math.max(60, newY), maxY);
+                        
+                        windowEl.style.left = newX + 'px';
+                        windowEl.style.top = newY + 'px';
+                    });
+
+                    document.addEventListener('mouseup', () => {
+                        isDragging = false;
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
