@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAnet.Citizen v.2.0 — Сан-Фиерро</title>
+    <title>SAnet.Citizen v.3.0 — Сан-Фиерро</title>
     <style>
         * {
             margin: 0;
@@ -265,7 +265,7 @@
             border: 1px solid #ff3333;
         }
 
-                .bottom-bar {
+        .bottom-bar {
             background: #006699;
             color: white;
             padding: 15px 30px;
@@ -381,190 +381,80 @@
             border-width: 3px !important;
         }
 
-        /* ===== ВКЛАДКИ ===== */
-        .tabs-container {
-            display: flex;
-            gap: 5px;
-            border-bottom: 3px solid #ff3333;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
+        /* ===== СТИЛИ ДЛЯ MyHumor ===== */
+        .humor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 10px;
         }
 
-        .tab {
-            padding: 10px 25px;
+        .humor-card {
             background: #006699;
-            color: white;
-            border: 2px solid #ff3333;
-            border-radius: 8px 8px 0 0;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .tab.active {
-            background: #ff3333;
-            color: white;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* ===== СТИЛИ ДЛЯ ИГР ===== */
-        .games-container {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        .game-card {
-            width: 200px;
-            height: 200px;
-            background: #006699;
-            border: 4px solid #ff3333;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            border: 3px solid #ff3333;
+            border-radius: 15px;
+            overflow: hidden;
             cursor: pointer;
             transition: 0.2s;
         }
 
-        .game-card:hover {
+        .humor-card:hover {
             transform: scale(1.05);
-            background: #ff3333;
         }
 
-        .game-card span {
-            font-size: 64px;
-            margin-bottom: 15px;
-        }
-
-        .game-card div {
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        /* ===== СТИЛИ ДЛЯ ПРОФИЛЯ ===== */
-        .profile-card {
-            background: #e0f0ff;
-            border: 3px solid #006699;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .profile-row {
+        .humor-video {
+            width: 100%;
+            height: 150px;
+            background: #004466;
             display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 2px solid #006699;
-        }
-
-        .profile-label {
-            color: #004466;
-            font-weight: bold;
-        }
-
-        .profile-value {
-            color: #ff3333;
-            font-weight: bold;
-        }
-
-        /* ===== СТИЛИ ДЛЯ ПЛЕЕРА ===== */
-        .player-container {
-            text-align: center;
-            padding: 30px;
-        }
-
-        .track-list {
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .track-item {
-            padding: 10px;
-            border-bottom: 2px solid #006699;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .track-item:hover {
-            background: #b0e0ff;
-        }
-
-        .track-item.playing {
-            background: #ff3333;
-            color: white;
-        }
-
-        .player-controls {
-            margin: 30px 0;
-            display: flex;
-            gap: 20px;
+            align-items: center;
             justify-content: center;
-        }
-
-        .player-btn {
-            padding: 15px 30px;
-            background: #006699;
             color: white;
-            border: 3px solid #ff3333;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 20px;
+            font-size: 48px;
         }
 
-        .player-btn:hover {
-            background: #ff3333;
-        }
-
-        /* ===== ПОИСКОВИК ===== */
-        .search-container {
+        .humor-title {
+            padding: 10px;
+            color: white;
             text-align: center;
+            font-size: 14px;
         }
 
-        .search-logo {
-            font-size: 64px;
-            color: #006699;
-            text-shadow: 3px 3px 0 #ff3333;
+        /* ===== СТИЛИ ДЛЯ CivilInfo ===== */
+        .search-section {
             margin-bottom: 20px;
         }
 
-        .search-box {
-            width: 80%;
+        .civil-search {
+            width: 100%;
             padding: 15px;
             font-size: 16px;
             border: 3px solid #006699;
             border-radius: 40px;
             outline: none;
-            margin-bottom: 20px;
         }
 
-        .search-box:focus {
+        .civil-search:focus {
             border-color: #ff3333;
         }
 
-        .search-item {
-            padding: 15px;
-            border-bottom: 2px solid #006699;
-            cursor: pointer;
+        .civil-result {
+            background: #e0f0ff;
+            border: 3px solid #006699;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
         }
 
-        .search-item:hover {
-            background: #b0e0ff;
+        .civil-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 2px solid #006699;
         }
     </style>
-</head>
-<body>
+    </head>
+    <body>
     <!-- ЭКРАН ВХОДА -->
     <div class="login-screen" id="loginScreen">
         <div class="login-panel">
@@ -636,8 +526,18 @@
                         <span class="icon-label">Профиль</span>
                     </div>
                 </div>
+                <!-- Третий ряд (НОВЫЕ ИКОНКИ) -->
+                <div class="icon-row">
+                    <div class="desktop-icon" id="humorIcon">
+                        <span class="icon-image">😂</span>
+                        <span class="icon-label">MyHumor</span>
+                    </div>
+                    <div class="desktop-icon" id="civilIcon" style="display: none;">
+                        <span class="icon-image">👥</span>
+                        <span class="icon-label">CivilInfo</span>
+                    </div>
+                </div>
             </div>
-
 
             <!-- ОКНО CENTERNET -->
 <div class="app-window" id="centernetWindow" style="display: none;">
@@ -664,6 +564,7 @@
                 <div class="search-item" data-url="library">📚 library.sar — История Сан-Фиерро</div>
                 <div class="search-item" data-url="gov">🏛️ gov.sar — Указы мэра</div>
                 <div class="search-item" data-url="map">🗺️ map.sar — Карта (скоро)</div>
+                <div class="search-item" data-url="gensec">🛡️ GENSEC.s — Частная охрана</div>
             </div>
         </div>
     </div>
@@ -716,7 +617,25 @@
     </div>
 </div>
 
-                    <!-- ОКНО РАДИО -->
+<!-- ОКНО MyHumor -->
+<div class="app-window" id="humorWindow" style="display: none;">
+    <div class="window-header" id="humorHeader">
+        <div class="window-title">
+            <span>😂</span>
+            <span>MyHumor — Приколы Сан-Фиерро</span>
+        </div>
+        <div class="window-controls">
+            <span class="window-minimize" data-window="humorWindow">─</span>
+            <span class="window-maximize" data-window="humorWindow">□</span>
+            <span class="window-close" data-window="humorWindow">✕</span>
+        </div>
+    </div>
+    <div class="window-content">
+        <div class="humor-grid" id="humorGrid"></div>
+    </div>
+    </div>
+
+        <!-- ОКНО РАДИО -->
         <div class="app-window" id="radioWindow" style="display: none;">
             <div class="window-header" id="radioHeader">
                 <div class="window-title">
@@ -809,6 +728,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- ОКНО CIVILINFO -->
+        <div class="app-window" id="civilWindow" style="display: none;">
+            <div class="window-header" id="civilHeader">
+                <div class="window-title">
+                    <span>👥</span>
+                    <span>CivilInfo — База данных граждан</span>
+                </div>
+                <div class="window-controls">
+                    <span class="window-minimize" data-window="civilWindow">─</span>
+                    <span class="window-maximize" data-window="civilWindow">□</span>
+                    <span class="window-close" data-window="civilWindow">✕</span>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="search-section">
+                    <input type="text" class="civil-search" id="civilSearch" placeholder="Введите имя гражданина...">
+                </div>
+                <div class="civil-result" id="civilResult" style="display: none;">
+                    <div class="civil-row"><span class="profile-label">Имя:</span> <span class="profile-value" id="civilName"></span></div>
+                    <div class="civil-row"><span class="profile-label">Работа:</span> <span class="profile-value" id="civilJob"></span></div>
+                    <div class="civil-row"><span class="profile-label">Место работы:</span> <span class="profile-value" id="civilPlace"></span></div>
+                    <div class="civil-row"><span class="profile-label">Стаж:</span> <span class="profile-value" id="civilExp"></span></div>
+                    <div class="civil-row"><span class="profile-label">Доход:</span> <span class="profile-value" id="civilSalary"></span></div>
+                    <div class="civil-row"><span class="profile-label">Счёт:</span> <span class="profile-value" id="civilAccount"></span></div>
+                    <div class="civil-row"><span class="profile-label">Баланс:</span> <span class="profile-value" id="civilBalance"></span></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- НИЖНЯЯ ПАНЕЛЬ -->
@@ -823,7 +771,6 @@
         </div>
     </div>
     </div>
-
     <script>
     // ===== ДАННЫЕ ПОЛЬЗОВАТЕЛЕЙ =====
     const users = {
@@ -879,6 +826,19 @@
         }
     };
 
+    // ===== ДАННЫЕ ДЛЯ MyHumor =====
+    const humorVideos = [
+        { title: 'Прикол 1', file: 'VID_20260301_132901_324.mp4' },
+        { title: 'Прикол 2', file: 'VID_20260301_132911_477.mp4' },
+        { title: 'Прикол 3', file: 'VID_20260301_133013_552.mp4' },
+        { title: 'Прикол 4', file: 'VID_20260301_133021_224.mp4' },
+        { title: 'Секретное видео Тимура', file: 'timurvideo.mp4' },
+        { title: 'Прикол 5', file: 'VID_20260301_132951_278.mp4' },
+        { title: 'Прикол 6', file: 'VID_20260301_132824_112.mp4' },
+        { title: 'Прикол 7', file: 'VID_20260301_133003_660.mp4' },
+        { title: 'Прикол 8', file: 'VID_20260301_132849_475.mp4' }
+    ];
+
     // ===== ЭЛЕМЕНТЫ =====
     const loginScreen = document.getElementById('loginScreen');
     const desktop = document.getElementById('desktop');
@@ -888,6 +848,7 @@
     const loginError = document.getElementById('loginError');
     const userSession = document.getElementById('userSession');
     const realTime = document.getElementById('realTime');
+    const humorGrid = document.getElementById('humorGrid');
 
     // ===== ВРЕМЯ =====
     function updateTime() {
@@ -897,48 +858,75 @@
     updateTime();
     setInterval(updateTime, 1000);
 
-    // ===== ВХОД =====
-    function handleLogin() {
-        const username = usernameInput.value;
-        const password = passwordInput.value;
-        const user = users[password];
+        // ===== ЗАГРУЗКА ВИДЕО ДЛЯ MyHumor =====
+if (humorGrid) {
+    humorVideos.forEach(video => {
+        const card = document.createElement('div');
+        card.className = 'humor-card';
+        card.innerHTML = `
+            <div class="humor-video">🎥</div>
+            <div class="humor-title">${video.title}</div>
+        `;
+        card.addEventListener('click', () => {
+            // Создаём временное видео для просмотра
+            const videoWindow = window.open('', '_blank', 'width=800,height=600');
+            videoWindow.document.write(`
+                <html><body style="margin:0; background:#000;">
+                    <video src="${video.file}" controls autoplay style="width:100%; height:100%;"></video>
+                </body></html>
+            `);
+        });
+        humorGrid.appendChild(card);
+    });
+}
 
-        if (user && (user.name === username || username === '')) {
-            loginScreen.classList.add('hidden');
-            setTimeout(() => {
-                loginScreen.style.display = 'none';
-                desktop.style.display = 'flex';
-            }, 300);
+// ===== ВХОД =====
+function handleLogin() {
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+    const user = users[password];
 
-            userSession.innerHTML = `<span>${user.name}</span> • ${user.role}`;
-            
-            // Загружаем данные в профиль
-            document.getElementById('profileJob').textContent = user.job;
-            document.getElementById('profilePlace').textContent = user.place;
-            document.getElementById('profileExp').textContent = user.exp;
-            document.getElementById('profileSalary').textContent = user.salary;
-            document.getElementById('profileAccount').textContent = user.account;
-            document.getElementById('profileBalance').textContent = user.balance;
+    if (user && (user.name === username || username === '')) {
+        loginScreen.classList.add('hidden');
+        setTimeout(() => {
+            loginScreen.style.display = 'none';
+            desktop.style.display = 'flex';
+        }, 300);
 
-        } else {
-            loginError.innerText = 'Неверное имя или пароль';
-            passwordInput.value = '';
-            passwordInput.focus();
+        userSession.innerHTML = `<span>${user.name}</span> • ${user.role}`;
+        
+        // Загружаем данные в профиль
+        document.getElementById('profileJob').textContent = user.job;
+        document.getElementById('profilePlace').textContent = user.place;
+        document.getElementById('profileExp').textContent = user.exp;
+        document.getElementById('profileSalary').textContent = user.salary;
+        document.getElementById('profileAccount').textContent = user.account;
+        document.getElementById('profileBalance').textContent = user.balance;
+
+        // Показываем CivilInfo только для Майка Маласа
+        if (user.name === 'Майк Малас') {
+            document.getElementById('civilIcon').style.display = 'flex';
         }
+
+    } else {
+        loginError.innerText = 'Неверное имя или пароль';
+        passwordInput.value = '';
+        passwordInput.focus();
     }
+}
 
-    loginBtn.addEventListener('click', handleLogin);
-    passwordInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleLogin();
-    });
+loginBtn.addEventListener('click', handleLogin);
+passwordInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleLogin();
+});
 
-    // ===== ПОМОЩЬ (ССЫЛКА НА ТЕЛЕГРАМ) =====
-    document.getElementById('helpLink').addEventListener('click', (e) => {
-        e.preventDefault();
-        window.open('https://t.me/MOTYA_VONEL565', '_blank');
-    });
+// ===== ПОМОЩЬ (ССЫЛКА НА ТЕЛЕГРАМ) =====
+document.getElementById('helpLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.open('https://t.me/MOTYA_VONEL565', '_blank');
+});
 
-        // ===== ПОИСК ПО CENTERNET =====
+       // ===== ПОИСК ПО CENTERNET =====
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 
@@ -963,6 +951,11 @@ document.querySelectorAll('.search-item').forEach(item => {
     item.addEventListener('click', function() {
         const url = this.dataset.url;
         
+        if (url === 'gensec') {
+            window.open('https://motyasfrpsa565.github.io/GenSec.s/', '_blank');
+            return;
+        }
+        
         const windows = {
             'sinopt': 'sinoptWindow',
             'fbi': 'fbiWindow',
@@ -984,16 +977,13 @@ document.querySelectorAll('.search-item').forEach(item => {
 const tabs = document.querySelectorAll('.tab');
 tabs.forEach(tab => {
     tab.addEventListener('click', function() {
-        // Убираем активный класс у всех вкладок
         tabs.forEach(t => t.classList.remove('active'));
         this.classList.add('active');
         
-        // Прячем весь контент
         document.querySelectorAll('.tab-content').forEach(content => {
             content.classList.remove('active');
         });
         
-        // Показываем нужный
         const tabName = this.dataset.tab;
         document.getElementById(tabName + 'Tab').classList.add('active');
     });
@@ -1013,7 +1003,6 @@ if (trackItems.length > 0) {
             audioPlayer.src = src;
             audioPlayer.play();
             
-            // Подсвечиваем текущий трек
             trackItems.forEach(t => t.classList.remove('playing'));
             this.classList.add('playing');
         });
@@ -1025,11 +1014,8 @@ if (playBtn) {
         if (audioPlayer.src) {
             audioPlayer.play();
         } else {
-            // Если ничего не выбрано, играем первый трек
             const firstTrack = document.querySelector('.track-item');
-            if (firstTrack) {
-                firstTrack.click();
-            }
+            if (firstTrack) firstTrack.click();
         }
     });
 }
@@ -1047,15 +1033,16 @@ if (stopBtn) {
     });
 }
 
-// ===== УПРАВЛЕНИЕ ОКНАМИ =====
-// Открытие окон по клику на иконки
+// ===== ОТКРЫТИЕ ОКОН ПО КЛИКУ НА ИКОНКИ =====
 const iconToWindow = {
     'centernetIcon': 'centernetWindow',
     'mailIcon': 'mailWindow',
     'radioIcon': 'radioWindow',
     'sachatIcon': 'sachatWindow',
     'gamesIcon': 'gamesWindow',
-    'profileIcon': 'profileWindow'
+    'profileIcon': 'profileWindow',
+    'humorIcon': 'humorWindow',
+    'civilIcon': 'civilWindow'
 };
 
 for (let [iconId, windowId] of Object.entries(iconToWindow)) {
@@ -1067,9 +1054,9 @@ for (let [iconId, windowId] of Object.entries(iconToWindow)) {
             windowEl.style.display = 'flex';
         });
     }
-}
+        }
 
-// Закрытие, минимизация, разворачивание
+        // ===== ЗАКРЫТИЕ, МИНИМИЗАЦИЯ, РАЗВОРАЧИВАНИЕ =====
 document.querySelectorAll('.window-close').forEach(btn => {
     btn.addEventListener('click', function() {
         const windowId = this.dataset.window;
@@ -1086,7 +1073,6 @@ document.querySelectorAll('.window-minimize').forEach(btn => {
     });
 });
 
-// Разворачивание окон
 document.querySelectorAll('.window-maximize').forEach(btn => {
     btn.addEventListener('click', function() {
         const windowId = this.dataset.window;
@@ -1112,85 +1098,82 @@ document.querySelectorAll('.window-maximize').forEach(btn => {
     });
 });
 
-        // ===== ПЕРЕТАСКИВАНИЕ ОКОН =====
-const windows = document.querySelectorAll('.app-window');
+// ===== CIVILINFO (ПОИСК ГРАЖДАН) =====
+const civilSearch = document.getElementById('civilSearch');
+const civilResult = document.getElementById('civilResult');
 
-windows.forEach(windowEl => {
-    const header = windowEl.querySelector('.window-header');
-    
-    if (header) {
-        let isDragging = false;
-        let offsetX, offsetY;
-
-        header.addEventListener('mousedown', (e) => {
-            if (e.target.closest('.window-controls')) return;
-            if (windowEl.classList.contains('window-maximized')) return;
-            
-            isDragging = true;
-            const rect = windowEl.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            
-            let newX = e.clientX - offsetX;
-            let newY = e.clientY - offsetY;
-            
-            const maxX = window.innerWidth - windowEl.offsetWidth;
-            const maxY = window.innerHeight - windowEl.offsetHeight - 120;
-            
-            newX = Math.min(Math.max(0, newX), maxX);
-            newY = Math.min(Math.max(60, newY), maxY);
-            
-            windowEl.style.left = newX + 'px';
-            windowEl.style.top = newY + 'px';
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-    }
-});
-
-// ===== ИГРЫ (ЗАГЛУШКИ) =====
-document.getElementById('flappyBirdGame')?.addEventListener('click', () => {
-    alert('Flappy Bird будет доступен в следующем обновлении!');
-});
-
-document.getElementById('saperGame')?.addEventListener('click', () => {
-    alert('Сапёр будет доступен в следующем обновлении!');
-});
-
-// ===== ПОГОДА (Sinopt.sar) =====
-// Создаём окно погоды (если его нет, добавим позже)
-// Пока заглушка
-document.querySelector('[data-url="sinopt"]')?.addEventListener('click', () => {
-    alert('Погода: Москва, сейчас загружается...');
-});
-
-// ===== HACK.PAY.DAY.sar =====
-document.querySelector('[data-url="hack"]')?.addEventListener('click', () => {
-    const answer = prompt('Взлом ФБР. Реши пример: 5 + 3 = ?');
-    if (answer === '8') {
-        alert('Доступ получен! Данные ФБР: русская мафия под наблюдением, мэр Драго — проверка');
-    } else {
-        alert('Доступ запрещён!');
-    }
-});
-
-// ===== ОСТАЛЬНЫЕ .SAR САЙТЫ (ЗАГЛУШКИ) =====
-const sarSites = ['fbi', 'news', 'library', 'gov', 'map'];
-sarSites.forEach(site => {
-    document.querySelector(`[data-url="${site}"]`)?.addEventListener('click', () => {
-        alert(`Сайт ${site}.sar в разработке!`);
+if (civilSearch) {
+    civilSearch.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        
+        // Ищем по всем пользователям
+        let found = null;
+        for (let [pass, user] of Object.entries(users)) {
+            if (user.name.toLowerCase().includes(query) && query.length > 0) {
+                found = user;
+                break;
+            }
+        }
+        
+        if (found) {
+            document.getElementById('civilName').textContent = found.name;
+            document.getElementById('civilJob').textContent = found.job;
+            document.getElementById('civilPlace').textContent = found.place;
+            document.getElementById('civilExp').textContent = found.exp;
+            document.getElementById('civilSalary').textContent = found.salary;
+            document.getElementById('civilAccount').textContent = found.account;
+            document.getElementById('civilBalance').textContent = found.balance;
+            civilResult.style.display = 'block';
+        } else {
+            civilResult.style.display = 'none';
+        }
     });
-});
+        }
 
-                // ===== СОЗДАЁМ ОКНА ДЛЯ .SAR САЙТОВ =====
-        // Эта функция создаёт окна динамически, если их нет в HTML
+                // ===== ПЕРЕТАСКИВАНИЕ ОКОН =====
+        const windows = document.querySelectorAll('.app-window');
+        
+        windows.forEach(windowEl => {
+            const header = windowEl.querySelector('.window-header');
+            
+            if (header) {
+                let isDragging = false;
+                let offsetX, offsetY;
+
+                header.addEventListener('mousedown', (e) => {
+                    if (e.target.closest('.window-controls')) return;
+                    if (windowEl.classList.contains('window-maximized')) return;
+                    
+                    isDragging = true;
+                    const rect = windowEl.getBoundingClientRect();
+                    offsetX = e.clientX - rect.left;
+                    offsetY = e.clientY - rect.top;
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    
+                    let newX = e.clientX - offsetX;
+                    let newY = e.clientY - offsetY;
+                    
+                    const maxX = window.innerWidth - windowEl.offsetWidth;
+                    const maxY = window.innerHeight - windowEl.offsetHeight - 120;
+                    
+                    newX = Math.min(Math.max(0, newX), maxX);
+                    newY = Math.min(Math.max(60, newY), maxY);
+                    
+                    windowEl.style.left = newX + 'px';
+                    windowEl.style.top = newY + 'px';
+                });
+
+                document.addEventListener('mouseup', () => {
+                    isDragging = false;
+                });
+            }
+        });
+
+        // ===== СОЗДАЁМ ОКНА ДЛЯ .SAR САЙТОВ =====
         function createSarWindow(siteName, title, content) {
             const windowId = siteName + 'Window';
             if (document.getElementById(windowId)) return;
@@ -1236,6 +1219,15 @@ sarSites.forEach(site => {
             </div>
         `);
 
+        createSarWindow('hack', '💻 HACK.PAY.DAY.sar — Взлом', `
+            <div style="text-align: center; padding: 30px;">
+                <h2>Взлом ФБР</h2>
+                <p>Решите пример: 5 + 3 = ?</p>
+                <input type="text" id="hackAnswer" style="padding: 10px; margin: 10px;">
+                <button onclick="if(document.getElementById('hackAnswer').value=='8') { alert('Доступ получен!\\nДанные ФБР: русская мафия под наблюдением, мэр Драго — проверка'); } else { alert('Неверно!'); }">Взломать</button>
+            </div>
+        `);
+
         createSarWindow('news', '📰 news.sar — Новости', `
             <div>
                 <h2>Последние новости Сан-Фиерро</h2>
@@ -1270,7 +1262,7 @@ sarSites.forEach(site => {
         `);
 
         // ===== ИНИЦИАЛИЗАЦИЯ =====
-        console.log('SAnet.Citizen v.2.0 загружен!');
+        console.log('SAnet.Citizen v.3.0 загружен!');
     </script>
 </body>
 </html>
