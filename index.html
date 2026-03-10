@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAnet.Citizen v.3.0 — Сан-Фиерро</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SAnet.Citizen v.4.0 — Сан-Фиерро</title>
     <style>
         * {
             margin: 0;
@@ -40,24 +40,24 @@
         }
 
         .login-panel {
-            width: 420px;
+            width: min(420px, 90%);
             background: #e0f0ff;
             border-radius: 8px;
             box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
-            padding: 35px 30px;
+            padding: clamp(20px, 5vw, 35px);
             text-align: center;
             border: 3px solid #ff3333;
         }
 
         .login-panel .city-icon {
-            font-size: 48px;
+            font-size: clamp(32px, 8vw, 48px);
             color: #006699;
             margin-bottom: 15px;
         }
 
         .login-panel h2 {
             color: #004466;
-            font-size: 24px;
+            font-size: clamp(18px, 5vw, 24px);
             margin-bottom: 5px;
             letter-spacing: 1px;
         }
@@ -65,7 +65,7 @@
         .login-panel p {
             color: #006699;
             margin-bottom: 25px;
-            font-size: 14px;
+            font-size: clamp(12px, 3vw, 14px);
             border-bottom: 2px solid #ff3333;
             padding-bottom: 15px;
         }
@@ -80,16 +80,16 @@
             color: #004466;
             margin-bottom: 8px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: clamp(12px, 3vw, 14px);
         }
 
         .login-field input {
             width: 100%;
-            padding: 14px;
+            padding: clamp(10px, 3vw, 14px);
             background: white;
             border: 2px solid #006699;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: clamp(14px, 4vw, 16px);
             outline: none;
             color: #004466;
         }
@@ -100,12 +100,12 @@
 
         .login-btn {
             width: 100%;
-            padding: 14px;
+            padding: clamp(10px, 3vw, 14px);
             background: #006699;
             border: none;
             color: white;
             font-weight: bold;
-            font-size: 16px;
+            font-size: clamp(14px, 4vw, 16px);
             border-radius: 4px;
             cursor: pointer;
             margin-top: 10px;
@@ -140,7 +140,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 300px;
+            font-size: min(300px, 50vw);
             opacity: 0.1;
             color: #ff3333;
             z-index: 0;
@@ -150,26 +150,29 @@
         .top-bar {
             background: #006699;
             color: white;
-            padding: 12px 25px;
+            padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 14px;
+            font-size: clamp(12px, 3vw, 14px);
             z-index: 10;
             box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
             border-bottom: 3px solid #ff3333;
             flex-shrink: 0;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .top-bar-left {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: clamp(10px, 3vw, 25px);
+            flex-wrap: wrap;
         }
 
         .sanet-brand {
             font-weight: 700;
-            font-size: 16px;
+            font-size: clamp(12px, 3vw, 16px);
             color: white;
             letter-spacing: 0.5px;
             text-shadow: 2px 2px 0 #ff3333;
@@ -180,6 +183,7 @@
             align-items: center;
             gap: 8px;
             color: #b0e0ff;
+            flex-wrap: wrap;
         }
 
         .user-session span {
@@ -189,57 +193,65 @@
 
         .top-bar-nav {
             display: flex;
-            gap: 25px;
+            gap: clamp(10px, 3vw, 25px);
+            flex-wrap: wrap;
         }
 
         .top-bar-nav a {
             color: white;
             text-decoration: none;
             font-weight: 500;
+            padding: 5px 10px;
+            border: 2px solid transparent;
         }
 
         .top-bar-nav a:hover {
             color: #ff3333;
+            border: 2px solid #ff3333;
+            border-radius: 5px;
         }
 
         .top-bar-right {
             display: flex;
-            gap: 20px;
+            gap: clamp(10px, 3vw, 20px);
             align-items: center;
             color: white;
         }
 
         .workspace {
             flex: 1;
-            padding: 30px;
+            padding: clamp(15px, 3vw, 30px);
             position: relative;
             z-index: 5;
-            overflow: hidden;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .desktop-icons {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: clamp(15px, 3vw, 25px);
             width: fit-content;
         }
 
         .icon-row {
             display: flex;
-            gap: 30px;
+            gap: clamp(15px, 3vw, 30px);
+            flex-wrap: wrap;
         }
 
         .desktop-icon {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100px;
-            padding: 12px 0;
+            width: clamp(70px, 15vw, 100px);
+            padding: clamp(8px, 2vw, 12px) 0;
             border-radius: 8px;
             transition: 0.2s;
             cursor: pointer;
             color: white;
             text-shadow: 1px 1px 0 #ff3333;
+            border: 2px solid transparent;
         }
 
         .desktop-icon:hover {
@@ -248,13 +260,13 @@
         }
 
         .icon-image {
-            font-size: 48px;
+            font-size: clamp(32px, 8vw, 48px);
             margin-bottom: 8px;
             filter: drop-shadow(2px 2px 0 #ff3333);
         }
 
         .icon-label {
-            font-size: 13px;
+            font-size: clamp(10px, 2.5vw, 13px);
             text-align: center;
             font-weight: 500;
             background: #006699;
@@ -262,42 +274,46 @@
             border-radius: 4px;
             width: 100%;
             color: white;
-            border: 1px solid #ff3333;
+            border: 2px solid #ff3333;
         }
 
         .bottom-bar {
             background: #006699;
             color: white;
-            padding: 15px 30px;
+            padding: clamp(10px, 2vw, 15px) clamp(15px, 3vw, 30px);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 14px;
+            font-size: clamp(12px, 3vw, 14px);
             z-index: 10;
             border-top: 3px solid #ff3333;
             min-height: 60px;
             flex-shrink: 0;
             margin-top: auto;
             width: 100%;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .bottom-left {
             display: flex;
-            gap: 20px;
+            gap: clamp(10px, 2vw, 20px);
+            flex-wrap: wrap;
         }
 
         .bottom-right {
             display: flex;
-            gap: 20px;
+            gap: clamp(10px, 2vw, 20px);
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .real-time {
             background: #004466;
-            padding: 8px 20px;
+            padding: clamp(5px, 1.5vw, 8px) clamp(10px, 3vw, 20px);
             border-radius: 30px;
             font-family: monospace;
-            font-size: 20px;
+            font-size: clamp(14px, 4vw, 20px);
             letter-spacing: 1px;
             color: white;
             border: 2px solid #ff3333;
@@ -307,10 +323,11 @@
         /* ===== ОКНА ПРИЛОЖЕНИЙ ===== */
         .app-window {
             position: absolute;
-            top: 80px;
-            left: 200px;
-            width: 800px;
-            height: 550px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(800px, 95%);
+            height: min(550px, 80vh);
             background: #e0f0ff;
             border: 4px solid #ff3333;
             border-radius: 15px 15px 10px 10px;
@@ -320,13 +337,11 @@
             z-index: 100;
             resize: both;
             overflow: hidden;
-            min-width: 500px;
-            min-height: 350px;
         }
 
         .window-header {
             background: linear-gradient(90deg, #006699, #004466);
-            padding: 12px 18px;
+            padding: clamp(8px, 2vw, 12px) clamp(10px, 2.5vw, 18px);
             border-radius: 12px 12px 0 0;
             display: flex;
             justify-content: space-between;
@@ -343,30 +358,33 @@
             color: white;
             font-weight: 600;
             text-shadow: 1px 1px 0 #ff3333;
+            font-size: clamp(12px, 3vw, 16px);
         }
 
         .window-controls {
             display: flex;
-            gap: 10px;
+            gap: 5px;
         }
 
         .window-controls span {
             cursor: pointer;
-            padding: 5px 12px;
-            font-size: 18px;
+            padding: 5px clamp(8px, 2vw, 12px);
+            font-size: clamp(14px, 4vw, 18px);
             color: white;
             transition: 0.2s;
             border-radius: 4px;
+            border: 2px solid transparent;
         }
 
         .window-controls span:hover {
             background: #ff3333;
             color: white;
+            border: 2px solid white;
         }
 
         .window-content {
             flex: 1;
-            padding: 20px;
+            padding: clamp(10px, 2.5vw, 20px);
             background: white;
             color: #004466;
             overflow-y: auto;
@@ -377,14 +395,211 @@
             height: 100% !important;
             top: 0 !important;
             left: 0 !important;
+            transform: none !important;
             border-radius: 0 !important;
             border-width: 3px !important;
+        }
+
+        /* ===== ВКЛАДКИ ===== */
+        .tabs-container {
+            display: flex;
+            gap: 5px;
+            border-bottom: 3px solid #ff3333;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: clamp(8px, 2vw, 10px) clamp(15px, 4vw, 25px);
+            background: #006699;
+            color: white;
+            border: 2px solid #ff3333;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: clamp(12px, 3vw, 14px);
+        }
+
+        .tab.active {
+            background: #ff3333;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ===== СТИЛИ ДЛЯ ИГР ===== */
+        .games-container {
+            display: flex;
+            gap: clamp(15px, 4vw, 30px);
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            flex-wrap: wrap;
+        }
+
+        .game-card {
+            width: min(200px, 40vw);
+            height: min(200px, 40vw);
+            background: #006699;
+            border: 4px solid #ff3333;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            background: #ff3333;
+        }
+
+        .game-card span {
+            font-size: clamp(32px, 8vw, 64px);
+            margin-bottom: 15px;
+        }
+
+        .game-card div {
+            color: white;
+            font-size: clamp(14px, 4vw, 20px);
+            font-weight: bold;
+        }
+
+        /* ===== СТИЛИ ДЛЯ ПРОФИЛЯ ===== */
+        .profile-card {
+            background: #e0f0ff;
+            border: 3px solid #006699;
+            border-radius: 15px;
+            padding: clamp(10px, 2.5vw, 20px);
+            margin-bottom: 20px;
+        }
+
+        .profile-row {
+            display: flex;
+            justify-content: space-between;
+            padding: clamp(8px, 2vw, 12px) 0;
+            border-bottom: 2px solid #006699;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .profile-label {
+            color: #004466;
+            font-weight: bold;
+            font-size: clamp(12px, 3vw, 14px);
+        }
+
+        .profile-value {
+            color: #ff3333;
+            font-weight: bold;
+            font-size: clamp(12px, 3vw, 14px);
+        }
+
+        /* ===== СТИЛИ ДЛЯ ПЛЕЕРА ===== */
+        .player-container {
+            text-align: center;
+            padding: clamp(10px, 2.5vw, 20px);
+        }
+
+        .track-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .track-item {
+            padding: clamp(8px, 2vw, 10px);
+            border-bottom: 2px solid #006699;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            font-size: clamp(12px, 3vw, 14px);
+            border: 2px solid transparent;
+        }
+
+        .track-item:hover {
+            background: #b0e0ff;
+            border: 2px solid #ff3333;
+        }
+
+        .track-item.playing {
+            background: #ff3333;
+            color: white;
+        }
+
+        .player-controls {
+            margin: 30px 0;
+            display: flex;
+            gap: clamp(10px, 3vw, 20px);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .player-btn {
+            padding: clamp(10px, 2.5vw, 15px) clamp(15px, 4vw, 30px);
+            background: #006699;
+            color: white;
+            border: 3px solid #ff3333;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: clamp(14px, 4vw, 20px);
+            min-width: 60px;
+        }
+
+        .player-btn:hover {
+            background: #ff3333;
+        }
+
+        /* ===== ПОИСКОВИК ===== */
+        .search-container {
+            text-align: center;
+        }
+
+        .search-logo {
+            font-size: clamp(32px, 8vw, 64px);
+            color: #006699;
+            text-shadow: 3px 3px 0 #ff3333;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: clamp(10px, 2.5vw, 15px);
+            font-size: clamp(14px, 4vw, 16px);
+            border: 3px solid #006699;
+            border-radius: 40px;
+            outline: none;
+            margin-bottom: 20px;
+        }
+
+        .search-box:focus {
+            border-color: #ff3333;
+        }
+
+        .search-item {
+            padding: clamp(10px, 2.5vw, 15px);
+            border-bottom: 2px solid #006699;
+            cursor: pointer;
+            font-size: clamp(12px, 3vw, 14px);
+            border: 2px solid transparent;
+        }
+
+        .search-item:hover {
+            background: #b0e0ff;
+            border: 2px solid #ff3333;
         }
 
         /* ===== СТИЛИ ДЛЯ MyHumor ===== */
         .humor-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
             gap: 20px;
             padding: 10px;
         }
@@ -404,53 +619,121 @@
 
         .humor-video {
             width: 100%;
-            height: 150px;
+            aspect-ratio: 16/9;
             background: #004466;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 48px;
+            font-size: clamp(24px, 6vw, 48px);
         }
 
         .humor-title {
-            padding: 10px;
+            padding: clamp(8px, 2vw, 10px);
             color: white;
             text-align: center;
-            font-size: 14px;
+            font-size: clamp(11px, 2.5vw, 14px);
         }
 
-        /* ===== СТИЛИ ДЛЯ CivilInfo ===== */
-        .search-section {
-            margin-bottom: 20px;
+        /* ===== СТИЛИ ДЛЯ ОТЧЁТОВ ===== */
+        .report-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .civil-search {
+        .report-field {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .report-label {
+            color: #004466;
+            font-weight: bold;
+            font-size: clamp(12px, 3vw, 14px);
+        }
+
+        .report-input {
+            padding: clamp(8px, 2vw, 12px);
+            border: 2px solid #006699;
+            border-radius: 5px;
+            font-size: clamp(12px, 3vw, 14px);
             width: 100%;
-            padding: 15px;
-            font-size: 16px;
-            border: 3px solid #006699;
-            border-radius: 40px;
+        }
+
+        .report-input:focus {
+            border-color: #ff3333;
             outline: none;
         }
 
-        .civil-search:focus {
+        .report-textarea {
+            padding: clamp(8px, 2vw, 12px);
+            border: 2px solid #006699;
+            border-radius: 5px;
+            font-size: clamp(12px, 3vw, 14px);
+            min-height: 150px;
+            resize: vertical;
+            width: 100%;
+        }
+
+        .report-textarea:focus {
             border-color: #ff3333;
+            outline: none;
         }
 
-        .civil-result {
-            background: #e0f0ff;
-            border: 3px solid #006699;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 20px;
+        .report-btn {
+            padding: clamp(10px, 2.5vw, 15px);
+            background: #006699;
+            color: white;
+            border: 3px solid #ff3333;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: clamp(14px, 4vw, 16px);
+            font-weight: bold;
+            margin-top: 10px;
         }
 
-        .civil-row {
+        .report-btn:hover {
+            background: #ff3333;
+        }
+
+        /* ===== ФЛЕППИ БЁРД ===== */
+        #flappyCanvas {
+            display: block;
+            margin: 0 auto;
+            background: #87CEEB;
+            border: 3px solid #ff3333;
+            width: 100%;
+            height: auto;
+            max-width: 400px;
+        }
+
+        /* ===== САПЁР ===== */
+        #minesweeperGrid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 2px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .mine-cell {
+            aspect-ratio: 1;
+            background: #006699;
+            border: 2px solid #ff3333;
             display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 2px solid #006699;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: clamp(12px, 3vw, 16px);
+        }
+
+        .mine-cell.revealed {
+            background: #b0e0ff;
+            color: #004466;
         }
     </style>
     </head>
@@ -479,7 +762,7 @@
         <!-- ВЕРХНЯЯ ПАНЕЛЬ -->
         <div class="top-bar">
             <div class="top-bar-left">
-                <div class="sanet-brand">SAnet.Citizen • Сан-Фиерро</div>
+                <div class="sanet-brand">SAnet.Citizen</div>
                 <div class="user-session" id="userSession"></div>
             </div>
             <div class="top-bar-nav">
@@ -510,13 +793,13 @@
                         <span class="icon-image">🎵</span>
                         <span class="icon-label">Радио</span>
                     </div>
-                </div>
-                <!-- Второй ряд -->
-                <div class="icon-row">
                     <div class="desktop-icon" id="sachatIcon">
                         <span class="icon-image">💬</span>
                         <span class="icon-label">SAchat</span>
                     </div>
+                </div>
+                <!-- Второй ряд -->
+                <div class="icon-row">
                     <div class="desktop-icon" id="gamesIcon">
                         <span class="icon-image">🎮</span>
                         <span class="icon-label">Games</span>
@@ -525,13 +808,17 @@
                         <span class="icon-image">👤</span>
                         <span class="icon-label">Профиль</span>
                     </div>
-                </div>
-                <!-- Третий ряд (НОВЫЕ ИКОНКИ) -->
-                <div class="icon-row">
                     <div class="desktop-icon" id="humorIcon">
                         <span class="icon-image">😂</span>
                         <span class="icon-label">MyHumor</span>
                     </div>
+                    <div class="desktop-icon" id="reportsIcon">
+                        <span class="icon-image">📝</span>
+                        <span class="icon-label">Отчёты</span>
+                    </div>
+                </div>
+                <!-- Третий ряд (скрытые) -->
+                <div class="icon-row">
                     <div class="desktop-icon" id="civilIcon" style="display: none;">
                         <span class="icon-image">👥</span>
                         <span class="icon-label">CivilInfo</span>
@@ -544,27 +831,26 @@
     <div class="window-header" id="centernetHeader">
         <div class="window-title">
             <span>🔍</span>
-            <span>Centernet — Поиск по .sar сайтам</span>
+            <span>Centernet</span>
         </div>
         <div class="window-controls">
-            <span class="window-minimize" data-window="centernetWindow">─</span>
-            <span class="window-maximize" data-window="centernetWindow">□</span>
             <span class="window-close" data-window="centernetWindow">✕</span>
+            <span class="window-maximize" data-window="centernetWindow">□</span>
         </div>
     </div>
-    <div class="window-content" id="centernetContent">
+    <div class="window-content">
         <div class="search-container">
             <div class="search-logo">Centernet</div>
             <input type="text" class="search-box" id="searchInput" placeholder="Введите название (.sar)">
             <div id="searchResults">
-                <div class="search-item" data-url="sinopt">☁️ Sinopt.sar — Погода (Москва)</div>
-                <div class="search-item" data-url="fbi">🏛️ FBI.sar — Публичная информация ФБР</div>
-                <div class="search-item" data-url="hack">💻 HACK.PAY.DAY.sar — Взлом</div>
-                <div class="search-item" data-url="news">📰 news.sar — Городские новости</div>
-                <div class="search-item" data-url="library">📚 library.sar — История Сан-Фиерро</div>
+                <div class="search-item" data-url="sinopt">☁️ Sinopt.sar — Погода</div>
+                <div class="search-item" data-url="fbi">🏛️ FBI.sar — ФБР</div>
+                <div class="search-item" data-url="hack">💻 HACK.PAY.DAY.sar</div>
+                <div class="search-item" data-url="news">📰 news.sar — Новости</div>
+                <div class="search-item" data-url="library">📚 library.sar — История</div>
                 <div class="search-item" data-url="gov">🏛️ gov.sar — Указы мэра</div>
-                <div class="search-item" data-url="map">🗺️ map.sar — Карта (скоро)</div>
-                <div class="search-item" data-url="gensec">🛡️ GENSEC.s — Частная охрана</div>
+                <div class="search-item" data-url="map">🗺️ map.sar — Карта</div>
+                <div class="search-item" data-url="gensec">🛡️ GENSEC.s — Охрана</div>
             </div>
         </div>
     </div>
@@ -572,158 +858,221 @@
 
 <!-- ОКНО ПОЧТЫ -->
 <div class="app-window" id="mailWindow" style="display: none;">
-    <div class="window-header" id="mailHeader">
+    <div class="window-header">
         <div class="window-title">
             <span>📧</span>
-            <span>Почта Сан-Фиерро</span>
+            <span>Почта</span>
         </div>
         <div class="window-controls">
-            <span class="window-minimize" data-window="mailWindow">─</span>
-            <span class="window-maximize" data-window="mailWindow">□</span>
             <span class="window-close" data-window="mailWindow">✕</span>
+            <span class="window-maximize" data-window="mailWindow">□</span>
         </div>
     </div>
     <div class="window-content" id="mailContent">
-        <div class="mail-item" onclick="alert('Добро пожаловать в Сан-Фиерро!')">
-            <strong>🏛️ Администрация</strong> — Добро пожаловать в город!
-        </div>
-        <div class="mail-item" onclick="alert('Публичная информация ФБР: соблюдайте закон')">
-            <strong>🛡️ ФБР</strong> — Публичное обращение
-        </div>
-        <div class="mail-item" onclick="alert('В ближайшие дни солнечно')">
-            <strong>☁️ Sinopt.sar</strong> — Прогноз на неделю
-        </div>
+        <div class="mail-item">🏛️ Администрация — Добро пожаловать</div>
+        <div class="mail-item">🛡️ ФБР — Публичное обращение</div>
+        <div class="mail-item">☁️ Sinopt.sar — Прогноз на неделю</div>
     </div>
 </div>
 
 <!-- ОКНО SAchat -->
 <div class="app-window" id="sachatWindow" style="display: none;">
-    <div class="window-header" id="sachatHeader">
+    <div class="window-header">
         <div class="window-title">
             <span>💬</span>
-            <span>SAchat — Чат города</span>
+            <span>SAchat</span>
         </div>
         <div class="window-controls">
-            <span class="window-minimize" data-window="sachatWindow">─</span>
-            <span class="window-maximize" data-window="sachatWindow">□</span>
             <span class="window-close" data-window="sachatWindow">✕</span>
+            <span class="window-maximize" data-window="sachatWindow">□</span>
         </div>
     </div>
     <div class="window-content" style="text-align: center; padding: 50px;">
         <div style="font-size: 48px;">💬</div>
         <h3>Чат Сан-Фиерро</h3>
-        <p>Переходите в наш Telegram-чат:</p>
-        <a href="https://t.me/+uxrc1KkbprkwYzli" target="_blank" style="display: inline-block; margin-top: 20px; padding: 15px 30px; background: #006699; color: white; border: 3px solid #ff3333; border-radius: 50px; text-decoration: none;">ПЕРЕЙТИ В ЧАТ</a>
+        <a href="https://t.me/+uxrc1KkbprkwYzli" target="_blank">ПЕРЕЙТИ В ЧАТ</a>
+    </div>
+</div>
+
+<!-- ОКНО РАДИО -->
+<div class="app-window" id="radioWindow" style="display: none;">
+    <div class="window-header">
+        <div class="window-title">
+            <span>🎵</span>
+            <span>Радио</span>
+        </div>
+        <div class="window-controls">
+            <span class="window-close" data-window="radioWindow">✕</span>
+            <span class="window-maximize" data-window="radioWindow">□</span>
+        </div>
+    </div>
+    <div class="window-content">
+        <audio id="audioPlayer" controls style="width: 100%;"></audio>
+        <div class="track-list" id="trackList"></div>
+    </div>
+    </div>
+
+            <!-- ОКНО GAMES -->
+<div class="app-window" id="gamesWindow" style="display: none;">
+    <div class="window-header">
+        <div class="window-title">
+            <span>🎮</span>
+            <span>Игры</span>
+        </div>
+        <div class="window-controls">
+            <span class="window-close" data-window="gamesWindow">✕</span>
+            <span class="window-maximize" data-window="gamesWindow">□</span>
+        </div>
+    </div>
+    <div class="window-content">
+        <div class="games-container">
+            <div class="game-card" id="flappyBirdBtn">
+                <span>🐦</span>
+                <div>Flappy Bird</div>
+            </div>
+            <div class="game-card" id="minesweeperBtn">
+                <span>💣</span>
+                <div>Сапёр</div>
+            </div>
+        </div>
+        <div id="gameArea" style="margin-top: 20px; display: none;"></div>
+    </div>
+</div>
+
+<!-- ОКНО ПРОФИЛЯ -->
+<div class="app-window" id="profileWindow" style="display: none;">
+    <div class="window-header">
+        <div class="window-title">
+            <span>👤</span>
+            <span>Профиль</span>
+        </div>
+        <div class="window-controls">
+            <span class="window-close" data-window="profileWindow">✕</span>
+            <span class="window-maximize" data-window="profileWindow">□</span>
+        </div>
+    </div>
+    <div class="window-content">
+        <div class="tabs-container">
+            <div class="tab active" data-tab="job">💼 Работа</div>
+            <div class="tab" data-tab="bank">💰 Банк</div>
+        </div>
+        <div id="jobTab" class="tab-content active">
+            <div class="profile-card">
+                <div class="profile-row"><span>Должность:</span> <span id="profileJob">—</span></div>
+                <div class="profile-row"><span>Место работы:</span> <span id="profilePlace">—</span></div>
+                <div class="profile-row"><span>Стаж:</span> <span id="profileExp">—</span></div>
+            </div>
+        </div>
+        <div id="bankTab" class="tab-content">
+            <div class="profile-card">
+                <div class="profile-row"><span>Доход:</span> <span id="profileSalary">—</span></div>
+                <div class="profile-row"><span>Счёт:</span> <span id="profileAccount">—</span></div>
+                <div class="profile-row"><span>Баланс:</span> <span id="profileBalance">—</span></div>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- ОКНО MyHumor -->
 <div class="app-window" id="humorWindow" style="display: none;">
-    <div class="window-header" id="humorHeader">
+    <div class="window-header">
         <div class="window-title">
             <span>😂</span>
-            <span>MyHumor — Приколы Сан-Фиерро</span>
+            <span>MyHumor</span>
         </div>
         <div class="window-controls">
-            <span class="window-minimize" data-window="humorWindow">─</span>
-            <span class="window-maximize" data-window="humorWindow">□</span>
             <span class="window-close" data-window="humorWindow">✕</span>
+            <span class="window-maximize" data-window="humorWindow">□</span>
         </div>
     </div>
     <div class="window-content">
         <div class="humor-grid" id="humorGrid"></div>
     </div>
-    </div>
+    </div> 
 
-        <!-- ОКНО РАДИО -->
-        <div class="app-window" id="radioWindow" style="display: none;">
-            <div class="window-header" id="radioHeader">
+                    <!-- ОКНО ОТЧЁТОВ -->
+        <div class="app-window" id="reportsWindow" style="display: none;">
+            <div class="window-header">
                 <div class="window-title">
-                    <span>🎵</span>
-                    <span>Радио Сан-Фиерро</span>
+                    <span>📝</span>
+                    <span>Отчёты</span>
                 </div>
                 <div class="window-controls">
-                    <span class="window-minimize" data-window="radioWindow">─</span>
-                    <span class="window-maximize" data-window="radioWindow">□</span>
-                    <span class="window-close" data-window="radioWindow">✕</span>
-                </div>
-            </div>
-            <div class="window-content">
-                <div class="player-container">
-                    <audio id="audioPlayer" controls style="width: 100%;"></audio>
-                    <div class="player-controls">
-                        <button class="player-btn" id="playBtn">▶</button>
-                        <button class="player-btn" id="pauseBtn">⏸️</button>
-                        <button class="player-btn" id="stopBtn">⏹️</button>
-                    </div>
-                    <div class="track-list" id="trackList">
-                        <div class="track-item" data-src="4.mp3">1. Soviet Connection</div>
-                        <div class="track-item" data-src="GTA.mp3">2. Главная тема GTA San Andreas</div>
-                        <div class="track-item" data-src="Против царя.mp3">3. Против царя</div>
-                        <div class="track-item" data-src="Все анекдоты из симулятора падения в канаву.mp3">4. Анекдоты</div>
-                        <div class="track-item" data-src="Payday 2.mp3">5. PAYDAY 2 Theme</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ОКНО GAMES -->
-        <div class="app-window" id="gamesWindow" style="display: none;">
-            <div class="window-header" id="gamesHeader">
-                <div class="window-title">
-                    <span>🎮</span>
-                    <span>Игры Сан-Фиерро</span>
-                </div>
-                <div class="window-controls">
-                    <span class="window-minimize" data-window="gamesWindow">─</span>
-                    <span class="window-maximize" data-window="gamesWindow">□</span>
-                    <span class="window-close" data-window="gamesWindow">✕</span>
-                </div>
-            </div>
-            <div class="window-content">
-                <div class="games-container">
-                    <div class="game-card" id="flappyBirdGame">
-                        <span>🐦</span>
-                        <div>Flappy Bird</div>
-                    </div>
-                    <div class="game-card" id="saperGame">
-                        <span>💣</span>
-                        <div>Сапёр</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ОКНО ПРОФИЛЯ -->
-        <div class="app-window" id="profileWindow" style="display: none;">
-            <div class="window-header" id="profileHeader">
-                <div class="window-title">
-                    <span>👤</span>
-                    <span>Мой профиль</span>
-                </div>
-                <div class="window-controls">
-                    <span class="window-minimize" data-window="profileWindow">─</span>
-                    <span class="window-maximize" data-window="profileWindow">□</span>
-                    <span class="window-close" data-window="profileWindow">✕</span>
+                    <span class="window-close" data-window="reportsWindow">✕</span>
+                    <span class="window-maximize" data-window="reportsWindow">□</span>
                 </div>
             </div>
             <div class="window-content">
                 <div class="tabs-container">
-                    <div class="tab active" data-tab="job">💼 Работа</div>
-                    <div class="tab" data-tab="bank">💰 Банк</div>
+                    <div class="tab active" data-report="fbi">📋 ФБР</div>
+                    <div class="tab" data-report="finance">💰 Финансы</div>
+                    <div class="tab" data-report="household">🏠 Бытовые</div>
                 </div>
-                <div id="jobTab" class="tab-content active">
-                    <div class="profile-card">
-                        <div class="profile-row"><span class="profile-label">Должность:</span> <span class="profile-value" id="profileJob">Загрузка...</span></div>
-                        <div class="profile-row"><span class="profile-label">Место работы:</span> <span class="profile-value" id="profilePlace">Загрузка...</span></div>
-                        <div class="profile-row"><span class="profile-label">Стаж:</span> <span class="profile-value" id="profileExp">Загрузка...</span></div>
+                <div id="fbiReport" class="tab-content active">
+                    <div class="report-form">
+                        <div class="report-field">
+                            <label class="report-label">Номер дела:</label>
+                            <input type="text" class="report-input" id="fbiCaseNum" placeholder="Например: FBI-2026-001">
+                        </div>
+                        <div class="report-field">
+                            <label class="report-label">Операция:</label>
+                            <input type="text" class="report-input" id="fbiOperation" placeholder="Название операции">
+                        </div>
+                        <div class="report-field">
+                            <label class="report-label">Содержание:</label>
+                            <textarea class="report-textarea" id="fbiContent" placeholder="Детали операции..."></textarea>
+                        </div>
+                        <div class="report-field">
+                            <label class="report-label">Статус:</label>
+                            <select class="report-input" id="fbiStatus">
+                                <option>В работе</option>
+                                <option>Завершено</option>
+                                <option>Заморожено</option>
+                            </select>
+                        </div>
+                        <button class="report-btn" onclick="copyReport('fbi')">СКОПИРОВАТЬ ОТЧЁТ</button>
                     </div>
                 </div>
-                <div id="bankTab" class="tab-content">
-                    <div class="profile-card">
-                        <div class="profile-row"><span class="profile-label">Доход в месяц:</span> <span class="profile-value" id="profileSalary">Загрузка...</span></div>
-                        <div class="profile-row"><span class="profile-label">Счёт:</span> <span class="profile-value" id="profileAccount">Загрузка...</span></div>
-                        <div class="profile-row"><span class="profile-label">Баланс:</span> <span class="profile-value" id="profileBalance">Загрузка...</span></div>
+                <div id="financeReport" class="tab-content">
+                    <div class="report-form">
+                        <div class="report-field">
+                            <label class="report-label">Период:</label>
+                            <input type="text" class="report-input" id="financePeriod" placeholder="Например: Март 2026">
+                        </div>
+                        <div class="report-field">
+                            <label class="report-label">Доходы:</label>
+                            <input type="text" class="report-input" id="financeIncome" placeholder="Сумма">
+                        </div>
+                        <div class="report-field">
+                            <label class="report-label">Расходы:</label>
+                            <input type="text" class="report-input" id="financeOutcome" placeholder="Сумма">
+                        </div>
+                        <div class="report-field">
+                            <label class="report-label">Примечания:</label>
+                            <textarea class="report-textarea" id="financeNotes" placeholder="Детали..."></textarea>
+                        </div>
+                        <button class="report-btn" onclick="copyReport('finance')">СКОПИРОВАТЬ ОТЧЁТ</button>
+                    </div>
+                </div>
+                <div id="householdReport" class="tab-content">
+                    <div class="report-form">
+                        <div class="report-field">
+                            <label class="report-label">Адрес:</label>
+                            <input type="text" class="report-input" id="householdAddress" placeholder="Улица, дом">
+                        </div>
+                        <div class="report-field">
+                            <label class="report-label">Тип заявки:</label>
+                            <select class="report-input" id="householdType">
+                                <option>Жалоба</option>
+                                <option>Предложение</option>
+                                <option>Авария</option>
+                            </select>
+                        </div>
+                        <div class="report-field">
+                            <label class="report-label">Описание:</label>
+                            <textarea class="report-textarea" id="householdDesc" placeholder="Подробности..."></textarea>
+                        </div>
+                        <button class="report-btn" onclick="copyReport('household')">СКОПИРОВАТЬ ОТЧЁТ</button>
                     </div>
                 </div>
             </div>
@@ -731,32 +1080,23 @@
 
         <!-- ОКНО CIVILINFO -->
         <div class="app-window" id="civilWindow" style="display: none;">
-            <div class="window-header" id="civilHeader">
+            <div class="window-header">
                 <div class="window-title">
                     <span>👥</span>
-                    <span>CivilInfo — База данных граждан</span>
+                    <span>CivilInfo</span>
                 </div>
                 <div class="window-controls">
-                    <span class="window-minimize" data-window="civilWindow">─</span>
-                    <span class="window-maximize" data-window="civilWindow">□</span>
                     <span class="window-close" data-window="civilWindow">✕</span>
+                    <span class="window-maximize" data-window="civilWindow">□</span>
                 </div>
             </div>
             <div class="window-content">
-                <div class="search-section">
-                    <input type="text" class="civil-search" id="civilSearch" placeholder="Введите имя гражданина...">
-                </div>
-                <div class="civil-result" id="civilResult" style="display: none;">
-                    <div class="civil-row"><span class="profile-label">Имя:</span> <span class="profile-value" id="civilName"></span></div>
-                    <div class="civil-row"><span class="profile-label">Работа:</span> <span class="profile-value" id="civilJob"></span></div>
-                    <div class="civil-row"><span class="profile-label">Место работы:</span> <span class="profile-value" id="civilPlace"></span></div>
-                    <div class="civil-row"><span class="profile-label">Стаж:</span> <span class="profile-value" id="civilExp"></span></div>
-                    <div class="civil-row"><span class="profile-label">Доход:</span> <span class="profile-value" id="civilSalary"></span></div>
-                    <div class="civil-row"><span class="profile-label">Счёт:</span> <span class="profile-value" id="civilAccount"></span></div>
-                    <div class="civil-row"><span class="profile-label">Баланс:</span> <span class="profile-value" id="civilBalance"></span></div>
-                </div>
+                <input type="text" class="search-box" id="civilSearch" placeholder="Введите имя...">
+                <div id="civilResult" style="display: none; margin-top: 20px;"></div>
             </div>
         </div>
+
+        <!-- ОКНА .SAR САЙТОВ (будут созданы скриптом) -->
     </div>
 
     <!-- НИЖНЯЯ ПАНЕЛЬ -->
@@ -771,7 +1111,8 @@
         </div>
     </div>
     </div>
-    <script>
+
+        <script>
     // ===== ДАННЫЕ ПОЛЬЗОВАТЕЛЕЙ =====
     const users = {
         'FBI565FULLCLEAR!': { 
@@ -788,7 +1129,7 @@
             name: 'Регинальд Вон Равенхорст', 
             role: 'СПЕЦИАЛЬНЫЙ АГЕНТ',
             job: 'Специальный агент',
-            place: 'ФБР, отдел крупных дел',
+            place: 'ФБР',
             exp: '1 год',
             salary: '1 300$',
             account: 'SF-0002-РВР',
@@ -796,9 +1137,9 @@
         },
         'MERIE910SF': { 
             name: 'Иван Драго', 
-            role: 'МЭР ГОРОДА САН-ФИЕРРО',
+            role: 'МЭР',
             job: 'Мэр',
-            place: 'Мэрия Сан-Фиерро',
+            place: 'Мэрия',
             exp: '2 года',
             salary: '23 000$',
             account: 'SF-0003-ИД',
@@ -806,9 +1147,9 @@
         },
         'SOCIAL665ADMIN!': { 
             name: 'Глеб Малыхин', 
-            role: 'ДЕПУТАТ ПО СОЦ. ВОПРОСАМ',
+            role: 'ДЕПУТАТ',
             job: 'Депутат',
-            place: 'Социальный отдел',
+            place: 'Соц. отдел',
             exp: '1.5 года',
             salary: '19 000$',
             account: 'SF-0004-ГМ',
@@ -826,13 +1167,13 @@
         }
     };
 
-    // ===== ДАННЫЕ ДЛЯ MyHumor =====
+    // ===== ВИДЕО ДЛЯ MyHumor =====
     const humorVideos = [
         { title: 'Прикол 1', file: 'VID_20260301_132901_324.mp4' },
         { title: 'Прикол 2', file: 'VID_20260301_132911_477.mp4' },
         { title: 'Прикол 3', file: 'VID_20260301_133013_552.mp4' },
         { title: 'Прикол 4', file: 'VID_20260301_133021_224.mp4' },
-        { title: 'Секретное видео Тимура', file: 'timurvideo.mp4' },
+        { title: 'Тимур видео', file: 'timurvideo.mp4' },
         { title: 'Прикол 5', file: 'VID_20260301_132951_278.mp4' },
         { title: 'Прикол 6', file: 'VID_20260301_132824_112.mp4' },
         { title: 'Прикол 7', file: 'VID_20260301_133003_660.mp4' },
@@ -853,416 +1194,469 @@
     // ===== ВРЕМЯ =====
     function updateTime() {
         const now = new Date();
-        realTime.textContent = now.toLocaleTimeString('ru-RU', { hour12: false });
+        realTime.textContent = now.toLocaleTimeString('ru-RU');
     }
     updateTime();
     setInterval(updateTime, 1000);
 
-        // ===== ЗАГРУЗКА ВИДЕО ДЛЯ MyHumor =====
-if (humorGrid) {
-    humorVideos.forEach(video => {
-        const card = document.createElement('div');
-        card.className = 'humor-card';
-        card.innerHTML = `
-            <div class="humor-video">🎥</div>
-            <div class="humor-title">${video.title}</div>
-        `;
-        card.addEventListener('click', () => {
-            // Создаём временное видео для просмотра
-            const videoWindow = window.open('', '_blank', 'width=800,height=600');
-            videoWindow.document.write(`
-                <html><body style="margin:0; background:#000;">
-                    <video src="${video.file}" controls autoplay style="width:100%; height:100%;"></video>
-                </body></html>
-            `);
+    // ===== ЗАГРУЗКА MyHumor =====
+    if (humorGrid) {
+        humorVideos.forEach(video => {
+            const card = document.createElement('div');
+            card.className = 'humor-card';
+            card.innerHTML = `
+                <div class="humor-video">🎥</div>
+                <div class="humor-title">${video.title}</div>
+            `;
+            card.onclick = () => window.open(video.file, '_blank');
+            humorGrid.appendChild(card);
         });
-        humorGrid.appendChild(card);
-    });
-}
-
-// ===== ВХОД =====
-function handleLogin() {
-    const username = usernameInput.value;
-    const password = passwordInput.value;
-    const user = users[password];
-
-    if (user && (user.name === username || username === '')) {
-        loginScreen.classList.add('hidden');
-        setTimeout(() => {
-            loginScreen.style.display = 'none';
-            desktop.style.display = 'flex';
-        }, 300);
-
-        userSession.innerHTML = `<span>${user.name}</span> • ${user.role}`;
-        
-        // Загружаем данные в профиль
-        document.getElementById('profileJob').textContent = user.job;
-        document.getElementById('profilePlace').textContent = user.place;
-        document.getElementById('profileExp').textContent = user.exp;
-        document.getElementById('profileSalary').textContent = user.salary;
-        document.getElementById('profileAccount').textContent = user.account;
-        document.getElementById('profileBalance').textContent = user.balance;
-
-        // Показываем CivilInfo только для Майка Маласа
-        if (user.name === 'Майк Малас') {
-            document.getElementById('civilIcon').style.display = 'flex';
-        }
-
-    } else {
-        loginError.innerText = 'Неверное имя или пароль';
-        passwordInput.value = '';
-        passwordInput.focus();
     }
-}
 
-loginBtn.addEventListener('click', handleLogin);
-passwordInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleLogin();
-});
+    // ===== ВХОД =====
+    function handleLogin() {
+        const password = passwordInput.value;
+        const user = users[password];
+        const username = usernameInput.value;
 
-// ===== ПОМОЩЬ (ССЫЛКА НА ТЕЛЕГРАМ) =====
-document.getElementById('helpLink').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.open('https://t.me/MOTYA_VONEL565', '_blank');
-});
+        if (user && (user.name === username || username === '')) {
+            loginScreen.classList.add('hidden');
+            setTimeout(() => {
+                loginScreen.style.display = 'none';
+                desktop.style.display = 'flex';
+            }, 300);
 
-       // ===== ПОИСК ПО CENTERNET =====
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
+            userSession.innerHTML = `${user.name} • ${user.role}`;
+            
+            document.getElementById('profileJob').textContent = user.job;
+            document.getElementById('profilePlace').textContent = user.place;
+            document.getElementById('profileExp').textContent = user.exp;
+            document.getElementById('profileSalary').textContent = user.salary;
+            document.getElementById('profileAccount').textContent = user.account;
+            document.getElementById('profileBalance').textContent = user.balance;
 
-if (searchInput) {
-    searchInput.addEventListener('input', function() {
-        const query = this.value.toLowerCase();
-        const items = document.querySelectorAll('.search-item');
-        
-        items.forEach(item => {
-            const text = item.textContent.toLowerCase();
-            if (text.includes(query)) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
+            if (user.name === 'Майк Малас') {
+                document.getElementById('civilIcon').style.display = 'flex';
             }
-        });
+        } else {
+            loginError.textContent = 'Неверный пароль';
+        }
+    }
+
+    loginBtn.onclick = handleLogin;
+    passwordInput.onkeypress = (e) => {
+        if (e.key === 'Enter') handleLogin();
+    };
+
+    // ===== ПОМОЩЬ =====
+    document.getElementById('helpLink').onclick = (e) => {
+        e.preventDefault();
+        window.open('https://t.me/MOTYA_VONEL565', '_blank');
+    };
+
+            // ===== УПРАВЛЕНИЕ ОКНАМИ =====
+function setupWindowControls() {
+    // Открытие окон по иконкам
+    const iconToWindow = {
+        'centernetIcon': 'centernetWindow',
+        'mailIcon': 'mailWindow',
+        'radioIcon': 'radioWindow',
+        'sachatIcon': 'sachatWindow',
+        'gamesIcon': 'gamesWindow',
+        'profileIcon': 'profileWindow',
+        'humorIcon': 'humorWindow',
+        'reportsIcon': 'reportsWindow',
+        'civilIcon': 'civilWindow'
+    };
+
+    for (let [iconId, windowId] of Object.entries(iconToWindow)) {
+        const icon = document.getElementById(iconId);
+        const windowEl = document.getElementById(windowId);
+        if (icon && windowEl) {
+            icon.onclick = () => {
+                windowEl.style.display = 'flex';
+            };
+        }
+    }
+
+    // Закрытие окон
+    document.querySelectorAll('.window-close').forEach(btn => {
+        btn.onclick = function() {
+            const windowId = this.dataset.window;
+            const windowEl = document.getElementById(windowId);
+            if (windowEl) windowEl.style.display = 'none';
+        };
     });
+
+    // Разворачивание окон
+    document.querySelectorAll('.window-maximize').forEach(btn => {
+        btn.onclick = function() {
+            const windowId = this.dataset.window;
+            const windowEl = document.getElementById(windowId);
+            if (!windowEl) return;
+            
+            if (!windowEl.classList.contains('window-maximized')) {
+                windowEl.classList.add('window-maximized');
+                this.textContent = '❐';
+            } else {
+                windowEl.classList.remove('window-maximized');
+                this.textContent = '□';
+            }
+        };
+    });
+
+    // Перетаскивание окон
+    document.querySelectorAll('.window-header').forEach(header => {
+        let isDragging = false;
+        let offsetX, offsetY;
+        const windowEl = header.parentElement;
+
+        header.onmousedown = (e) => {
+            if (e.target.closest('.window-controls')) return;
+            if (windowEl.classList.contains('window-maximized')) return;
+            
+            isDragging = true;
+            const rect = windowEl.getBoundingClientRect();
+            offsetX = e.clientX - rect.left;
+            offsetY = e.clientY - rect.top;
+            windowEl.style.transform = 'none';
+        };
+
+        document.onmousemove = (e) => {
+            if (!isDragging) return;
+            
+            let newX = e.clientX - offsetX;
+            let newY = e.clientY - offsetY;
+            
+            newX = Math.max(0, Math.min(newX, window.innerWidth - windowEl.offsetWidth));
+            newY = Math.max(0, Math.min(newY, window.innerHeight - windowEl.offsetHeight - 60));
+            
+            windowEl.style.left = newX + 'px';
+            windowEl.style.top = newY + 'px';
+        };
+
+        document.onmouseup = () => {
+            isDragging = false;
+        };
+    });
+    }
+
+           // ===== ПОИСК ПО CENTERNET =====
+const searchInput = document.getElementById('searchInput');
+if (searchInput) {
+    searchInput.oninput = function() {
+        const query = this.value.toLowerCase();
+        document.querySelectorAll('.search-item').forEach(item => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(query) ? 'block' : 'none';
+        });
+    };
 }
 
 // Клик по результатам поиска
 document.querySelectorAll('.search-item').forEach(item => {
-    item.addEventListener('click', function() {
+    item.onclick = function() {
         const url = this.dataset.url;
-        
         if (url === 'gensec') {
             window.open('https://motyasfrpsa565.github.io/GenSec.s/', '_blank');
-            return;
+        } else {
+            const windowId = url + 'Window';
+            let win = document.getElementById(windowId);
+            if (!win) {
+                createSarWindow(url);
+                win = document.getElementById(windowId);
+            }
+            if (win) win.style.display = 'flex';
         }
-        
-        const windows = {
-            'sinopt': 'sinoptWindow',
-            'fbi': 'fbiWindow',
-            'hack': 'hackWindow',
-            'news': 'newsWindow',
-            'library': 'libraryWindow',
-            'gov': 'govWindow',
-            'map': 'mapWindow'
-        };
-        
-        if (windows[url]) {
-            const windowEl = document.getElementById(windows[url]);
-            if (windowEl) windowEl.style.display = 'flex';
-        }
-    });
+    };
 });
 
-// ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК В ПРОФИЛЕ =====
-const tabs = document.querySelectorAll('.tab');
-tabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-        tabs.forEach(t => t.classList.remove('active'));
+// ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
+document.querySelectorAll('.tab').forEach(tab => {
+    tab.onclick = function() {
+        const container = this.parentElement;
+        container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         this.classList.add('active');
         
-        document.querySelectorAll('.tab-content').forEach(content => {
-            content.classList.remove('active');
+        const contentId = this.dataset.tab || this.dataset.report;
+        container.parentElement.querySelectorAll('.tab-content').forEach(c => {
+            c.classList.remove('active');
         });
-        
-        const tabName = this.dataset.tab;
-        document.getElementById(tabName + 'Tab').classList.add('active');
-    });
+        document.getElementById(contentId + 'Tab')?.classList.add('active');
+    };
 });
 
-        // ===== ПЛЕЕР =====
-const audioPlayer = document.getElementById('audioPlayer');
-const trackItems = document.querySelectorAll('.track-item');
-const playBtn = document.getElementById('playBtn');
-const pauseBtn = document.getElementById('pauseBtn');
-const stopBtn = document.getElementById('stopBtn');
-
-if (trackItems.length > 0) {
-    trackItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const src = this.dataset.src;
-            audioPlayer.src = src;
-            audioPlayer.play();
-            
-            trackItems.forEach(t => t.classList.remove('playing'));
-            this.classList.add('playing');
-        });
-    });
-}
-
-if (playBtn) {
-    playBtn.addEventListener('click', () => {
-        if (audioPlayer.src) {
-            audioPlayer.play();
-        } else {
-            const firstTrack = document.querySelector('.track-item');
-            if (firstTrack) firstTrack.click();
-        }
-    });
-}
-
-if (pauseBtn) {
-    pauseBtn.addEventListener('click', () => {
-        audioPlayer.pause();
-    });
-}
-
-if (stopBtn) {
-    stopBtn.addEventListener('click', () => {
-        audioPlayer.pause();
-        audioPlayer.currentTime = 0;
-    });
-}
-
-// ===== ОТКРЫТИЕ ОКОН ПО КЛИКУ НА ИКОНКИ =====
-const iconToWindow = {
-    'centernetIcon': 'centernetWindow',
-    'mailIcon': 'mailWindow',
-    'radioIcon': 'radioWindow',
-    'sachatIcon': 'sachatWindow',
-    'gamesIcon': 'gamesWindow',
-    'profileIcon': 'profileWindow',
-    'humorIcon': 'humorWindow',
-    'civilIcon': 'civilWindow'
-};
-
-for (let [iconId, windowId] of Object.entries(iconToWindow)) {
-    const icon = document.getElementById(iconId);
-    const windowEl = document.getElementById(windowId);
-    
-    if (icon && windowEl) {
-        icon.addEventListener('click', () => {
-            windowEl.style.display = 'flex';
-        });
-    }
-        }
-
-        // ===== ЗАКРЫТИЕ, МИНИМИЗАЦИЯ, РАЗВОРАЧИВАНИЕ =====
-document.querySelectorAll('.window-close').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const windowId = this.dataset.window;
-        const windowEl = document.getElementById(windowId);
-        if (windowEl) windowEl.style.display = 'none';
-    });
-});
-
-document.querySelectorAll('.window-minimize').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const windowId = this.dataset.window;
-        const windowEl = document.getElementById(windowId);
-        if (windowEl) windowEl.style.display = 'none';
-    });
-});
-
-document.querySelectorAll('.window-maximize').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const windowId = this.dataset.window;
-        const windowEl = document.getElementById(windowId);
-        
-        if (!windowEl) return;
-        
-        if (!windowEl.classList.contains('window-maximized')) {
-            windowEl.style.width = '100%';
-            windowEl.style.height = 'calc(100% - 120px)';
-            windowEl.style.top = '60px';
-            windowEl.style.left = '0';
-            windowEl.classList.add('window-maximized');
-            this.textContent = '❐';
-        } else {
-            windowEl.style.width = '800px';
-            windowEl.style.height = '550px';
-            windowEl.style.top = '80px';
-            windowEl.style.left = '200px';
-            windowEl.classList.remove('window-maximized');
-            this.textContent = '□';
-        }
-    });
-});
-
-// ===== CIVILINFO (ПОИСК ГРАЖДАН) =====
+           // ===== CIVILINFO =====
 const civilSearch = document.getElementById('civilSearch');
 const civilResult = document.getElementById('civilResult');
 
 if (civilSearch) {
-    civilSearch.addEventListener('input', function() {
+    civilSearch.oninput = function() {
         const query = this.value.toLowerCase();
-        
-        // Ищем по всем пользователям
         let found = null;
-        for (let [pass, user] of Object.entries(users)) {
-            if (user.name.toLowerCase().includes(query) && query.length > 0) {
+        
+        for (let user of Object.values(users)) {
+            if (user.name.toLowerCase().includes(query)) {
                 found = user;
                 break;
             }
         }
         
         if (found) {
-            document.getElementById('civilName').textContent = found.name;
-            document.getElementById('civilJob').textContent = found.job;
-            document.getElementById('civilPlace').textContent = found.place;
-            document.getElementById('civilExp').textContent = found.exp;
-            document.getElementById('civilSalary').textContent = found.salary;
-            document.getElementById('civilAccount').textContent = found.account;
-            document.getElementById('civilBalance').textContent = found.balance;
             civilResult.style.display = 'block';
+            civilResult.innerHTML = `
+                <div class="profile-card">
+                    <div class="profile-row"><span>Имя:</span> <span>${found.name}</span></div>
+                    <div class="profile-row"><span>Работа:</span> <span>${found.job}</span></div>
+                    <div class="profile-row"><span>Место:</span> <span>${found.place}</span></div>
+                    <div class="profile-row"><span>Стаж:</span> <span>${found.exp}</span></div>
+                    <div class="profile-row"><span>Доход:</span> <span>${found.salary}</span></div>
+                    <div class="profile-row"><span>Счёт:</span> <span>${found.account}</span></div>
+                    <div class="profile-row"><span>Баланс:</span> <span>${found.balance}</span></div>
+                </div>
+            `;
         } else {
             civilResult.style.display = 'none';
         }
+    };
+}
+
+// ===== КОПИРОВАНИЕ ОТЧЁТОВ =====
+window.copyReport = function(type) {
+    let text = '';
+    if (type === 'fbi') {
+        text = `ОТЧЁТ ФБР\nДело: ${document.getElementById('fbiCaseNum').value}\nОперация: ${document.getElementById('fbiOperation').value}\nСодержание: ${document.getElementById('fbiContent').value}\nСтатус: ${document.getElementById('fbiStatus').value}`;
+    } else if (type === 'finance') {
+        text = `ФИНАНСОВЫЙ ОТЧЁТ\nПериод: ${document.getElementById('financePeriod').value}\nДоходы: ${document.getElementById('financeIncome').value}\nРасходы: ${document.getElementById('financeOutcome').value}\nПримечания: ${document.getElementById('financeNotes').value}`;
+    } else if (type === 'household') {
+        text = `БЫТОВОЙ ОТЧЁТ\nАдрес: ${document.getElementById('householdAddress').value}\nТип: ${document.getElementById('householdType').value}\nОписание: ${document.getElementById('householdDesc').value}`;
+    }
+    
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Отчёт скопирован!');
     });
-        }
+};
 
-                // ===== ПЕРЕТАСКИВАНИЕ ОКОН =====
-        const windows = document.querySelectorAll('.app-window');
+            // ===== FLAPPY BIRD =====
+let flappyGame = null;
+
+document.getElementById('flappyBirdBtn').onclick = function() {
+    const gameArea = document.getElementById('gameArea');
+    gameArea.style.display = 'block';
+    gameArea.innerHTML = `
+        <canvas id="flappyCanvas" width="400" height="300"></canvas>
+        <div style="text-align: center; margin-top: 10px;">
+            <span id="flappyScore">0</span> очков
+        </div>
+    `;
+    
+    const canvas = document.getElementById('flappyCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let bird = { y: 150, vy: 0 };
+    let pipes = [];
+    let score = 0;
+    let gameOver = false;
+    
+    function update() {
+        if (gameOver) return;
         
-        windows.forEach(windowEl => {
-            const header = windowEl.querySelector('.window-header');
+        bird.vy += 0.5;
+        bird.y += bird.vy;
+        
+        if (bird.y < 0 || bird.y > 300) gameOver = true;
+        
+        if (Math.random() < 0.02) {
+            pipes.push({ x: 400, gap: 100, passed: false });
+        }
+        
+        for (let i = pipes.length - 1; i >= 0; i--) {
+            pipes[i].x -= 3;
             
-            if (header) {
-                let isDragging = false;
-                let offsetX, offsetY;
-
-                header.addEventListener('mousedown', (e) => {
-                    if (e.target.closest('.window-controls')) return;
-                    if (windowEl.classList.contains('window-maximized')) return;
-                    
-                    isDragging = true;
-                    const rect = windowEl.getBoundingClientRect();
-                    offsetX = e.clientX - rect.left;
-                    offsetY = e.clientY - rect.top;
-                });
-
-                document.addEventListener('mousemove', (e) => {
-                    if (!isDragging) return;
-                    e.preventDefault();
-                    
-                    let newX = e.clientX - offsetX;
-                    let newY = e.clientY - offsetY;
-                    
-                    const maxX = window.innerWidth - windowEl.offsetWidth;
-                    const maxY = window.innerHeight - windowEl.offsetHeight - 120;
-                    
-                    newX = Math.min(Math.max(0, newX), maxX);
-                    newY = Math.min(Math.max(60, newY), maxY);
-                    
-                    windowEl.style.left = newX + 'px';
-                    windowEl.style.top = newY + 'px';
-                });
-
-                document.addEventListener('mouseup', () => {
-                    isDragging = false;
-                });
+            if (!pipes[i].passed && pipes[i].x < 50) {
+                pipes[i].passed = true;
+                score++;
             }
+            
+            if (pipes[i].x < -50) {
+                pipes.splice(i, 1);
+                continue;
+            }
+            
+            if (pipes[i].x < 70 && pipes[i].x > 30) {
+                if (bird.y < 150 - pipes[i].gap/2 || bird.y > 150 + pipes[i].gap/2) {
+                    gameOver = true;
+                }
+            }
+        }
+        
+        draw();
+        document.getElementById('flappyScore').textContent = score;
+        
+        if (!gameOver) {
+            requestAnimationFrame(update);
+        } else {
+            gameArea.innerHTML += '<div style="text-align: center;">ИГРА ОКОНЧЕНА</div>';
+        }
+    }
+    
+    function draw() {
+        ctx.fillStyle = '#87CEEB';
+        ctx.fillRect(0, 0, 400, 300);
+        
+        ctx.fillStyle = '#00FF00';
+        for (let pipe of pipes) {
+            ctx.fillRect(pipe.x, 0, 30, 150 - pipe.gap/2);
+            ctx.fillRect(pipe.x, 150 + pipe.gap/2, 30, 150 - pipe.gap/2);
+        }
+        
+        ctx.fillStyle = '#FF0';
+        ctx.fillRect(50, bird.y - 10, 20, 20);
+    }
+    
+    canvas.onclick = () => { bird.vy = -8; };
+    
+    update();
+};
+
+            // ===== САПЁР =====
+document.getElementById('minesweeperBtn').onclick = function() {
+    const gameArea = document.getElementById('gameArea');
+    gameArea.style.display = 'block';
+    
+    const size = 8;
+    const mines = 10;
+    let grid = [];
+    let revealed = [];
+    let gameOver = false;
+    
+    // Создание пустой сетки
+    for (let i = 0; i < size; i++) {
+        grid[i] = [];
+        revealed[i] = [];
+        for (let j = 0; j < size; j++) {
+            grid[i][j] = 0;
+            revealed[i][j] = false;
+        }
+    }
+    
+    // Расстановка мин
+    for (let m = 0; m < mines; m++) {
+        let x, y;
+        do {
+            x = Math.floor(Math.random() * size);
+            y = Math.floor(Math.random() * size);
+        } while (grid[x][y] === -1);
+        grid[x][y] = -1;
+    }
+    
+    // Подсчёт цифр
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+            if (grid[i][j] === -1) continue;
+            let count = 0;
+            for (let di = -1; di <= 1; di++) {
+                for (let dj = -1; dj <= 1; dj++) {
+                    if (i+di >= 0 && i+di < size && j+dj >= 0 && j+dj < size && grid[i+di][j+dj] === -1) count++;
+                }
+            }
+            grid[i][j] = count;
+        }
+    }
+    
+    function render() {
+        let html = '<div id="minesweeperGrid">';
+        for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+                let content = '';
+                if (revealed[i][j]) {
+                    content = grid[i][j] === -1 ? '💣' : (grid[i][j] || '');
+                } else {
+                    content = '■';
+                }
+                html += `<div class="mine-cell" data-x="${i}" data-y="${j}">${content}</div>`;
+            }
+        }
+        html += '</div>';
+        gameArea.innerHTML = html;
+        
+        document.querySelectorAll('.mine-cell').forEach(cell => {
+            cell.onclick = function() {
+                if (gameOver) return;
+                const x = parseInt(this.dataset.x);
+                const y = parseInt(this.dataset.y);
+                
+                if (grid[x][y] === -1) {
+                    gameOver = true;
+                    alert('💣 БАХ! Ты подорвался!');
+                    render();
+                } else {
+                    revealed[x][y] = true;
+                    render();
+                }
+            };
+        });
+    }
+    
+    render();
+};
+
+// ===== СОЗДАНИЕ .SAR САЙТОВ =====
+function createSarWindow(site) {
+    const windows = {
+        sinopt: { title: '☁️ Sinopt.sar', content: '<div id="weather">Загрузка...</div><script>fetch("https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true").then(r=>r.json()).then(d=>{document.getElementById("weather").innerHTML="Температура: "+d.current_weather.temperature+"°C<br>Ветер: "+d.current_weather.windspeed+" м/с"})</scr' + 'ipt>' },
+        fbi: { title: '🏛️ FBI.sar', content: '<h2>ФБР</h2><p>Контакты: +1 (555) 123-45-67</p>' },
+        hack: { title: '💻 HACK.PAY.DAY.sar', content: '<h2>Взлом</h2><input id="hackAns" placeholder="5+3=?"><button onclick="alert(this.previousSibling.value==8?\'Доступ получен\':\'Неверно\')">Взломать</button>' },
+        news: { title: '📰 news.sar', content: '<h2>Новости</h2><p>12.03 — Задержание</p>' },
+        library: { title: '📚 library.sar', content: '<h2>История</h2><p>Основан в 1776</p>' },
+        gov: { title: '🏛️ gov.sar', content: '<h2>Указы мэра</h2><p>Указ №1: Озеленение</p>' },
+        map: { title: '🗺️ map.sar', content: '<h2>Карта</h2><p>Скоро</p>' }
+    };
+    
+    const data = windows[site];
+    if (!data) return;
+    
+    const html = `
+        <div class="app-window" id="${site}Window" style="display: none;">
+            <div class="window-header">
+                <div class="window-title">${data.title}</div>
+                <div class="window-controls">
+                    <span class="window-close" data-window="${site}Window">✕</span>
+                </div>
+            </div>
+            <div class="window-content">${data.content}</div>
+        </div>
+    `;
+    
+    document.querySelector('.workspace').insertAdjacentHTML('beforeend', html);
+}
+
+                   // ===== ЗАПУСК =====
+        setupWindowControls();
+
+        // ===== ПЛЕЕР =====
+        const audio = document.getElementById('audioPlayer');
+        const trackList = document.getElementById('trackList');
+        
+        const tracks = [
+            '4.mp3', 'GTA.mp3', 'Против царя.mp3',
+            'Все анекдоты из симулятора падения в канаву.mp3', 'Payday 2.mp3'
+        ];
+        
+        tracks.forEach((track, i) => {
+            const div = document.createElement('div');
+            div.className = 'track-item';
+            div.textContent = `Трек ${i+1}`;
+            div.onclick = () => {
+                audio.src = track;
+                audio.play();
+                document.querySelectorAll('.track-item').forEach(t => t.classList.remove('playing'));
+                div.classList.add('playing');
+            };
+            trackList.appendChild(div);
         });
 
-        // ===== СОЗДАЁМ ОКНА ДЛЯ .SAR САЙТОВ =====
-        function createSarWindow(siteName, title, content) {
-            const windowId = siteName + 'Window';
-            if (document.getElementById(windowId)) return;
-            
-            const windowHtml = `
-                <div class="app-window" id="${windowId}" style="display: none;">
-                    <div class="window-header">
-                        <div class="window-title">${title}</div>
-                        <div class="window-controls">
-                            <span class="window-close" data-window="${windowId}">✕</span>
-                        </div>
-                    </div>
-                    <div class="window-content">${content}</div>
-                </div>
-            `;
-            
-            document.querySelector('.workspace').insertAdjacentHTML('beforeend', windowHtml);
-        }
-
-        // Создаём окна для .sar сайтов
-        createSarWindow('sinopt', '☁️ Sinopt.sar — Погода', `
-            <div style="text-align: center; padding: 20px;">
-                <h2>Погода в Москве</h2>
-                <div id="weatherDisplay">Загрузка...</div>
-                <script>
-                    fetch('https://api.open-meteo.com/v1/forecast?latitude=55.75&longitude=37.62&current_weather=true')
-                        .then(r => r.json())
-                        .then(data => {
-                            document.getElementById('weatherDisplay').innerHTML = 
-                                'Температура: ' + data.current_weather.temperature + '°C<br>' +
-                                'Ветер: ' + data.current_weather.windspeed + ' м/с';
-                        });
-                </scr` + `ipt>
-            </div>
-        `);
-
-        createSarWindow('fbi', '🏛️ FBI.sar — Публичная информация', `
-            <div>
-                <h2>ФБР Сан-Андреас</h2>
-                <p>Контакты: +1 (555) 123-45-67</p>
-                <p>Адрес: Сан-Фиерро, ул. Федерал, 1</p>
-                <p>Вакансии: специальный агент, аналитик</p>
-            </div>
-        `);
-
-        createSarWindow('hack', '💻 HACK.PAY.DAY.sar — Взлом', `
-            <div style="text-align: center; padding: 30px;">
-                <h2>Взлом ФБР</h2>
-                <p>Решите пример: 5 + 3 = ?</p>
-                <input type="text" id="hackAnswer" style="padding: 10px; margin: 10px;">
-                <button onclick="if(document.getElementById('hackAnswer').value=='8') { alert('Доступ получен!\\nДанные ФБР: русская мафия под наблюдением, мэр Драго — проверка'); } else { alert('Неверно!'); }">Взломать</button>
-            </div>
-        `);
-
-        createSarWindow('news', '📰 news.sar — Новости', `
-            <div>
-                <h2>Последние новости Сан-Фиерро</h2>
-                <p>🔹 12.03.2026 — Задержан подозреваемый по делу русской мафии</p>
-                <p>🔹 10.03.2026 — Мэр Драго встретился с жителями</p>
-                <p>🔹 08.03.2026 — В парке открылся новый фонтан</p>
-            </div>
-        `);
-
-        createSarWindow('library', '📚 library.sar — История', `
-            <div>
-                <h2>История Сан-Фиерро</h2>
-                <p>Сан-Фиерро был основан в 1776 году испанскими миссионерами...</p>
-                <p>В 20 веке стал крупнейшим портом западного побережья.</p>
-            </div>
-        `);
-
-        createSarWindow('gov', '🏛️ gov.sar — Указы мэра', `
-            <div>
-                <h2>Указы мэра Ивана Драго</h2>
-                <p>📜 Указ №1: Озеленение города</p>
-                <p>📜 Указ №2: Поддержка малого бизнеса</p>
-                <p>📜 Указ №3: Борьба с преступностью</p>
-            </div>
-        `);
-
-        createSarWindow('map', '🗺️ map.sar — Карта', `
-            <div style="text-align: center; padding: 50px;">
-                <h2>Карта в разработке</h2>
-                <p>Плейс в Roblox ещё не готов</p>
-            </div>
-        `);
-
-        // ===== ИНИЦИАЛИЗАЦИЯ =====
-        console.log('SAnet.Citizen v.3.0 загружен!');
+        console.log('SAnet.Citizen v.4.0 загружен!');
     </script>
 </body>
-</html>
+</html> 
