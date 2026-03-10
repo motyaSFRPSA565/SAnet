@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SAnet.Citizen v.4.0 — Сан-Фиерро</title>
+    <title>SAnet.Citizen — Сан-Фиерро</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,6 @@
             background: #0a1420;
         }
 
-        /* ===== ЭКРАН ВХОДА ===== */
         .login-screen {
             position: fixed;
             top: 0;
@@ -59,7 +58,6 @@
             color: #004466;
             font-size: clamp(18px, 5vw, 24px);
             margin-bottom: 5px;
-            letter-spacing: 1px;
         }
 
         .login-panel p {
@@ -123,7 +121,6 @@
             font-size: 14px;
         }
 
-        /* ===== РАБОЧИЙ СТОЛ ===== */
         .desktop {
             display: flex;
             flex-direction: column;
@@ -156,7 +153,6 @@
             justify-content: space-between;
             font-size: clamp(12px, 3vw, 14px);
             z-index: 10;
-            box-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
             border-bottom: 3px solid #ff3333;
             flex-shrink: 0;
             flex-wrap: wrap;
@@ -174,7 +170,6 @@
             font-weight: 700;
             font-size: clamp(12px, 3vw, 16px);
             color: white;
-            letter-spacing: 0.5px;
             text-shadow: 2px 2px 0 #ff3333;
         }
 
@@ -320,7 +315,6 @@
             font-weight: bold;
         }
 
-        /* ===== ОКНА ПРИЛОЖЕНИЙ ===== */
         .app-window {
             position: absolute;
             top: 50%;
@@ -335,7 +329,6 @@
             display: flex;
             flex-direction: column;
             z-index: 100;
-            resize: both;
             overflow: hidden;
         }
 
@@ -378,7 +371,6 @@
 
         .window-controls span:hover {
             background: #ff3333;
-            color: white;
             border: 2px solid white;
         }
 
@@ -397,10 +389,8 @@
             left: 0 !important;
             transform: none !important;
             border-radius: 0 !important;
-            border-width: 3px !important;
         }
 
-        /* ===== ВКЛАДКИ ===== */
         .tabs-container {
             display: flex;
             gap: 5px;
@@ -433,7 +423,6 @@
             display: block;
         }
 
-        /* ===== СТИЛИ ДЛЯ ИГР ===== */
         .games-container {
             display: flex;
             gap: clamp(15px, 4vw, 30px);
@@ -473,7 +462,6 @@
             font-weight: bold;
         }
 
-        /* ===== СТИЛИ ДЛЯ ПРОФИЛЯ ===== */
         .profile-card {
             background: #e0f0ff;
             border: 3px solid #006699;
@@ -494,109 +482,13 @@
         .profile-label {
             color: #004466;
             font-weight: bold;
-            font-size: clamp(12px, 3vw, 14px);
         }
 
         .profile-value {
             color: #ff3333;
             font-weight: bold;
-            font-size: clamp(12px, 3vw, 14px);
         }
 
-        /* ===== СТИЛИ ДЛЯ ПЛЕЕРА ===== */
-        .player-container {
-            text-align: center;
-            padding: clamp(10px, 2.5vw, 20px);
-        }
-
-        .track-list {
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .track-item {
-            padding: clamp(8px, 2vw, 10px);
-            border-bottom: 2px solid #006699;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            font-size: clamp(12px, 3vw, 14px);
-            border: 2px solid transparent;
-        }
-
-        .track-item:hover {
-            background: #b0e0ff;
-            border: 2px solid #ff3333;
-        }
-
-        .track-item.playing {
-            background: #ff3333;
-            color: white;
-        }
-
-        .player-controls {
-            margin: 30px 0;
-            display: flex;
-            gap: clamp(10px, 3vw, 20px);
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .player-btn {
-            padding: clamp(10px, 2.5vw, 15px) clamp(15px, 4vw, 30px);
-            background: #006699;
-            color: white;
-            border: 3px solid #ff3333;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: clamp(14px, 4vw, 20px);
-            min-width: 60px;
-        }
-
-        .player-btn:hover {
-            background: #ff3333;
-        }
-
-        /* ===== ПОИСКОВИК ===== */
-        .search-container {
-            text-align: center;
-        }
-
-        .search-logo {
-            font-size: clamp(32px, 8vw, 64px);
-            color: #006699;
-            text-shadow: 3px 3px 0 #ff3333;
-            margin-bottom: 20px;
-        }
-
-        .search-box {
-            width: 100%;
-            padding: clamp(10px, 2.5vw, 15px);
-            font-size: clamp(14px, 4vw, 16px);
-            border: 3px solid #006699;
-            border-radius: 40px;
-            outline: none;
-            margin-bottom: 20px;
-        }
-
-        .search-box:focus {
-            border-color: #ff3333;
-        }
-
-        .search-item {
-            padding: clamp(10px, 2.5vw, 15px);
-            border-bottom: 2px solid #006699;
-            cursor: pointer;
-            font-size: clamp(12px, 3vw, 14px);
-            border: 2px solid transparent;
-        }
-
-        .search-item:hover {
-            background: #b0e0ff;
-            border: 2px solid #ff3333;
-        }
-
-        /* ===== СТИЛИ ДЛЯ MyHumor ===== */
         .humor-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
@@ -632,10 +524,8 @@
             padding: clamp(8px, 2vw, 10px);
             color: white;
             text-align: center;
-            font-size: clamp(11px, 2.5vw, 14px);
         }
 
-        /* ===== СТИЛИ ДЛЯ ОТЧЁТОВ ===== */
         .report-form {
             display: flex;
             flex-direction: column;
@@ -651,10 +541,9 @@
         .report-label {
             color: #004466;
             font-weight: bold;
-            font-size: clamp(12px, 3vw, 14px);
         }
 
-        .report-input {
+        .report-input, .report-textarea {
             padding: clamp(8px, 2vw, 12px);
             border: 2px solid #006699;
             border-radius: 5px;
@@ -662,24 +551,14 @@
             width: 100%;
         }
 
-        .report-input:focus {
+        .report-input:focus, .report-textarea:focus {
             border-color: #ff3333;
             outline: none;
         }
 
         .report-textarea {
-            padding: clamp(8px, 2vw, 12px);
-            border: 2px solid #006699;
-            border-radius: 5px;
-            font-size: clamp(12px, 3vw, 14px);
             min-height: 150px;
             resize: vertical;
-            width: 100%;
-        }
-
-        .report-textarea:focus {
-            border-color: #ff3333;
-            outline: none;
         }
 
         .report-btn {
@@ -698,7 +577,18 @@
             background: #ff3333;
         }
 
-        /* ===== ФЛЕППИ БЁРД ===== */
+        .search-item {
+            padding: clamp(10px, 2.5vw, 15px);
+            border-bottom: 2px solid #006699;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .search-item:hover {
+            background: #b0e0ff;
+            border: 2px solid #ff3333;
+        }
+
         #flappyCanvas {
             display: block;
             margin: 0 auto;
@@ -709,7 +599,6 @@
             max-width: 400px;
         }
 
-        /* ===== САПЁР ===== */
         #minesweeperGrid {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
@@ -728,7 +617,6 @@
             color: white;
             font-weight: bold;
             cursor: pointer;
-            font-size: clamp(12px, 3vw, 16px);
         }
 
         .mine-cell.revealed {
@@ -736,8 +624,8 @@
             color: #004466;
         }
     </style>
-    </head>
-    <body>
+</head>
+<body>
     <!-- ЭКРАН ВХОДА -->
     <div class="login-screen" id="loginScreen">
         <div class="login-panel">
@@ -779,7 +667,6 @@
         <div class="workspace">
             <!-- ИКОНКИ -->
             <div class="desktop-icons">
-                <!-- Первый ряд -->
                 <div class="icon-row">
                     <div class="desktop-icon" id="centernetIcon">
                         <span class="icon-image">🔍</span>
@@ -798,7 +685,6 @@
                         <span class="icon-label">SAchat</span>
                     </div>
                 </div>
-                <!-- Второй ряд -->
                 <div class="icon-row">
                     <div class="desktop-icon" id="gamesIcon">
                         <span class="icon-image">🎮</span>
@@ -817,7 +703,6 @@
                         <span class="icon-label">Отчёты</span>
                     </div>
                 </div>
-                <!-- Третий ряд (скрытые) -->
                 <div class="icon-row">
                     <div class="desktop-icon" id="civilIcon" style="display: none;">
                         <span class="icon-image">👥</span>
@@ -827,836 +712,533 @@
             </div>
 
             <!-- ОКНО CENTERNET -->
-<div class="app-window" id="centernetWindow" style="display: none;">
-    <div class="window-header" id="centernetHeader">
-        <div class="window-title">
-            <span>🔍</span>
-            <span>Centernet</span>
-        </div>
-        <div class="window-controls">
-            <span class="window-close" data-window="centernetWindow">✕</span>
-            <span class="window-maximize" data-window="centernetWindow">□</span>
-        </div>
-    </div>
-    <div class="window-content">
-        <div class="search-container">
-            <div class="search-logo">Centernet</div>
-            <input type="text" class="search-box" id="searchInput" placeholder="Введите название (.sar)">
-            <div id="searchResults">
-                <div class="search-item" data-url="sinopt">☁️ Sinopt.sar — Погода</div>
-                <div class="search-item" data-url="fbi">🏛️ FBI.sar — ФБР</div>
-                <div class="search-item" data-url="hack">💻 HACK.PAY.DAY.sar</div>
-                <div class="search-item" data-url="news">📰 news.sar — Новости</div>
-                <div class="search-item" data-url="library">📚 library.sar — История</div>
-                <div class="search-item" data-url="gov">🏛️ gov.sar — Указы мэра</div>
-                <div class="search-item" data-url="map">🗺️ map.sar — Карта</div>
-                <div class="search-item" data-url="gensec">🛡️ GENSEC.s — Охрана</div>
+            <div class="app-window" id="centernetWindow" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">🔍 Centernet</div>
+                    <div class="window-controls">
+                        <span class="window-close" data-window="centernetWindow">✕</span>
+                        <span class="window-maximize" data-window="centernetWindow">□</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="font-size: 48px; color: #006699; text-shadow: 3px 3px 0 #ff3333;">Centernet</div>
+                        <input type="text" class="report-input" id="searchInput" placeholder="Введите название (.sar)" style="margin: 20px 0;">
+                        <div id="searchResults"></div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<!-- ОКНО ПОЧТЫ -->
-<div class="app-window" id="mailWindow" style="display: none;">
-    <div class="window-header">
-        <div class="window-title">
-            <span>📧</span>
-            <span>Почта</span>
-        </div>
-        <div class="window-controls">
-            <span class="window-close" data-window="mailWindow">✕</span>
-            <span class="window-maximize" data-window="mailWindow">□</span>
-        </div>
-    </div>
-    <div class="window-content" id="mailContent">
-        <div class="mail-item">🏛️ Администрация — Добро пожаловать</div>
-        <div class="mail-item">🛡️ ФБР — Публичное обращение</div>
-        <div class="mail-item">☁️ Sinopt.sar — Прогноз на неделю</div>
-    </div>
-</div>
+            <!-- ОКНО ПОЧТЫ -->
+            <div class="app-window" id="mailWindow" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">📧 Почта</div>
+                    <div class="window-controls">
+                        <span class="window-close" data-window="mailWindow">✕</span>
+                        <span class="window-maximize" data-window="mailWindow">□</span>
+                    </div>
+                </div>
+                <div class="window-content" id="mailContent"></div>
+            </div>
 
-<!-- ОКНО SAchat -->
-<div class="app-window" id="sachatWindow" style="display: none;">
-    <div class="window-header">
-        <div class="window-title">
-            <span>💬</span>
-            <span>SAchat</span>
-        </div>
-        <div class="window-controls">
-            <span class="window-close" data-window="sachatWindow">✕</span>
-            <span class="window-maximize" data-window="sachatWindow">□</span>
-        </div>
-    </div>
-    <div class="window-content" style="text-align: center; padding: 50px;">
-        <div style="font-size: 48px;">💬</div>
-        <h3>Чат Сан-Фиерро</h3>
-        <a href="https://t.me/+uxrc1KkbprkwYzli" target="_blank">ПЕРЕЙТИ В ЧАТ</a>
-    </div>
-</div>
+            <!-- ОКНО SAchat -->
+            <div class="app-window" id="sachatWindow" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">💬 SAchat</div>
+                    <div class="window-controls">
+                        <span class="window-close" data-window="sachatWindow">✕</span>
+                        <span class="window-maximize" data-window="sachatWindow">□</span>
+                    </div>
+                </div>
+                <div class="window-content" style="text-align: center; padding: 50px;">
+                    <div style="font-size: 48px;">💬</div>
+                    <h3 style="color: #004466;">Чат Сан-Фиерро</h3>
+                    <a href="https://t.me/+uxrc1KkbprkwYzli" target="_blank" style="display: inline-block; margin-top: 20px; padding: 15px 30px; background: #006699; color: white; border: 3px solid #ff3333; border-radius: 50px; text-decoration: none;">ПЕРЕЙТИ В ЧАТ</a>
+                </div>
+            </div>
 
-<!-- ОКНО РАДИО -->
-<div class="app-window" id="radioWindow" style="display: none;">
-    <div class="window-header">
-        <div class="window-title">
-            <span>🎵</span>
-            <span>Радио</span>
-        </div>
-        <div class="window-controls">
-            <span class="window-close" data-window="radioWindow">✕</span>
-            <span class="window-maximize" data-window="radioWindow">□</span>
-        </div>
-    </div>
-    <div class="window-content">
-        <audio id="audioPlayer" controls style="width: 100%;"></audio>
-        <div class="track-list" id="trackList"></div>
-    </div>
-    </div>
+            <!-- ОКНО РАДИО -->
+            <div class="app-window" id="radioWindow" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">🎵 Радио</div>
+                    <div class="window-controls">
+                        <span class="window-close" data-window="radioWindow">✕</span>
+                        <span class="window-maximize" data-window="radioWindow">□</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <audio id="audioPlayer" controls style="width: 100%;"></audio>
+                    <div class="track-list" id="trackList"></div>
+                </div>
+            </div>
 
             <!-- ОКНО GAMES -->
-<div class="app-window" id="gamesWindow" style="display: none;">
-    <div class="window-header">
-        <div class="window-title">
-            <span>🎮</span>
-            <span>Игры</span>
-        </div>
-        <div class="window-controls">
-            <span class="window-close" data-window="gamesWindow">✕</span>
-            <span class="window-maximize" data-window="gamesWindow">□</span>
-        </div>
-    </div>
-    <div class="window-content">
-        <div class="games-container">
-            <div class="game-card" id="flappyBirdBtn">
-                <span>🐦</span>
-                <div>Flappy Bird</div>
-            </div>
-            <div class="game-card" id="minesweeperBtn">
-                <span>💣</span>
-                <div>Сапёр</div>
-            </div>
-        </div>
-        <div id="gameArea" style="margin-top: 20px; display: none;"></div>
-    </div>
-</div>
-
-<!-- ОКНО ПРОФИЛЯ -->
-<div class="app-window" id="profileWindow" style="display: none;">
-    <div class="window-header">
-        <div class="window-title">
-            <span>👤</span>
-            <span>Профиль</span>
-        </div>
-        <div class="window-controls">
-            <span class="window-close" data-window="profileWindow">✕</span>
-            <span class="window-maximize" data-window="profileWindow">□</span>
-        </div>
-    </div>
-    <div class="window-content">
-        <div class="tabs-container">
-            <div class="tab active" data-tab="job">💼 Работа</div>
-            <div class="tab" data-tab="bank">💰 Банк</div>
-        </div>
-        <div id="jobTab" class="tab-content active">
-            <div class="profile-card">
-                <div class="profile-row"><span>Должность:</span> <span id="profileJob">—</span></div>
-                <div class="profile-row"><span>Место работы:</span> <span id="profilePlace">—</span></div>
-                <div class="profile-row"><span>Стаж:</span> <span id="profileExp">—</span></div>
-            </div>
-        </div>
-        <div id="bankTab" class="tab-content">
-            <div class="profile-card">
-                <div class="profile-row"><span>Доход:</span> <span id="profileSalary">—</span></div>
-                <div class="profile-row"><span>Счёт:</span> <span id="profileAccount">—</span></div>
-                <div class="profile-row"><span>Баланс:</span> <span id="profileBalance">—</span></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ОКНО MyHumor -->
-<div class="app-window" id="humorWindow" style="display: none;">
-    <div class="window-header">
-        <div class="window-title">
-            <span>😂</span>
-            <span>MyHumor</span>
-        </div>
-        <div class="window-controls">
-            <span class="window-close" data-window="humorWindow">✕</span>
-            <span class="window-maximize" data-window="humorWindow">□</span>
-        </div>
-    </div>
-    <div class="window-content">
-        <div class="humor-grid" id="humorGrid"></div>
-    </div>
-    </div> 
-
-                    <!-- ОКНО ОТЧЁТОВ -->
-        <div class="app-window" id="reportsWindow" style="display: none;">
-            <div class="window-header">
-                <div class="window-title">
-                    <span>📝</span>
-                    <span>Отчёты</span>
-                </div>
-                <div class="window-controls">
-                    <span class="window-close" data-window="reportsWindow">✕</span>
-                    <span class="window-maximize" data-window="reportsWindow">□</span>
-                </div>
-            </div>
-            <div class="window-content">
-                <div class="tabs-container">
-                    <div class="tab active" data-report="fbi">📋 ФБР</div>
-                    <div class="tab" data-report="finance">💰 Финансы</div>
-                    <div class="tab" data-report="household">🏠 Бытовые</div>
-                </div>
-                <div id="fbiReport" class="tab-content active">
-                    <div class="report-form">
-                        <div class="report-field">
-                            <label class="report-label">Номер дела:</label>
-                            <input type="text" class="report-input" id="fbiCaseNum" placeholder="Например: FBI-2026-001">
-                        </div>
-                        <div class="report-field">
-                            <label class="report-label">Операция:</label>
-                            <input type="text" class="report-input" id="fbiOperation" placeholder="Название операции">
-                        </div>
-                        <div class="report-field">
-                            <label class="report-label">Содержание:</label>
-                            <textarea class="report-textarea" id="fbiContent" placeholder="Детали операции..."></textarea>
-                        </div>
-                        <div class="report-field">
-                            <label class="report-label">Статус:</label>
-                            <select class="report-input" id="fbiStatus">
-                                <option>В работе</option>
-                                <option>Завершено</option>
-                                <option>Заморожено</option>
-                            </select>
-                        </div>
-                        <button class="report-btn" onclick="copyReport('fbi')">СКОПИРОВАТЬ ОТЧЁТ</button>
+            <div class="app-window" id="gamesWindow" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">🎮 Игры</div>
+                    <div class="window-controls">
+                        <span class="window-close" data-window="gamesWindow">✕</span>
+                        <span class="window-maximize" data-window="gamesWindow">□</span>
                     </div>
                 </div>
-                <div id="financeReport" class="tab-content">
-                    <div class="report-form">
-                        <div class="report-field">
-                            <label class="report-label">Период:</label>
-                            <input type="text" class="report-input" id="financePeriod" placeholder="Например: Март 2026">
+                <div class="window-content">
+                    <div class="games-container">
+                        <div class="game-card" id="flappyBirdBtn">
+                            <span>🐦</span>
+                            <div>Flappy Bird</div>
                         </div>
-                        <div class="report-field">
-                            <label class="report-label">Доходы:</label>
-                            <input type="text" class="report-input" id="financeIncome" placeholder="Сумма">
+                        <div class="game-card" id="minesweeperBtn">
+                            <span>💣</span>
+                            <div>Сапёр</div>
                         </div>
-                        <div class="report-field">
-                            <label class="report-label">Расходы:</label>
-                            <input type="text" class="report-input" id="financeOutcome" placeholder="Сумма">
-                        </div>
-                        <div class="report-field">
-                            <label class="report-label">Примечания:</label>
-                            <textarea class="report-textarea" id="financeNotes" placeholder="Детали..."></textarea>
-                        </div>
-                        <button class="report-btn" onclick="copyReport('finance')">СКОПИРОВАТЬ ОТЧЁТ</button>
+                    </div>
+                    <div id="gameArea" style="margin-top: 20px;"></div>
+                </div>
+            </div>
+
+            <!-- ОКНО ПРОФИЛЯ -->
+            <div class="app-window" id="profileWindow" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">👤 Профиль</div>
+                    <div class="window-controls">
+                        <span class="window-close" data-window="profileWindow">✕</span>
+                        <span class="window-maximize" data-window="profileWindow">□</span>
                     </div>
                 </div>
-                <div id="householdReport" class="tab-content">
-                    <div class="report-form">
-                        <div class="report-field">
-                            <label class="report-label">Адрес:</label>
-                            <input type="text" class="report-input" id="householdAddress" placeholder="Улица, дом">
+                <div class="window-content">
+                    <div class="tabs-container">
+                        <div class="tab active" data-tab="job">💼 Работа</div>
+                        <div class="tab" data-tab="bank">💰 Банк</div>
+                    </div>
+                    <div id="jobTab" class="tab-content active">
+                        <div class="profile-card">
+                            <div class="profile-row"><span class="profile-label">Должность:</span> <span class="profile-value" id="profileJob">—</span></div>
+                            <div class="profile-row"><span class="profile-label">Место работы:</span> <span class="profile-value" id="profilePlace">—</span></div>
+                            <div class="profile-row"><span class="profile-label">Стаж:</span> <span class="profile-value" id="profileExp">—</span></div>
                         </div>
-                        <div class="report-field">
-                            <label class="report-label">Тип заявки:</label>
-                            <select class="report-input" id="householdType">
-                                <option>Жалоба</option>
-                                <option>Предложение</option>
-                                <option>Авария</option>
-                            </select>
+                    </div>
+                    <div id="bankTab" class="tab-content">
+                        <div class="profile-card">
+                            <div class="profile-row"><span class="profile-label">Доход:</span> <span class="profile-value" id="profileSalary">—</span></div>
+                            <div class="profile-row"><span class="profile-label">Счёт:</span> <span class="profile-value" id="profileAccount">—</span></div>
+                            <div class="profile-row"><span class="profile-label">Баланс:</span> <span class="profile-value" id="profileBalance">—</span></div>
                         </div>
-                        <div class="report-field">
-                            <label class="report-label">Описание:</label>
-                            <textarea class="report-textarea" id="householdDesc" placeholder="Подробности..."></textarea>
-                        </div>
-                        <button class="report-btn" onclick="copyReport('household')">СКОПИРОВАТЬ ОТЧЁТ</button>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- ОКНО CIVILINFO -->
-        <div class="app-window" id="civilWindow" style="display: none;">
-            <div class="window-header">
-                <div class="window-title">
-                    <span>👥</span>
-                    <span>CivilInfo</span>
+            <!-- ОКНО MyHumor -->
+            <div class="app-window" id="humorWindow" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">😂 MyHumor</div>
+                    <div class="window-controls">
+                        <span class="window-close" data-window="humorWindow">✕</span>
+                        <span class="window-maximize" data-window="humorWindow">□</span>
+                    </div>
                 </div>
-                <div class="window-controls">
-                    <span class="window-close" data-window="civilWindow">✕</span>
-                    <span class="window-maximize" data-window="civilWindow">□</span>
+                <div class="window-content">
+                    <div class="humor-grid" id="humorGrid"></div>
                 </div>
             </div>
-            <div class="window-content">
-                <input type="text" class="search-box" id="civilSearch" placeholder="Введите имя...">
-                <div id="civilResult" style="display: none; margin-top: 20px;"></div>
+
+            <!-- ОКНО ОТЧЁТОВ -->
+            <div class="app-window" id="reportsWindow" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">📝 Отчёты</div>
+                    <div class="window-controls">
+                        <span class="window-close" data-window="reportsWindow">✕</span>
+                        <span class="window-maximize" data-window="reportsWindow">□</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="tabs-container">
+                        <div class="tab active" data-report="fbi">📋 ФБР</div>
+                        <div class="tab" data-report="finance">💰 Финансы</div>
+                        <div class="tab" data-report="household">🏠 Бытовые</div>
+                    </div>
+                    <div id="fbiReport" class="tab-content active">
+                        <div class="report-form">
+                            <div class="report-field"><label class="report-label">Номер дела:</label><input type="text" class="report-input" id="fbiCaseNum"></div>
+                            <div class="report-field"><label class="report-label">Операция:</label><input type="text" class="report-input" id="fbiOperation"></div>
+                            <div class="report-field"><label class="report-label">Содержание:</label><textarea class="report-textarea" id="fbiContent"></textarea></div>
+                            <button class="report-btn" onclick="copyReport('fbi')">СКОПИРОВАТЬ</button>
+                        </div>
+                    </div>
+                    <div id="financeReport" class="tab-content">
+                        <div class="report-form">
+                            <div class="report-field"><label class="report-label">Период:</label><input type="text" class="report-input" id="financePeriod"></div>
+                            <div class="report-field"><label class="report-label">Доходы:</label><input type="text" class="report-input" id="financeIncome"></div>
+                            <div class="report-field"><label class="report-label">Расходы:</label><input type="text" class="report-input" id="financeOutcome"></div>
+                            <button class="report-btn" onclick="copyReport('finance')">СКОПИРОВАТЬ</button>
+                        </div>
+                    </div>
+                    <div id="householdReport" class="tab-content">
+                        <div class="report-form">
+                            <div class="report-field"><label class="report-label">Адрес:</label><input type="text" class="report-input" id="householdAddress"></div>
+                            <div class="report-field"><label class="report-label">Тип заявки:</label><input type="text" class="report-input" id="householdType"></div>
+                            <div class="report-field"><label class="report-label">Описание:</label><textarea class="report-textarea" id="householdDesc"></textarea></div>
+                            <button class="report-btn" onclick="copyReport('household')">СКОПИРОВАТЬ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ОКНО CIVILINFO -->
+            <div class="app-window" id="civilWindow" style="display: none;">
+                <div class="window-header">
+                    <div class="window-title">👥 CivilInfo</div>
+                    <div class="window-controls">
+                        <span class="window-close" data-window="civilWindow">✕</span>
+                        <span class="window-maximize" data-window="civilWindow">□</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <input type="text" class="report-input" id="civilSearch" placeholder="Введите имя...">
+                    <div id="civilResult" style="margin-top: 20px;"></div>
+                </div>
             </div>
         </div>
 
-        <!-- ОКНА .SAR САЙТОВ (будут созданы скриптом) -->
+        <!-- НИЖНЯЯ ПАНЕЛЬ -->
+        <div class="bottom-bar">
+            <div class="bottom-left"><span>SAnet.Citizen</span><span>•</span><span>Сан-Фиерро</span></div>
+            <div class="bottom-right"><span class="real-time" id="realTime">--:--:--</span></div>
+        </div>
     </div>
 
-    <!-- НИЖНЯЯ ПАНЕЛЬ -->
-    <div class="bottom-bar">
-        <div class="bottom-left">
-            <span>SAnet.Citizen</span>
-            <span>•</span>
-            <span>Сан-Фиерро</span>
-        </div>
-        <div class="bottom-right">
-            <span class="real-time" id="realTime">--:--:--</span>
-        </div>
-    </div>
-    </div>
 
         <script>
-    // ===== ДАННЫЕ ПОЛЬЗОВАТЕЛЕЙ =====
-    const users = {
-        'FBI565FULLCLEAR!': { 
-            name: 'Майк Малас', 
-            role: 'ДИРЕКТОР ФБР',
-            job: 'Директор ФБР',
-            place: 'ФБР Сан-Андреас',
-            exp: '3 года',
-            salary: '12 000$',
-            account: 'SF-0001-ММ',
-            balance: '145 000$'
-        },
-        'FBI999SPEC!': { 
-            name: 'Регинальд Вон Равенхорст', 
-            role: 'СПЕЦИАЛЬНЫЙ АГЕНТ',
-            job: 'Специальный агент',
-            place: 'ФБР',
-            exp: '1 год',
-            salary: '1 300$',
-            account: 'SF-0002-РВР',
-            balance: '15 600$'
-        },
-        'MERIE910SF': { 
-            name: 'Иван Драго', 
-            role: 'МЭР',
-            job: 'Мэр',
-            place: 'Мэрия',
-            exp: '2 года',
-            salary: '23 000$',
-            account: 'SF-0003-ИД',
-            balance: '276 000$'
-        },
-        'SOCIAL665ADMIN!': { 
-            name: 'Глеб Малыхин', 
-            role: 'ДЕПУТАТ',
-            job: 'Депутат',
-            place: 'Соц. отдел',
-            exp: '1.5 года',
-            salary: '19 000$',
-            account: 'SF-0004-ГМ',
-            balance: '28 500$'
-        },
-        'guest1!': { 
-            name: 'Гость', 
-            role: 'ГОСТЬ',
-            job: 'Безработный',
-            place: '—',
-            exp: '—',
-            salary: '0$',
-            account: 'SF-GUEST',
-            balance: '100$'
-        }
-    };
-
-    // ===== ВИДЕО ДЛЯ MyHumor =====
-    const humorVideos = [
-        { title: 'Прикол 1', file: 'VID_20260301_132901_324.mp4' },
-        { title: 'Прикол 2', file: 'VID_20260301_132911_477.mp4' },
-        { title: 'Прикол 3', file: 'VID_20260301_133013_552.mp4' },
-        { title: 'Прикол 4', file: 'VID_20260301_133021_224.mp4' },
-        { title: 'Тимур видео', file: 'timurvideo.mp4' },
-        { title: 'Прикол 5', file: 'VID_20260301_132951_278.mp4' },
-        { title: 'Прикол 6', file: 'VID_20260301_132824_112.mp4' },
-        { title: 'Прикол 7', file: 'VID_20260301_133003_660.mp4' },
-        { title: 'Прикол 8', file: 'VID_20260301_132849_475.mp4' }
-    ];
-
-    // ===== ЭЛЕМЕНТЫ =====
-    const loginScreen = document.getElementById('loginScreen');
-    const desktop = document.getElementById('desktop');
-    const usernameInput = document.getElementById('usernameInput');
-    const passwordInput = document.getElementById('passwordInput');
-    const loginBtn = document.getElementById('loginBtn');
-    const loginError = document.getElementById('loginError');
-    const userSession = document.getElementById('userSession');
-    const realTime = document.getElementById('realTime');
-    const humorGrid = document.getElementById('humorGrid');
-
-    // ===== ВРЕМЯ =====
-    function updateTime() {
-        const now = new Date();
-        realTime.textContent = now.toLocaleTimeString('ru-RU');
-    }
-    updateTime();
-    setInterval(updateTime, 1000);
-
-    // ===== ЗАГРУЗКА MyHumor =====
-    if (humorGrid) {
-        humorVideos.forEach(video => {
-            const card = document.createElement('div');
-            card.className = 'humor-card';
-            card.innerHTML = `
-                <div class="humor-video">🎥</div>
-                <div class="humor-title">${video.title}</div>
-            `;
-            card.onclick = () => window.open(video.file, '_blank');
-            humorGrid.appendChild(card);
-        });
-    }
-
-    // ===== ВХОД =====
-    function handleLogin() {
-        const password = passwordInput.value;
-        const user = users[password];
-        const username = usernameInput.value;
-
-        if (user && (user.name === username || username === '')) {
-            loginScreen.classList.add('hidden');
-            setTimeout(() => {
-                loginScreen.style.display = 'none';
-                desktop.style.display = 'flex';
-            }, 300);
-
-            userSession.innerHTML = `${user.name} • ${user.role}`;
-            
-            document.getElementById('profileJob').textContent = user.job;
-            document.getElementById('profilePlace').textContent = user.place;
-            document.getElementById('profileExp').textContent = user.exp;
-            document.getElementById('profileSalary').textContent = user.salary;
-            document.getElementById('profileAccount').textContent = user.account;
-            document.getElementById('profileBalance').textContent = user.balance;
-
-            if (user.name === 'Майк Малас') {
-                document.getElementById('civilIcon').style.display = 'flex';
-            }
-        } else {
-            loginError.textContent = 'Неверный пароль';
-        }
-    }
-
-    loginBtn.onclick = handleLogin;
-    passwordInput.onkeypress = (e) => {
-        if (e.key === 'Enter') handleLogin();
-    };
-
-    // ===== ПОМОЩЬ =====
-    document.getElementById('helpLink').onclick = (e) => {
-        e.preventDefault();
-        window.open('https://t.me/MOTYA_VONEL565', '_blank');
-    };
-
-            // ===== УПРАВЛЕНИЕ ОКНАМИ =====
-function setupWindowControls() {
-    // Открытие окон по иконкам
-    const iconToWindow = {
-        'centernetIcon': 'centernetWindow',
-        'mailIcon': 'mailWindow',
-        'radioIcon': 'radioWindow',
-        'sachatIcon': 'sachatWindow',
-        'gamesIcon': 'gamesWindow',
-        'profileIcon': 'profileWindow',
-        'humorIcon': 'humorWindow',
-        'reportsIcon': 'reportsWindow',
-        'civilIcon': 'civilWindow'
-    };
-
-    for (let [iconId, windowId] of Object.entries(iconToWindow)) {
-        const icon = document.getElementById(iconId);
-        const windowEl = document.getElementById(windowId);
-        if (icon && windowEl) {
-            icon.onclick = () => {
-                windowEl.style.display = 'flex';
-            };
-        }
-    }
-
-    // Закрытие окон
-    document.querySelectorAll('.window-close').forEach(btn => {
-        btn.onclick = function() {
-            const windowId = this.dataset.window;
-            const windowEl = document.getElementById(windowId);
-            if (windowEl) windowEl.style.display = 'none';
-        };
-    });
-
-    // Разворачивание окон
-    document.querySelectorAll('.window-maximize').forEach(btn => {
-        btn.onclick = function() {
-            const windowId = this.dataset.window;
-            const windowEl = document.getElementById(windowId);
-            if (!windowEl) return;
-            
-            if (!windowEl.classList.contains('window-maximized')) {
-                windowEl.classList.add('window-maximized');
-                this.textContent = '❐';
-            } else {
-                windowEl.classList.remove('window-maximized');
-                this.textContent = '□';
-            }
-        };
-    });
-
-    // Перетаскивание окон
-    document.querySelectorAll('.window-header').forEach(header => {
-        let isDragging = false;
-        let offsetX, offsetY;
-        const windowEl = header.parentElement;
-
-        header.onmousedown = (e) => {
-            if (e.target.closest('.window-controls')) return;
-            if (windowEl.classList.contains('window-maximized')) return;
-            
-            isDragging = true;
-            const rect = windowEl.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
-            windowEl.style.transform = 'none';
+        // ===== ДАННЫЕ ПОЛЬЗОВАТЕЛЕЙ =====
+        const users = {
+            'FBI565FULLCLEAR!': { name: 'Майк Малас', role: 'ДИРЕКТОР ФБР', job: 'Директор ФБР', place: 'ФБР', exp: '3 года', salary: '12 000$', account: 'SF-0001-ММ', balance: '145 000$' },
+            'FBI999SPEC!': { name: 'Регинальд Вон Равенхорст', role: 'СПЕЦАГЕНТ', job: 'Спецагент', place: 'ФБР', exp: '1 год', salary: '1 300$', account: 'SF-0002-РВР', balance: '15 600$' },
+            'MERIE910SF': { name: 'Иван Драго', role: 'МЭР', job: 'Мэр', place: 'Мэрия', exp: '2 года', salary: '23 000$', account: 'SF-0003-ИД', balance: '276 000$' },
+            'SOCIAL665ADMIN!': { name: 'Глеб Малыхин', role: 'ДЕПУТАТ', job: 'Депутат', place: 'Соц. отдел', exp: '1.5 года', salary: '19 000$', account: 'SF-0004-ГМ', balance: '28 500$' },
+            'guest1!': { name: 'Гость', role: 'ГОСТЬ', job: 'Безработный', place: '—', exp: '—', salary: '0$', account: 'SF-GUEST', balance: '100$' }
         };
 
-        document.onmousemove = (e) => {
-            if (!isDragging) return;
-            
-            let newX = e.clientX - offsetX;
-            let newY = e.clientY - offsetY;
-            
-            newX = Math.max(0, Math.min(newX, window.innerWidth - windowEl.offsetWidth));
-            newY = Math.max(0, Math.min(newY, window.innerHeight - windowEl.offsetHeight - 60));
-            
-            windowEl.style.left = newX + 'px';
-            windowEl.style.top = newY + 'px';
-        };
-
-        document.onmouseup = () => {
-            isDragging = false;
-        };
-    });
-    }
-
-           // ===== ПОИСК ПО CENTERNET =====
-const searchInput = document.getElementById('searchInput');
-if (searchInput) {
-    searchInput.oninput = function() {
-        const query = this.value.toLowerCase();
-        document.querySelectorAll('.search-item').forEach(item => {
-            const text = item.textContent.toLowerCase();
-            item.style.display = text.includes(query) ? 'block' : 'none';
-        });
-    };
-}
-
-// Клик по результатам поиска
-document.querySelectorAll('.search-item').forEach(item => {
-    item.onclick = function() {
-        const url = this.dataset.url;
-        if (url === 'gensec') {
-            window.open('https://motyasfrpsa565.github.io/GenSec.s/', '_blank');
-        } else {
-            const windowId = url + 'Window';
-            let win = document.getElementById(windowId);
-            if (!win) {
-                createSarWindow(url);
-                win = document.getElementById(windowId);
-            }
-            if (win) win.style.display = 'flex';
-        }
-    };
-});
-
-// ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
-document.querySelectorAll('.tab').forEach(tab => {
-    tab.onclick = function() {
-        const container = this.parentElement;
-        container.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-        
-        const contentId = this.dataset.tab || this.dataset.report;
-        container.parentElement.querySelectorAll('.tab-content').forEach(c => {
-            c.classList.remove('active');
-        });
-        document.getElementById(contentId + 'Tab')?.classList.add('active');
-    };
-});
-
-           // ===== CIVILINFO =====
-const civilSearch = document.getElementById('civilSearch');
-const civilResult = document.getElementById('civilResult');
-
-if (civilSearch) {
-    civilSearch.oninput = function() {
-        const query = this.value.toLowerCase();
-        let found = null;
-        
-        for (let user of Object.values(users)) {
-            if (user.name.toLowerCase().includes(query)) {
-                found = user;
-                break;
-            }
-        }
-        
-        if (found) {
-            civilResult.style.display = 'block';
-            civilResult.innerHTML = `
-                <div class="profile-card">
-                    <div class="profile-row"><span>Имя:</span> <span>${found.name}</span></div>
-                    <div class="profile-row"><span>Работа:</span> <span>${found.job}</span></div>
-                    <div class="profile-row"><span>Место:</span> <span>${found.place}</span></div>
-                    <div class="profile-row"><span>Стаж:</span> <span>${found.exp}</span></div>
-                    <div class="profile-row"><span>Доход:</span> <span>${found.salary}</span></div>
-                    <div class="profile-row"><span>Счёт:</span> <span>${found.account}</span></div>
-                    <div class="profile-row"><span>Баланс:</span> <span>${found.balance}</span></div>
-                </div>
-            `;
-        } else {
-            civilResult.style.display = 'none';
-        }
-    };
-}
-
-// ===== КОПИРОВАНИЕ ОТЧЁТОВ =====
-window.copyReport = function(type) {
-    let text = '';
-    if (type === 'fbi') {
-        text = `ОТЧЁТ ФБР\nДело: ${document.getElementById('fbiCaseNum').value}\nОперация: ${document.getElementById('fbiOperation').value}\nСодержание: ${document.getElementById('fbiContent').value}\nСтатус: ${document.getElementById('fbiStatus').value}`;
-    } else if (type === 'finance') {
-        text = `ФИНАНСОВЫЙ ОТЧЁТ\nПериод: ${document.getElementById('financePeriod').value}\nДоходы: ${document.getElementById('financeIncome').value}\nРасходы: ${document.getElementById('financeOutcome').value}\nПримечания: ${document.getElementById('financeNotes').value}`;
-    } else if (type === 'household') {
-        text = `БЫТОВОЙ ОТЧЁТ\nАдрес: ${document.getElementById('householdAddress').value}\nТип: ${document.getElementById('householdType').value}\nОписание: ${document.getElementById('householdDesc').value}`;
-    }
-    
-    navigator.clipboard.writeText(text).then(() => {
-        alert('Отчёт скопирован!');
-    });
-};
-
-            // ===== FLAPPY BIRD =====
-let flappyGame = null;
-
-document.getElementById('flappyBirdBtn').onclick = function() {
-    const gameArea = document.getElementById('gameArea');
-    gameArea.style.display = 'block';
-    gameArea.innerHTML = `
-        <canvas id="flappyCanvas" width="400" height="300"></canvas>
-        <div style="text-align: center; margin-top: 10px;">
-            <span id="flappyScore">0</span> очков
-        </div>
-    `;
-    
-    const canvas = document.getElementById('flappyCanvas');
-    const ctx = canvas.getContext('2d');
-    
-    let bird = { y: 150, vy: 0 };
-    let pipes = [];
-    let score = 0;
-    let gameOver = false;
-    
-    function update() {
-        if (gameOver) return;
-        
-        bird.vy += 0.5;
-        bird.y += bird.vy;
-        
-        if (bird.y < 0 || bird.y > 300) gameOver = true;
-        
-        if (Math.random() < 0.02) {
-            pipes.push({ x: 400, gap: 100, passed: false });
-        }
-        
-        for (let i = pipes.length - 1; i >= 0; i--) {
-            pipes[i].x -= 3;
-            
-            if (!pipes[i].passed && pipes[i].x < 50) {
-                pipes[i].passed = true;
-                score++;
-            }
-            
-            if (pipes[i].x < -50) {
-                pipes.splice(i, 1);
-                continue;
-            }
-            
-            if (pipes[i].x < 70 && pipes[i].x > 30) {
-                if (bird.y < 150 - pipes[i].gap/2 || bird.y > 150 + pipes[i].gap/2) {
-                    gameOver = true;
-                }
-            }
-        }
-        
-        draw();
-        document.getElementById('flappyScore').textContent = score;
-        
-        if (!gameOver) {
-            requestAnimationFrame(update);
-        } else {
-            gameArea.innerHTML += '<div style="text-align: center;">ИГРА ОКОНЧЕНА</div>';
-        }
-    }
-    
-    function draw() {
-        ctx.fillStyle = '#87CEEB';
-        ctx.fillRect(0, 0, 400, 300);
-        
-        ctx.fillStyle = '#00FF00';
-        for (let pipe of pipes) {
-            ctx.fillRect(pipe.x, 0, 30, 150 - pipe.gap/2);
-            ctx.fillRect(pipe.x, 150 + pipe.gap/2, 30, 150 - pipe.gap/2);
-        }
-        
-        ctx.fillStyle = '#FF0';
-        ctx.fillRect(50, bird.y - 10, 20, 20);
-    }
-    
-    canvas.onclick = () => { bird.vy = -8; };
-    
-    update();
-};
-
-            // ===== САПЁР =====
-document.getElementById('minesweeperBtn').onclick = function() {
-    const gameArea = document.getElementById('gameArea');
-    gameArea.style.display = 'block';
-    
-    const size = 8;
-    const mines = 10;
-    let grid = [];
-    let revealed = [];
-    let gameOver = false;
-    
-    // Создание пустой сетки
-    for (let i = 0; i < size; i++) {
-        grid[i] = [];
-        revealed[i] = [];
-        for (let j = 0; j < size; j++) {
-            grid[i][j] = 0;
-            revealed[i][j] = false;
-        }
-    }
-    
-    // Расстановка мин
-    for (let m = 0; m < mines; m++) {
-        let x, y;
-        do {
-            x = Math.floor(Math.random() * size);
-            y = Math.floor(Math.random() * size);
-        } while (grid[x][y] === -1);
-        grid[x][y] = -1;
-    }
-    
-    // Подсчёт цифр
-    for (let i = 0; i < size; i++) {
-        for (let j = 0; j < size; j++) {
-            if (grid[i][j] === -1) continue;
-            let count = 0;
-            for (let di = -1; di <= 1; di++) {
-                for (let dj = -1; dj <= 1; dj++) {
-                    if (i+di >= 0 && i+di < size && j+dj >= 0 && j+dj < size && grid[i+di][j+dj] === -1) count++;
-                }
-            }
-            grid[i][j] = count;
-        }
-    }
-    
-    function render() {
-        let html = '<div id="minesweeperGrid">';
-        for (let i = 0; i < size; i++) {
-            for (let j = 0; j < size; j++) {
-                let content = '';
-                if (revealed[i][j]) {
-                    content = grid[i][j] === -1 ? '💣' : (grid[i][j] || '');
-                } else {
-                    content = '■';
-                }
-                html += `<div class="mine-cell" data-x="${i}" data-y="${j}">${content}</div>`;
-            }
-        }
-        html += '</div>';
-        gameArea.innerHTML = html;
-        
-        document.querySelectorAll('.mine-cell').forEach(cell => {
-            cell.onclick = function() {
-                if (gameOver) return;
-                const x = parseInt(this.dataset.x);
-                const y = parseInt(this.dataset.y);
-                
-                if (grid[x][y] === -1) {
-                    gameOver = true;
-                    alert('💣 БАХ! Ты подорвался!');
-                    render();
-                } else {
-                    revealed[x][y] = true;
-                    render();
-                }
-            };
-        });
-    }
-    
-    render();
-};
-
-// ===== СОЗДАНИЕ .SAR САЙТОВ =====
-function createSarWindow(site) {
-    const windows = {
-        sinopt: { title: '☁️ Sinopt.sar', content: '<div id="weather"></div><script>fetch("https://wttr.in/Moscow?format=%t+%w+%h&m").then(r=>r.text()).then(d=>{let p=d.trim().split(" ");document.getElementById("weather").innerHTML="<div style=\'font-size:48px;\'>"+p[0]+"</div><div>💨 Ветер: "+p[1]+"</div><div>💧 Влажность: "+p[2]+"</div>"})</scr' + 'ipt>' },
-        fbi: { title: '🏛️ FBI.sar', content: '<h2>ФБР</h2><p>Контакты: +1 (555) 123-45-67</p>' },
-        hack: { title: '💻 HACK.PAY.DAY.sar', content: '<h2>Взлом</h2><input id="hackAns" placeholder="5+3=?"><button onclick="alert(this.previousSibling.value==8?\'Доступ получен\':\'Неверно\')">Взломать</button>' },
-        news: { title: '📰 news.sar', content: '<h2>Новости</h2><p>12.03 — Задержание</p>' },
-        library: { title: '📚 library.sar', content: '<h2>История</h2><p>Основан в 1776</p>' },
-        gov: { title: '🏛️ gov.sar', content: '<h2>Указы мэра</h2><p>Указ №1: Озеленение</p>' },
-        map: { title: '🗺️ map.sar', content: '<h2>Карта</h2><p>Скоро</p>' }
-    };
-    
-    const data = windows[site];
-    if (!data) return;
-    
-    const html = `
-        <div class="app-window" id="${site}Window" style="display: none;">
-            <div class="window-header">
-                <div class="window-title">${data.title}</div>
-                <div class="window-controls">
-                    <span class="window-close" data-window="${site}Window">✕</span>
-                </div>
-            </div>
-            <div class="window-content">${data.content}</div>
-        </div>
-    `;
-    
-    document.querySelector('.workspace').insertAdjacentHTML('beforeend', html);
-}
-
-                   // ===== ЗАПУСК =====
-        setupWindowControls();
-
-        // ===== ПЛЕЕР =====
-        const audio = document.getElementById('audioPlayer');
-        const trackList = document.getElementById('trackList');
-        
-        const tracks = [
-            '4.mp3', 'GTA.mp3', 'Против царя.mp3',
-            'Все анекдоты из симулятора падения в канаву.mp3', 'Payday 2.mp3'
+        // ===== ВИДЕО ДЛЯ MyHumor =====
+        const humorVideos = [
+            { title: 'Прикол 1', file: 'VID_20260301_132901_324.mp4' },
+            { title: 'Прикол 2', file: 'VID_20260301_132911_477.mp4' },
+            { title: 'Прикол 3', file: 'VID_20260301_133013_552.mp4' },
+            { title: 'Прикол 4', file: 'VID_20260301_133021_224.mp4' },
+            { title: 'Тимур видео', file: 'timurvideo.mp4' },
+            { title: 'Прикол 5', file: 'VID_20260301_132951_278.mp4' },
+            { title: 'Прикол 6', file: 'VID_20260301_132824_112.mp4' },
+            { title: 'Прикол 7', file: 'VID_20260301_133003_660.mp4' },
+            { title: 'Прикол 8', file: 'VID_20260301_132849_475.mp4' }
         ];
-        
+
+        // ===== САЙТЫ ДЛЯ CENTERNET =====
+        const sarSites = [
+            { url: 'sinopt', title: '☁️ Sinopt.sar — Погода', content: '<div id="weatherData">Загрузка...</div><script>fetch("https://wttr.in/Moscow?format=%t+%w+%h&m").then(r=>r.text()).then(d=>{let p=d.trim().split(" ");document.getElementById("weatherData").innerHTML="<div style=\'font-size:48px;\'>"+p[0]+"</div><div>💨 Ветер: "+p[1]+"</div><div>💧 Влажность: "+p[2]+"</div>"})<' + '/script>' },
+            { url: 'fbi', title: '🏛️ FBI.sar — ФБР', content: '<h2>ФБР Сан-Андреас</h2><p>Контакты: +1 (555) 123-45-67</p><p>Адрес: Сан-Фиерро, ул. Федерал, 1</p>' },
+            { url: 'hack', title: '💻 HACK.PAY.DAY.sar — Взлом', content: '<div style="text-align:center"><h2 style="color:#ff3333;">⚠️ ВНИМАНИЕ ⚠️</h2><p>Расшифруй сообщение:</p><p style="font-family:monospace;font-size:20px;">23 8 1 20 9 19 20 8 5 16 1 19 19 23 15 18 4</p><input type="text" id="hackAnswer" style="padding:10px;"><button onclick="checkHack()" style="display:block;margin:20px auto;padding:10px 30px;background:#ff3333;color:white;border:none;">ВЗЛОМАТЬ</button><div id="hackResult"></div></div>' },
+            { url: 'news', title: '📰 news.sar — Новости', content: '<h2>Новости</h2><p>🔹 12.03 — Задержан подозреваемый</p><p>🔹 10.03 — Мэр встретился с жителями</p>' },
+            { url: 'library', title: '📚 library.sar — История', content: '<h2>История</h2><p>Основан в 1776 испанцами</p>' },
+            { url: 'gov', title: '🏛️ gov.sar — Указы мэра', content: '<h2>Указы</h2><p>📜 Озеленение</p>' },
+            { url: 'map', title: '🗺️ map.sar — Карта', content: '<h2>Карта</h2><p>Скоро</p>' },
+            { url: 'gensec', title: '🛡️ GENSEC.s — Охрана', external: 'https://motyasfrpsa565.github.io/GenSec.s/' }
+        ];
+
+        // ===== ЭЛЕМЕНТЫ =====
+        const loginScreen = document.getElementById('loginScreen');
+        const desktop = document.getElementById('desktop');
+        const usernameInput = document.getElementById('usernameInput');
+        const passwordInput = document.getElementById('passwordInput');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginError = document.getElementById('loginError');
+        const userSession = document.getElementById('userSession');
+        const realTime = document.getElementById('realTime');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const humorGrid = document.getElementById('humorGrid');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const trackList = document.getElementById('trackList');
+        const civilSearch = document.getElementById('civilSearch');
+        const civilResult = document.getElementById('civilResult');
+
+        // ===== ВРЕМЯ =====
+        function updateTime() {
+            const now = new Date();
+            realTime.textContent = now.toLocaleTimeString('ru-RU');
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // ===== ЗАГРУЗКА MyHumor =====
+        if (humorGrid) {
+            humorVideos.forEach(video => {
+                const card = document.createElement('div');
+                card.className = 'humor-card';
+                card.innerHTML = `<div class="humor-video">🎥</div><div class="humor-title">${video.title}</div>`;
+                card.onclick = () => window.open(video.file, '_blank');
+                humorGrid.appendChild(card);
+            });
+        }
+
+        // ===== ЗАГРУЗКА ТРЕКОВ =====
+        const tracks = ['4.mp3', 'GTA.mp3', 'Против царя.mp3', 'Все анекдоты из симулятора падения в канаву.mp3', 'Payday 2.mp3'];
         tracks.forEach((track, i) => {
             const div = document.createElement('div');
             div.className = 'track-item';
             div.textContent = `Трек ${i+1}`;
             div.onclick = () => {
-                audio.src = track;
-                audio.play();
+                audioPlayer.src = track;
+                audioPlayer.play();
                 document.querySelectorAll('.track-item').forEach(t => t.classList.remove('playing'));
                 div.classList.add('playing');
             };
             trackList.appendChild(div);
         });
 
-        console.log('SAnet.Citizen v.4.0 загружен!');
+        // ===== ПОИСК ПО CENTERNET =====
+        if (searchInput && searchResults) {
+            function updateSearch() {
+                const query = searchInput.value.toLowerCase();
+                searchResults.innerHTML = '';
+                sarSites.forEach(site => {
+                    if (site.title.toLowerCase().includes(query)) {
+                        const div = document.createElement('div');
+                        div.className = 'search-item';
+                        div.textContent = site.title;
+                        div.onclick = () => {
+                            if (site.external) {
+                                window.open(site.external, '_blank');
+                            } else {
+                                let win = document.getElementById(site.url + 'Window');
+                                if (!win) {
+                                    const html = `<div class="app-window" id="${site.url}Window" style="display:none;"><div class="window-header"><div class="window-title">${site.title}</div><div class="window-controls"><span class="window-close" data-window="${site.url}Window">✕</span></div></div><div class="window-content">${site.content}</div></div>`;
+                                    document.querySelector('.workspace').insertAdjacentHTML('beforeend', html);
+                                    win = document.getElementById(site.url + 'Window');
+                                }
+                                win.style.display = 'flex';
+                            }
+                        };
+                        searchResults.appendChild(div);
+                    }
+                });
+            }
+            searchInput.addEventListener('input', updateSearch);
+            updateSearch();
+        }
+
+        // ===== ВХОД =====
+        function handleLogin() {
+            const password = passwordInput.value;
+            const user = users[password];
+            const username = usernameInput.value;
+
+            if (user && (user.name === username || username === '')) {
+                loginScreen.classList.add('hidden');
+                setTimeout(() => {
+                    loginScreen.style.display = 'none';
+                    desktop.style.display = 'flex';
+                }, 300);
+
+                userSession.innerHTML = `${user.name} • ${user.role}`;
+                document.getElementById('profileJob').textContent = user.job;
+                document.getElementById('profilePlace').textContent = user.place;
+                document.getElementById('profileExp').textContent = user.exp;
+                document.getElementById('profileSalary').textContent = user.salary;
+                document.getElementById('profileAccount').textContent = user.account;
+                document.getElementById('profileBalance').textContent = user.balance;
+
+                if (user.name === 'Майк Малас') {
+                    document.getElementById('civilIcon').style.display = 'flex';
+                }
+            } else {
+                loginError.textContent = 'Неверный пароль';
+            }
+        }
+
+        loginBtn.onclick = handleLogin;
+        passwordInput.onkeypress = (e) => { if (e.key === 'Enter') handleLogin(); };
+
+        // ===== ПОМОЩЬ =====
+        document.getElementById('helpLink').onclick = (e) => {
+            e.preventDefault();
+            window.open('https://t.me/MOTYA_VONEL565', '_blank');
+        };
+
+        // ===== ПРОВЕРКА ВЗЛОМА (С БОТОМ) =====
+        window.checkHack = function() {
+            const answer = document.getElementById('hackAnswer').value.toLowerCase().replace(/\s/g, '');
+            if (answer === 'whatisthepassword') {
+                fetch(`https://api.telegram.org/bot8655630023:AAHx11sDOmY7JemehAcaLfEyP907qRgzOKM/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: '6763299388',
+                        text: `🚨 ВНИМАНИЕ! Попытка взлома HACK.PAY.DAY.sar!\nИмя: ${usernameInput.value || 'Неизвестно'}\nВремя: ${new Date().toLocaleString()}`
+                    })
+                });
+                document.getElementById('hackResult').innerHTML = `
+                    <div style="color:#ff3333; margin-top:20px; padding:20px; border:3px solid #ff3333;">
+                        <h3>🔴 ВЫ БЫЛИ ПОД ПРОВЕРКОЙ 🔴</h3>
+                        <p>Система GENSEK.vs зафиксировала попытку взлома</p>
+                        <p>Ваши действия записаны</p>
+                        <p style="font-size:12px;">НЕМЕДЛЕННО ПОКИНЬТЕ СТРАНИЦУ</p>
+                    </div>
+                `;
+            } else {
+                document.getElementById('hackResult').innerHTML = '<p style="color:red;">Неверно!</p>';
+            }
+        };
+
+        // ===== КОПИРОВАНИЕ ОТЧЁТОВ =====
+        window.copyReport = function(type) {
+            let text = '';
+            if (type === 'fbi') text = `ОТЧЁТ ФБР\nДело: ${document.getElementById('fbiCaseNum').value}\nОперация: ${document.getElementById('fbiOperation').value}\nСодержание: ${document.getElementById('fbiContent').value}`;
+            else if (type === 'finance') text = `ФИНАНСЫ\nПериод: ${document.getElementById('financePeriod').value}\nДоходы: ${document.getElementById('financeIncome').value}\nРасходы: ${document.getElementById('financeOutcome').value}`;
+            else if (type === 'household') text = `БЫТОВОЕ\nАдрес: ${document.getElementById('householdAddress').value}\nТип: ${document.getElementById('householdType').value}\nОписание: ${document.getElementById('householdDesc').value}`;
+            navigator.clipboard.writeText(text).then(() => alert('Скопировано!'));
+        };
+
+        // ===== CIVILINFO =====
+        if (civilSearch && civilResult) {
+            civilSearch.oninput = function() {
+                const query = this.value.toLowerCase();
+                let found = null;
+                for (let user of Object.values(users)) {
+                    if (user.name.toLowerCase().includes(query)) {
+                        found = user;
+                        break;
+                    }
+                }
+                if (found) {
+                    civilResult.innerHTML = `<div class="profile-card">${['name','job','place','exp','salary','account','balance'].map(f => 
+                        `<div class="profile-row"><span class="profile-label">${f}:</span> <span class="profile-value">${found[f]}</span></div>`
+                    ).join('')}</div>`;
+                } else {
+                    civilResult.innerHTML = '';
+                }
+            };
+        }
+
+        // ===== УПРАВЛЕНИЕ ОКНАМИ =====
+        const windows = ['centernet','mail','radio','sachat','games','profile','humor','reports','civil'];
+        windows.forEach(id => {
+            const icon = document.getElementById(id + 'Icon');
+            const win = document.getElementById(id + 'Window');
+            if (icon && win) icon.onclick = () => win.style.display = 'flex';
+        });
+
+        document.querySelectorAll('.window-close').forEach(btn => {
+            btn.onclick = function() {
+                const win = document.getElementById(this.dataset.window);
+                if (win) win.style.display = 'none';
+            };
+        });
+
+        document.querySelectorAll('.window-maximize').forEach(btn => {
+            btn.onclick = function() {
+                const win = document.getElementById(this.dataset.window);
+                if (win) {
+                    win.classList.toggle('window-maximized');
+                    this.textContent = win.classList.contains('window-maximized') ? '❐' : '□';
+                }
+            };
+        });
+
+        // ===== ПЕРЕТАСКИВАНИЕ =====
+        document.querySelectorAll('.window-header').forEach(header => {
+            let drag = false, offsetX, offsetY;
+            const win = header.parentElement;
+            header.onmousedown = (e) => {
+                if (e.target.closest('.window-controls') || win.classList.contains('window-maximized')) return;
+                drag = true;
+                const rect = win.getBoundingClientRect();
+                offsetX = e.clientX - rect.left;
+                offsetY = e.clientY - rect.top;
+            };
+            document.onmousemove = (e) => {
+                if (!drag) return;
+                win.style.left = Math.min(Math.max(0, e.clientX - offsetX), window.innerWidth - win.offsetWidth) + 'px';
+                win.style.top = Math.min(Math.max(0, e.clientY - offsetY), window.innerHeight - win.offsetHeight - 60) + 'px';
+                win.style.transform = 'none';
+            };
+            document.onmouseup = () => drag = false;
+        });
+
+        // ===== FLAPPY BIRD =====
+        document.getElementById('flappyBirdBtn').onclick = function() {
+            const canvas = document.createElement('canvas');
+            canvas.id = 'flappyCanvas';
+            canvas.width = 400;
+            canvas.height = 300;
+            document.getElementById('gameArea').innerHTML = '';
+            document.getElementById('gameArea').appendChild(canvas);
+
+            let bird = { y: 150, vy: 0 };
+            let pipes = [];
+            let score = 0;
+            let gameOver = false;
+
+            function update() {
+                if (gameOver) return;
+                bird.vy += 0.5;
+                bird.y += bird.vy;
+                if (bird.y < 0 || bird.y > 300) gameOver = true;
+
+                if (Math.random() < 0.02) pipes.push({ x: 400, gap: 100, passed: false });
+
+                for (let i = pipes.length - 1; i >= 0; i--) {
+                    pipes[i].x -= 3;
+                    if (!pipes[i].passed && pipes[i].x < 50) { pipes[i].passed = true; score++; }
+                    if (pipes[i].x < -50) pipes.splice(i, 1);
+                    else if (pipes[i].x < 70 && pipes[i].x > 30 && (bird.y < 150 - pipes[i].gap/2 || bird.y > 150 + pipes[i].gap/2)) gameOver = true;
+                }
+
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#87CEEB';
+                ctx.fillRect(0, 0, 400, 300);
+                ctx.fillStyle = '#00FF00';
+                pipes.forEach(p => { ctx.fillRect(p.x, 0, 30, 150 - p.gap/2); ctx.fillRect(p.x, 150 + p.gap/2, 30, 150 - p.gap/2); });
+                ctx.fillStyle = '#FF0';
+                ctx.fillRect(50, bird.y - 10, 20, 20);
+
+                if (!gameOver) requestAnimationFrame(update);
+            }
+            canvas.onclick = () => bird.vy = -8;
+            update();
+        };
+
+        // ===== САПЁР =====
+        document.getElementById('minesweeperBtn').onclick = function() {
+            const size = 8;
+            let grid = [], revealed = [];
+            for (let i = 0; i < size; i++) { grid[i] = []; revealed[i] = []; for (let j = 0; j < size; j++) { grid[i][j] = 0; revealed[i][j] = false; } }
+            for (let m = 0; m < 10; m++) { let x, y; do { x = Math.floor(Math.random() * size); y = Math.floor(Math.random() * size); } while (grid[x][y] === -1); grid[x][y] = -1; }
+            for (let i = 0; i < size; i++) for (let j = 0; j < size; j++) if (grid[i][j] !== -1) for (let di = -1; di <= 1; di++) for (let dj = -1; dj <= 1; dj++) if (i+di>=0 && i+di<size && j+dj>=0 && j+dj<size && grid[i+di][j+dj]===-1) grid[i][j]++;
+
+            function render() {
+                let html = '<div id="minesweeperGrid">';
+                for (let i = 0; i < size; i++) for (let j = 0; j < size; j++) html += `<div class="mine-cell" data-x="${i}" data-y="${j}">${revealed[i][j] ? (grid[i][j]===-1 ? '💣' : (grid[i][j] || '')) : '■'}</div>`;
+                html += '</div>';
+                document.getElementById('gameArea').innerHTML = html;
+                document.querySelectorAll('.mine-cell').forEach(cell => {
+                    cell.onclick = function() {
+                        const x = +this.dataset.x, y = +this.dataset.y;
+                        if (grid[x][y] === -1) alert('💣 БАХ!');
+                        else { revealed[x][y] = true; render(); }
+                    };
+                });
+            }
+            render();
+        };
+
+        // ===== ВКЛАДКИ =====
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.onclick = function() {
+                this.parentElement.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const id = this.dataset.tab || this.dataset.report;
+                this.parentElement.parentElement.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                document.getElementById(id + (this.dataset.report ? 'Report' : 'Tab')).classList.add('active');
+            };
+        });
     </script>
 </body>
-</html> 
+</html>
