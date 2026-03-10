@@ -1278,7 +1278,8 @@ fetch(`https://api.telegram.org/bot8655630023:AAHx11sDOmY7JemehAcaLfEyP907qRgzOK
             render();
         };
 
-                // ===== СОЗДАНИЕ .SAR САЙТОВ =====
+
+            // ===== СОЗДАНИЕ .SAR САЙТОВ =====
 function createSarWindow(site) {
     const windows = {
         sinopt: { title: '☁️ Sinopt.sar', content: '<div id="weatherData">Загрузка...</div><script>fetch("https://wttr.in/Moscow?format=%t+%w+%h&m").then(r=>r.text()).then(d=>{let p=d.trim().split(" ");document.getElementById("weatherData").innerHTML="<div style=\'font-size:48px;\'>"+p[0]+"</div><div>💨 Ветер: "+p[1]+"</div><div>💧 Влажность: "+p[2]+"</div>"})<' + '/script>' },
@@ -1307,6 +1308,20 @@ function createSarWindow(site) {
     `;
     
     document.querySelector('.workspace').insertAdjacentHTML('beforeend', html);
+    
+    // ✅ ПРИВЯЗЫВАЕМ КНОПКИ СРАЗУ ПОСЛЕ СОЗДАНИЯ
+    const newWindow = document.getElementById(`${site}Window`);
+    const closeBtn = newWindow.querySelector('.window-close');
+    const maxBtn = newWindow.querySelector('.window-maximize');
+    
+    closeBtn.onclick = function() {
+        newWindow.style.display = 'none';
+    };
+    
+    maxBtn.onclick = function() {
+        newWindow.classList.toggle('window-maximized');
+        this.textContent = newWindow.classList.contains('window-maximized') ? '❐' : '□';
+    };
 }
 
         // ===== ВКЛАДКИ =====
