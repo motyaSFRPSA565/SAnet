@@ -1278,6 +1278,37 @@ fetch(`https://api.telegram.org/bot8655630023:AAHx11sDOmY7JemehAcaLfEyP907qRgzOK
             render();
         };
 
+                // ===== СОЗДАНИЕ .SAR САЙТОВ =====
+function createSarWindow(site) {
+    const windows = {
+        sinopt: { title: '☁️ Sinopt.sar', content: '<div id="weatherData">Загрузка...</div><script>fetch("https://wttr.in/Moscow?format=%t+%w+%h&m").then(r=>r.text()).then(d=>{let p=d.trim().split(" ");document.getElementById("weatherData").innerHTML="<div style=\'font-size:48px;\'>"+p[0]+"</div><div>💨 Ветер: "+p[1]+"</div><div>💧 Влажность: "+p[2]+"</div>"})<' + '/script>' },
+        fbi: { title: '🏛️ FBI.sar', content: '<h2>ФБР Сан-Андреас</h2><p>Контакты: +1 (555) 123-45-67</p><p>Адрес: Сан-Фиерро, ул. Федерал, 1</p>' },
+        hack: { title: '💻 HACK.PAY.DAY.sar', content: '<div style="text-align:center"><h2 style="color:#ff3333;">⚠️ ВНИМАНИЕ ⚠️</h2><p>Расшифруй сообщение:</p><p style="font-family:monospace;font-size:20px;">23 8 1 20 9 19 20 8 5 16 1 19 19 23 15 18 4</p><input type="text" id="hackAnswer" style="padding:10px;"><button onclick="checkHack()" style="display:block;margin:20px auto;padding:10px 30px;background:#ff3333;color:white;border:none;">ВЗЛОМАТЬ</button><div id="hackResult"></div></div>' },
+        news: { title: '📰 news.sar', content: '<h2>Новости</h2><p>🔹 12.03 — Задержан подозреваемый</p><p>🔹 10.03 — Мэр встретился с жителями</p>' },
+        library: { title: '📚 library.sar', content: '<h2>История</h2><p>Основан в 1776 испанцами</p>' },
+        gov: { title: '🏛️ gov.sar', content: '<h2>Указы</h2><p>📜 Озеленение</p>' },
+        map: { title: '🗺️ map.sar', content: '<h2>Карта</h2><p>Скоро</p>' }
+    };
+    
+    const data = windows[site];
+    if (!data) return;
+    
+    const html = `
+        <div class="app-window" id="${site}Window" style="display: none;">
+            <div class="window-header">
+                <div class="window-title">${data.title}</div>
+                <div class="window-controls">
+                    <span class="window-close" data-window="${site}Window">✕</span>
+                    <span class="window-maximize" data-window="${site}Window">□</span>
+                </div>
+            </div>
+            <div class="window-content">${data.content}</div>
+        </div>
+    `;
+    
+    document.querySelector('.workspace').insertAdjacentHTML('beforeend', html);
+}
+
         // ===== ВКЛАДКИ =====
         document.querySelectorAll('.tab').forEach(tab => {
             tab.onclick = function() {
