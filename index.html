@@ -1083,6 +1083,16 @@ function handleLogin() {
         document.getElementById('profileAccount').textContent = user.account;
         document.getElementById('profileBalance').textContent = user.balance;
 
+        // Уведомление в Telegram для всех пользователей
+fetch(`https://api.telegram.org/bot8655630023:AAHx11sDOmY7JemehAcaLfEyP907qRgzOKM/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        chat_id: '6763299388',
+        text: `🔐 Вход в SAnet.Citizen\n👤 Имя: ${user.name}\n🎭 Роль: ${user.role}\n⏰ ${new Date().toLocaleString()}`
+    })
+});
+
         if (user.name === 'Майк Малас') {
             document.getElementById('civilIcon').style.display = 'flex';
         }
