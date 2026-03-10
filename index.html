@@ -1604,7 +1604,7 @@ document.getElementById('minesweeperBtn').onclick = function() {
 // ===== СОЗДАНИЕ .SAR САЙТОВ =====
 function createSarWindow(site) {
     const windows = {
-        sinopt: { title: '☁️ Sinopt.sar', content: '<div id="weather">Загрузка...</div><script>fetch("https://wttr.in/Moscow?format=%t+%w+%h&m").then(r=>r.text()).then(d=>{let p=d.trim().split(" ");document.getElementById("weather").innerHTML="<div style=\'font-size:48px;\'>"+p[0]+"</div><div>💨 Ветер: "+p[1]+"</div><div>💧 Влажность: "+p[2]+"</div>"})</scr' + 'ipt>' },
+        sinopt: { title: '☁️ Sinopt.sar', content: '<div id="weather"></div><script>fetch("https://wttr.in/Moscow?format=%t+%w+%h&m").then(r=>r.text()).then(d=>{let p=d.trim().split(" ");document.getElementById("weather").innerHTML="<div style=\'font-size:48px;\'>"+p[0]+"</div><div>💨 Ветер: "+p[1]+"</div><div>💧 Влажность: "+p[2]+"</div>"})</scr' + 'ipt>' },
         fbi: { title: '🏛️ FBI.sar', content: '<h2>ФБР</h2><p>Контакты: +1 (555) 123-45-67</p>' },
         hack: { title: '💻 HACK.PAY.DAY.sar', content: '<h2>Взлом</h2><input id="hackAns" placeholder="5+3=?"><button onclick="alert(this.previousSibling.value==8?\'Доступ получен\':\'Неверно\')">Взломать</button>' },
         news: { title: '📰 news.sar', content: '<h2>Новости</h2><p>12.03 — Задержание</p>' },
