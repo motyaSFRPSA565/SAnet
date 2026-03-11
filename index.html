@@ -939,8 +939,8 @@
             Ты можешь закрыть это окно и продолжить играть.<br>
             Но может, стоит узнать правду?
         </p>
-        <button class="report-btn" onclick="window.open('https://ru.wikipedia.org/wiki/Массовое_убийство_в_школе', '_blank')">
-            📚 УЗНАТЬ ПРАВДУ
+        <button class="report-btn" onclick="window.open(getWikipediaLink('{{ИМЯ_ПОЛЬЗОВАТЕЛЯ}}'), '_blank')">
+    📚 УЗНАТЬ ПРАВДУ
         </button>
         <button class="report-btn" style="margin-top: 10px; background: #666;" onclick="document.getElementById('shameWindow').style.display='none'">
             ❌ ПРОДОЛЖИТЬ БЕЗ ЗНАНИЙ
@@ -1003,6 +1003,27 @@ const bannedWords = [
             { url: 'map', title: '🗺️ map.sar — Карта', content: '<h2>Карта</h2><p>Скоро</p>' },
             { url: 'gensec', title: '🛡️ GENSEC.s — Охрана', external: 'https://motyasfrpsa565.github.io/GenSec.s/' }
         ];
+
+            // ===== ФУНКЦИЯ ДЛЯ ССЫЛОК НА ВИКИПЕДИЮ =====
+function getWikipediaLink(name) {
+    const nameLower = name.toLowerCase();
+    
+    if (nameLower.includes('росляков') || nameLower.includes('влад')) {
+        return 'https://ru.wikipedia.org/wiki/Массовое_убийство_в_Керченском_политехническом_колледже';
+    }
+    else if (nameLower.includes('ильназ') || nameLower.includes('галявиев')) {
+        return 'https://ru.wikipedia.org/wiki/Стрельба_в_казанской_школе_№175';
+    }
+    else if (nameLower.includes('каращук') || nameLower.includes('таймур')) {
+        return 'https://ru.wikipedia.org/wiki/Стрельба_в_Пермском_государственном_национальном_исследовательском_университете';
+    }
+    else if (nameLower.includes('зинченко') || nameLower.includes('вячеслав')) {
+        return 'https://ru.wikipedia.org/wiki/Убийство_Ирины_Фарион';
+    }
+    else {
+        return 'https://ru.wikipedia.org/wiki/Массовое_убийство_в_школе';
+    }
+}
 
         // ===== ЭЛЕМЕНТЫ =====
         const loginScreen = document.getElementById('loginScreen');
@@ -1114,16 +1135,34 @@ if (password === 'guest1!') {
     userSession.innerHTML = `${usernameInput.value} • ГОСТЬ`;
     
     // Если имя опасное — скрываем все иконки и показываем предупреждение
-    if (isDangerous) {
-        // Прячем все обычные иконки
-        document.querySelectorAll('.desktop-icon').forEach(icon => {
-            icon.style.display = 'none';
-        });
+// Если имя опасное — скрываем все иконки и показываем предупреждение
+if (isDangerous) {
+    // Прячем все обычные иконки
+    document.querySelectorAll('.desktop-icon').forEach(icon => {
+        icon.style.display = 'none';
+    });
+    
+    // Сохраняем имя для кнопки
+    const dangerousGuestName = usernameInput.value.trim();
+    
+    // Показываем предупреждение
+    setTimeout(() => {
+        document.getElementById('warningWindow').style.display = 'flex';
         
-        // Показываем предупреждение
-        setTimeout(() => {
-            document.getElementById('warningWindow').style.display = 'flex';
-        }, 500);
+        // Настраиваем кнопку в окне "Я НЕ ХОЧУ"
+        const wikiBtn = document.getElementById('wikiButton');
+        if (wikiBtn) {
+            wikiBtn.onclick = function() {
+                window.open(getWikipediaLink(dangerousGuestName), '_blank');
+            };
+        }
+        
+        // Показываем имя в окне
+        const nameSpan = document.getElementById('dangerousName');
+        if (nameSpan) {
+            nameSpan.textContent = dangerousGuestName;
+        }
+    }, 500);
     } else {
         // Обычный вход — всё как обычно
         document.getElementById('profileJob').textContent = 'Безработный';
