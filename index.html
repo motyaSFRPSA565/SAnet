@@ -897,6 +897,56 @@
                     <div id="civilResult" style="margin-top: 20px;"></div>
                 </div>
             </div>
+            <!-- ОКНО "ТЫ УВЕРЕН?" -->
+<div class="app-window" id="warningWindow" style="display: none;">
+    <div class="window-header">
+        <div class="window-title">⚠️ ТЫ УВЕРЕН?</div>
+        <div class="window-controls">
+            <span class="window-close" data-window="warningWindow">✕</span>
+        </div>
+    </div>
+    <div class="window-content" style="text-align: center; padding: 30px;">
+        <div style="font-size: 48px; margin-bottom: 20px;">⚠️</div>
+        <h2 style="color: #ff3333;">ПОДУМАЙ ЕЩЁ РАЗ</h2>
+        <p style="margin: 20px 0; color: #004466;">
+            Ты выбрал имя, связанное с реальной трагедией.<br>
+            Такие шутки ранят людей и не делают чести.
+        </p>
+        <div style="background: #ffebee; padding: 15px; border-radius: 10px; margin: 20px 0;">
+            <p style="color: #b71c1c; font-size: 14px;">
+                За каждой такой историей — боль, слёзы и невинные жертвы.<br>
+                Будь человеком.
+            </p>
+        </div>
+        <button class="report-btn" onclick="document.getElementById('warningWindow').style.display='none'; document.getElementById('shameWindow').style.display='flex';">
+            Я ПОНЯЛ, ДАЛЬШЕ
+        </button>
+    </div>
+</div>
+
+<!-- ОКНО "Я НЕ ХОЧУ" -->
+<div class="app-window" id="shameWindow" style="display: none;">
+    <div class="window-header">
+        <div class="window-title">📚 Я НЕ ХОЧУ</div>
+        <div class="window-controls">
+            <span class="window-close" data-window="shameWindow">✕</span>
+        </div>
+    </div>
+    <div class="window-content" style="text-align: center; padding: 30px;">
+        <div style="font-size: 48px; margin-bottom: 20px;">📖</div>
+        <h2 style="color: #ff3333;">ПРЕЖДЕ ЧЕМ ШУТИТЬ — УЗНАЙ</h2>
+        <p style="margin: 20px 0; color: #004466;">
+            Ты можешь закрыть это окно и продолжить играть.<br>
+            Но может, стоит узнать правду?
+        </p>
+        <button class="report-btn" onclick="window.open('https://ru.wikipedia.org/wiki/Массовое_убийство_в_школе', '_blank')">
+            📚 УЗНАТЬ ПРАВДУ
+        </button>
+        <button class="report-btn" style="margin-top: 10px; background: #666;" onclick="document.getElementById('shameWindow').style.display='none'">
+            ❌ ПРОДОЛЖИТЬ БЕЗ ЗНАНИЙ
+        </button>
+    </div>
+    </div>
         </div>
 
         <!-- НИЖНЯЯ ПАНЕЛЬ -->
@@ -916,6 +966,18 @@
             'SOCIAL665ADMIN!': { name: 'Глеб Малыхин', role: 'ДЕПУТАТ', job: 'Депутат', place: 'Соц. отдел', exp: '1.5 года', salary: '19 000$', account: 'SF-0004-ГМ', balance: '28 500$' },
             'guest1!': { name: 'Гость', role: 'ГОСТЬ', job: 'Безработный', place: '—', exp: '—', salary: '0$', account: 'SF-GUEST', balance: '100$' }
         };
+
+            // ===== ЧЁРНЫЙ СПИСОК ЗАПРЕЩЁННЫХ СЛОВ =====
+// Только имена причастных, без городов
+const bannedWords = [
+    // Имена стрелков (без городов)
+    'росляков', 'влад росляков', 'росликов',
+    'ильназ', 'галявиев', 'ильназ галявиев',
+    'каращук', 'таймур каращук',
+    // Общие слова-триггеры
+    'колумбайн', 'колумбин'
+    // Города УБРАНЫ — Керчь, Казань, Пермь больше не в списке
+         ];
 
         // ===== ВИДЕО ДЛЯ MyHumor =====
         const humorVideos = [
@@ -1029,41 +1091,61 @@ function handleLogin() {
     const password = passwordInput.value;
     const username = usernameInput.value.trim();
     
-    // Проверка для гостя
-    if (password === 'guest1!') {
-        if (username === '') {
-            loginError.textContent = 'Введите ФИО персонажа!';
-            return;
-        }
-        
-        loginScreen.classList.add('hidden');
-        setTimeout(() => {
-            loginScreen.style.display = 'none';
-            desktop.style.display = 'flex';
-        }, 300);
 
-        userSession.innerHTML = `${username} • ГОСТЬ`;
         
-        // Отправляем в Telegram
-        fetch(`https://api.telegram.org/bot8655630023:AAHx11sDOmY7JemehAcaLfEyP907qRgzOKM/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: '6763299388',
-                text: `👤 Гость вошёл в систему\nРП-имя: ${username}\nВремя: ${new Date().toLocaleString()}`
-            })
+        // Проверка для гостя
+if (password === 'guest1!') {
+    const guestName = usernameInput.value.trim().toLowerCase();
+    
+    if (guestName === '') {
+        loginError.textContent = 'Введите ФИО персонажа!';
+        return;
+    }
+    
+    // Проверка на опасные имена
+    const isDangerous = bannedWords.some(word => guestName.includes(word));
+    
+    loginScreen.classList.add('hidden');
+    setTimeout(() => {
+        loginScreen.style.display = 'none';
+        desktop.style.display = 'flex';
+    }, 300);
+
+    userSession.innerHTML = `${usernameInput.value} • ГОСТЬ`;
+    
+    // Если имя опасное — скрываем все иконки и показываем предупреждение
+    if (isDangerous) {
+        // Прячем все обычные иконки
+        document.querySelectorAll('.desktop-icon').forEach(icon => {
+            icon.style.display = 'none';
         });
         
-        // Заполняем профиль гостя
+        // Показываем предупреждение
+        setTimeout(() => {
+            document.getElementById('warningWindow').style.display = 'flex';
+        }, 500);
+    } else {
+        // Обычный вход — всё как обычно
         document.getElementById('profileJob').textContent = 'Безработный';
         document.getElementById('profilePlace').textContent = '—';
         document.getElementById('profileExp').textContent = '—';
         document.getElementById('profileSalary').textContent = '0$';
         document.getElementById('profileAccount').textContent = 'SF-GUEST';
         document.getElementById('profileBalance').textContent = '100$';
-        
-        return;
     }
+    
+    // Отправляем в Telegram
+    fetch(`https://api.telegram.org/bot8655630023:AAHx11sDOmY7JemehAcaLfEyP907qRgzOKM/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: '6763299388',
+            text: `👤 Гость вошёл\nИмя: ${usernameInput.value}\n⚠️ Опасное имя: ${isDangerous ? 'ДА' : 'НЕТ'}\n⏰ ${new Date().toLocaleString()}`
+        })
+    });
+    
+    return;
+}
     
     // Проверка для обычных пользователей
     const user = users[password];
