@@ -1334,6 +1334,28 @@ function createSarWindow(site) {
                 document.getElementById(id + (this.dataset.report ? 'Report' : 'Tab')).classList.add('active');
             };
         });
+
+            // ===== ТОТАЛЬНЫЙ КОНТРОЛЬ КРЕСТИКОВ =====
+function fixAllCloseButtons() {
+    document.querySelectorAll('.window-close').forEach(btn => {
+        btn.onclick = function(e) {
+            e.stopPropagation();
+            const windowId = this.dataset.window;
+            const win = document.getElementById(windowId);
+            if (win) win.style.display = 'none';
+        };
+    });
+}
+
+// Запускаем сразу
+fixAllCloseButtons();
+
+// И наблюдаем за новыми окнами
+const observer = new MutationObserver(() => {
+    fixAllCloseButtons();
+});
+observer.observe(document.querySelector('.workspace'), { childList: true, subtree: true 
+});
     </script>
 </body>
 </html>
