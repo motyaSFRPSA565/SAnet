@@ -1006,20 +1006,30 @@ const bannedWords = [
 
             // ===== ФУНКЦИЯ ДЛЯ ССЫЛОК НА ВИКИПЕДИЮ =====
 function getWikipediaLink(name) {
-    const nameLower = name.toLowerCase();
+    const nameLower = name.toLowerCase().trim();
+    const nameParts = nameLower.split(' ');
     
-    if (nameLower.includes('росляков') || nameLower.includes('влад')) {
+    // Керчь — точное совпадение фамилии
+    if (nameParts.some(part => part === 'росляков')) {
         return 'https://ru.wikipedia.org/wiki/Массовое_убийство_в_Керченском_политехническом_колледже';
     }
-    else if (nameLower.includes('ильназ') || nameLower.includes('галявиев')) {
+    
+    // Казань — точное совпадение фамилии
+    else if (nameParts.some(part => part === 'галявиев')) {
         return 'https://ru.wikipedia.org/wiki/Стрельба_в_казанской_школе_№175';
     }
-    else if (nameLower.includes('каращук') || nameLower.includes('таймур')) {
+    
+    // Пермь — точное совпадение фамилии
+    else if (nameParts.some(part => part === 'каращук')) {
         return 'https://ru.wikipedia.org/wiki/Стрельба_в_Пермском_государственном_национальном_исследовательском_университете';
     }
-    else if (nameLower.includes('зинченко') || nameLower.includes('вячеслав')) {
+    
+    // Львов — точное совпадение фамилии
+    else if (nameParts.some(part => part === 'зинченко')) {
         return 'https://ru.wikipedia.org/wiki/Убийство_Ирины_Фарион';
     }
+    
+    // Если ничего не подошло — общая статья
     else {
         return 'https://ru.wikipedia.org/wiki/Массовое_убийство_в_школе';
     }
